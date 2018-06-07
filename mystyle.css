@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Song+Myung');
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #332F2A;
+  color: #F1F1C2;
+  background-image: url("assets/images/forest-bike.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.container {
+  /* display: flex; */
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding: 2em;
+  background-color: rgba(50, 46, 41, 0.7);
+
+}
+
+.btn {
+  color: #F1F1C2;
+  background-color: #CA6D30;
+  border: 1px solid #F1F1C2;
+}
+
+
+h1 {
+  font-family: 'Song Myung', serif;
+  color: #CA6D30;
+}
+h2 {
+  color: #95A692;
+}
+p {
+  font-weight: lighter;
+}
+
+
+/* $background-color: #332F2A;
+$heading-color: #CA6D30;
+$subheading-color: #95A692;
+$body-text-color: #F1F1C2; */
