@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="mystyle.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+<<<<<<< HEAD
+    <!-- <link rel="stylesheet" href="datepicker.css"> -->
+=======
+>>>>>>> 2c2ba0a6460e23e6d88bab6d7873ada28e950cc1
   </head>
   <body>
     <div class="container">
@@ -14,6 +18,126 @@
         <h1>Looking for a wild ride?</h1>
         <h2>Check out our rugged rentals.</h2>
         <p>We offer a range of rental vehicles and recommended destinations for the truly adventurous.</p>
+<<<<<<< HEAD
+        <div class="form">
+          <!-- <div class="input-daterange input-group" id="datepicker">
+            <input type="text" class="input-sm form-control" name="start" />
+            <span class="input-group-addon">to</span>
+            <input type="text" class="input-sm form-control" name="end" />
+        </div> -->
+        <!-- <input id="datepicker" data-provide="datepicker"> -->
+        <!-- <div class="input-group date" data-provide="datepicker">
+          <input type="text" class="form-control">
+          <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+          </div> -->
+        <!-- </div> -->
+
+        <div class="input-daterange input-group" id="datepicker">
+          <input data-provide="datepicker" type="text" class="input-sm form-control" name="start" />
+          <span class="input-group-addon"> to </span>
+          <input data-provide="datepicker" type="text" class="input-sm form-control" name="end" />
+      </div>
+
+          <div id="inputs">
+            <!-- <div class="btn-group-vertical" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                How big's your pack?
+              </button> -->
+              <div class="form-group">
+               <label for="passengers">How big's your pack?</label>
+               <select class="form-control form__passengers">
+                 <option>1</option>
+                 <option>2</option>
+                 <option>3</option>
+                 <option>4</option>
+                 <option>5</option>
+                 <option>6</option>
+               </select>
+            </div>
+                          <!-- <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                            <a class="dropdown-item" href="#">4</a>
+                            <a class="dropdown-item" href="#">5</a>
+                            <a class="dropdown-item" href="#">6</a>
+                        </div> -->
+                            <button type="button" class="btn btn-primary btn-lg form__continue--passengers">Continue</button>
+                      </div>
+                      <!-- passenger numbers ENDS -->
+
+                        <!-- <div class="btn-group-vertical form__days" role="group">
+                          <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            How long are you riding for?
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                            <a class="dropdown-item" href="#">1 day</a>
+                            <a class="dropdown-item" href="#">2 days</a>
+                            <a class="dropdown-item" href="#">3 days</a>
+                            <a class="dropdown-item" href="#">4 days</a>
+                            <a class="dropdown-item" href="#">5 days</a>
+                            <a class="dropdown-item" href="#">6 days</a>
+                            <a class="dropdown-item" href="#">7 days</a>
+                            <a class="dropdown-item" href="#">8 days</a>
+                            <a class="dropdown-item" href="#">9 days</a>
+                            <a class="dropdown-item" href="#">10 days</a>
+                            <a class="dropdown-item" href="#">11 days</a>
+                            <a class="dropdown-item" href="#">12 days</a>
+                            <a class="dropdown-item" href="#">13 days</a>
+                            <a class="dropdown-item" href="#">14 days</a>
+                          </div> -->
+                <button type="button" class="btn btn-primary btn-lg form__continue--days">Continue</button>
+                        </div>
+
+                            <!-- days ENDS -->
+                      </div>
+                        <button type="button" class="btn btn-primary btn-lg form__continue--map">Continue</button>
+                        <!-- form ends -->
+                      </div>
+
+                  </div>
+                    <!-- <div class="form">
+                      <form id="form">
+                      How big's your pack? <input type="number" name="passengers" label="Number of passengers" value="1">
+                      <button id="pack-input" type="button" name="button">Continue</button>
+
+                       <input id="date" type="text" name="dates" value="0">
+                      </form> -->
+
+                      <div class="map">
+                        <h2>So... where are you headed?</h2>
+                        <div id='map' style='width: 800px; height: 600px;'></div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <!-- inputs end -->
+
+                <!-- container ENDS -->
+                </div>
+                <script>
+                mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
+                var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/sebknight/cji55y08z35s32smpd4vrpajn'
+                });
+                </script>
+
+
+
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+                <script src="assets/parsley.js"></script>
+                <script src="assets/bootstrap-datepicker.js"></script>
+                <script src="assets/script.js"></script>
+                <!-- <script src="datepicker.min.js"></script> -->
+              </body>
+=======
       </div>
       <h2>So... where are you headed?</h2>
       <div id='map' style='width: 800px; height: 600px;'></div>
@@ -73,4 +197,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   </body>
+>>>>>>> 2c2ba0a6460e23e6d88bab6d7873ada28e950cc1
 </html>
