@@ -45,8 +45,13 @@ $('#datepicker').datepicker({
     // toggleActive: true
 });
 
+
 $( ".form__continue--passengers" ).click(function(){
   $(".form__days").show();
+});
+
+$( ".form__continue--passengers" ).click(function(){
+  $(".form__passengers").show();
 });
   $( ".form__continue--map" ).click(function(){
     $(".map").show();

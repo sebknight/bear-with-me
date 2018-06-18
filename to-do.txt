@@ -1,0 +1,16 @@
+user enters site
+enters number of passengers
+enter dates
+enter destinations (starting, finishing)
+(recommended prompts)
+gets vehicle recommendations
+confirm - cost estimate (call/email)
+
+
+errors: - no vehicles available - too few people, too many days
+
+pagepiling new thing on each page
+
+
+
+documentation!!!!

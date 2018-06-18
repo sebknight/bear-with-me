@@ -9,14 +9,10 @@ body {
   background-position: center;
   background-size: cover;
 }
-<<<<<<< HEAD
-
 .map{
   display: none;
 }
 
-=======
->>>>>>> 2c2ba0a6460e23e6d88bab6d7873ada28e950cc1
 .container {
   /* display: flex; */
   width: 100%;
@@ -32,13 +28,14 @@ body {
   background-color: #CA6D30;
   border: 1px solid #F1F1C2;
 }
+/* btn:hover {
+  background-color:
+} */
 
-<<<<<<< HEAD
+
 .form__days {
   display: none;
 }
-=======
->>>>>>> 2c2ba0a6460e23e6d88bab6d7873ada28e950cc1
 
 h1 {
   font-family: 'Song Myung', serif;
@@ -51,14 +48,13 @@ p {
   font-weight: lighter;
 }
 
-<<<<<<< HEAD
+
 #date {
   display: none;
 }
 
 
-=======
->>>>>>> 2c2ba0a6460e23e6d88bab6d7873ada28e950cc1
+
 
 /* $background-color: #332F2A;
 $heading-color: #CA6D30;
