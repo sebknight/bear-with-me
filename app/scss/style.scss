@@ -1,0 +1,122 @@
+//variables
+
+$primary-color: #CA6D30;
+$secondary-color: #95A692;
+$tertiary-color: #F1F1C2;
+$background-color: #402316;
+$bg-transparent: rgba(64,35,22,0.7);
+
+//Mixins and imports
+@import url('https://fonts.googleapis.com/css?family=Shrikhand|Lato');
+
+@mixin h1 {
+  font-family: 'Shrikhand', cursive;
+  color: $primary-color;
+  font-size: 3rem;
+  letter-spacing: 4px;
+}
+
+@mixin h2 {
+  color: $tertiary-color;
+  font-weight: bold;
+  // font-size: 2.5rem;
+}
+
+@mixin h3 {
+  color: $secondary-color;
+  font-size: 1.25rem;
+}
+
+@mixin body-text {
+  color: $secondary-color;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: $background-color;
+  color: $tertiary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+h1 {
+  @include h1;
+}
+h2 {
+  @include h2;
+}
+h3{
+  @include h3;
+}
+p {
+  @include body-text;
+}
+
+
+.map{
+  display: none;
+}
+
+.container {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex: auto;
+  padding: 2em;
+
+}
+
+.page{
+  margin: 0 auto;
+  padding: 0;
+  // background: $background-color;
+  color: $tertiary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.container__left {
+  background-color: $bg-transparent;
+  width: 40%;
+  min-height: 100vh;
+  text-align: left;
+}
+
+.container__right {
+  width: 60%;
+  min-height: 100vh;
+  display: flex;
+  background-image: url("../images/forest-bike.jpg");
+  background-position: center;
+  background-size: cover;
+
+}
+
+.btn {
+  color: $tertiary-color;
+  background-color: $primary-color;
+  border: 1px solid $tertiary-color;
+  margin: 1em 0em 1em 0em;
+}
+
+.btn:hover{
+    background-color: $secondary-color !important;
+    outline: $primary-color !important;
+}
+
+.form {
+  display: none;
+}
+
+.form-control {
+  margin: 1rem 0rem 1rem 0rem;
+}
+
+.details-list {
+  list-style: none;
+}

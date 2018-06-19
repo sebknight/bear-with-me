@@ -1,0 +1,33 @@
+{
+  "name": "bear-with-me",
+  "version": "1.0.0",
+  "description": "JS SPA vehicle hire app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebknight/bear-with-me.git"
+  },
+  "author": "sebastian maddox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebknight/bear-with-me/issues"
+  },
+  "homepage": "https://github.com/sebknight/bear-with-me#readme",
+  "devDependencies": {
+    "bootstrap": "^4.1.1",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.1",
+    "jquery": "^3.3.1"
+  },
+  "dependencies": {
+    "hoek": "^5.0.3",
+    "minimatch": "^3.0.4",
+    "my": "^0.3.3",
+    "package": "^1.0.1",
+    "popper.js": "^1.14.3"
+  }
+}
