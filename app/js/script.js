@@ -35,6 +35,10 @@ $(document).ready(function () {
 //     disableMobile: true // Conditionally disabled on mobile devices.
 // });
 
+// $('.container').slick({
+//   setting-name: setting-value;
+// });
+
 $('#datepicker').datepicker({
     format: "dd/mm/yyyy",
     startDate: "-Infinity",
@@ -46,18 +50,33 @@ $('#datepicker').datepicker({
 });
 
 
+
 $( ".form__continue--step-one" ).click(function(){
-  $(".form__days").show();
+  $(".intro").hide();
+  $(".form__dates").show();
 });
-$( ".form__continue--step-one" ).click(function(){
+
+$( ".form__continue--step-two" ).click(function(){
+  // $(".intro").hide();
   $(".form__passengers").show();
+  $(".form__continue--step-two").hide();
 });
 
-  $( ".form__continue--step-two" ).click(function(){
-    $(".map").show();
+$( ".form__continue--step-three" ).click(function(){
+  $(".form__dates").hide();
+  $(".form__passengers").hide();
+  $(".form__destination").show();
+  $(".map").show();
+});
 
-  });
+$(".form__continue--step-four").click(function(){
+  $(".form__destination").hide();
+  $(".form__vehicles").show();
+})
 
+$(".form__continue--step-five").click(function(){
+  $(".form__vehicles").hide();
+  $(".form__confirm").show();
+})
 
-
-}());
+}()); //iife ENDS

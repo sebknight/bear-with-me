@@ -10,52 +10,112 @@
     <link rel="stylesheet" href="scss/style.min.css">
   </head>
   <body>
-    <div class="container container__start">
-      <div class="container container__content">
-        <div class="heading">
-          <h1>Looking for a wild ride?</h1>
-          <h2>Check out our rugged rentals.</h2>
+    <div class="page">
+      <div class="container container__left">
+        <!-- <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+      </nav> -->
+        <div class="intro">
+          <h2>Looking for a wild ride?</h2>
+          <h1>Bear with me.</h1>
+          <h3>Check out these rugged rentals.</h3>
           <p>We offer a range of rental vehicles and
             recommended destinations for the truly adventurous.</p>
-          <div class="form form__dates">
-            <div class="input-daterange input-group" id="datepicker">
-              <label for="dates">When are you travelling?</label>
-              <br>
-              <input data-provide="datepicker" type="text" class="input-sm form-control" name="start" />
-              <span class="input-group-addon"> to </span>
-              <input data-provide="datepicker" type="text" class="input-sm form-control" name="end" />
+        <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Let's get started</button>
+        </div>
+
+        <div class="details">
+
+            <div class="form form__dates">
+              <div class="input-daterange input-group" id="datepicker">
+                <h2>When are you travelling?</h2>
+                <label for="dates"></label>
+                <input data-provide="datepicker" type="text" class="input-sm form-control" name="start"/>
+                <span class="input-group-addon"> to </span>
+                <input data-provide="datepicker" type="text" class="input-sm form-control" name="end" />
+              </div>
+              <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
             </div>
-            <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Continue</button>
+              <!-- form__dates ENDS -->
+              <br>
+
+              <div class="form form__passengers form-group">
+              <h2>How big's your pack?</h2>
+               <label for="passengers"></label>
+               <select class="form-control form__passengers">
+                 <option>1</option>
+                 <option>2</option>
+                 <option>3</option>
+                 <option>4</option>
+                 <option>5</option>
+                 <option>6</option>
+               </select>
+               <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
+            </div>
+            <!-- form__passengers ENDS -->
+
+        </div>
+        <!-- details ENDS -->
+
+        <div class="form form__destination">
+          <h2>So... where are you headed?</h2>
+          <h3>You come here often?</h3>
+          <label>I'm starting from </label>
+          <input class="form-control" type="text" placeholder="My cave">
+          <label>I'm heading to</label>
+          <input class="form-control" type="text" placeholder="Your cave">
+            <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-four">Continue</button>
+        </div>
+
+        <div class="form form__vehicles">
+          <h2>Take your pick</h2>
+          <h3>Based on your choices, these are the vehicles we have for you</h3>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+              Small car
+              </label>
+            </div>
+          <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-five">Continue</button>
+        </div>
+
+        <div class="form form__confirm">
+          <h2>Your trip details</h2>
+          <div class="trip-details">
+            <h3>Please check these before booking</h3>
+            <ul class="details-list">
+              <li class="list--dates">2 days</li>
+              <li class="list--passengers">3 passengers</li>
+              <li class="list--destination">A to B</li>
+              <li class="list--distance">60km</li>
+              <li class="list--cost">$X</li>
+            </ul>
           </div>
+          <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-five">Book now!</button>
 
-          <div class="form form__passengers form-group">
-           <label for="passengers">How big's your pack?</label>
-           <select class="form-control form__passengers">
-             <option>1</option>
-             <option>2</option>
-             <option>3</option>
-             <option>4</option>
-             <option>5</option>
-             <option>6</option>
-           </select>
-           <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
-        </div>
+
         </div>
 
-        <!-- form ends -->
-      </div>
 
 
 
-      <div class="container container__fill">
+
+        </div>
+        <!-- container__left ENDS -->
+
+      <div class="container container__right">
         <div class="map">
-            <h2>So... where are you headed?</h2>
             <div id='map' style='width: 800px; height: 600px;'></div>
         </div>
+        <div class="vehicle-options">
+
+        </div>
       </div>
 
       </div>
-</div>
+
     <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
     var map = new mapboxgl.Map({
