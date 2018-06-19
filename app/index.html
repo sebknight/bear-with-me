@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bear with me.</title>
+    <link <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet'>
+    <link rel="stylesheet" href="datepicker.css">
+    <link rel="stylesheet" href="scss/style.min.css">
+  </head>
+  <body>
+    <div class="container container__start">
+      <div class="container container__content">
+        <div class="heading">
+          <h1>Looking for a wild ride?</h1>
+          <h2>Check out our rugged rentals.</h2>
+          <p>We offer a range of rental vehicles and
+            recommended destinations for the truly adventurous.</p>
+          <div class="form form__dates">
+            <div class="input-daterange input-group" id="datepicker">
+              <label for="dates">When are you travelling?</label>
+              <br>
+              <input data-provide="datepicker" type="text" class="input-sm form-control" name="start" />
+              <span class="input-group-addon"> to </span>
+              <input data-provide="datepicker" type="text" class="input-sm form-control" name="end" />
+            </div>
+            <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Continue</button>
+          </div>
+
+          <div class="form form__passengers form-group">
+           <label for="passengers">How big's your pack?</label>
+           <select class="form-control form__passengers">
+             <option>1</option>
+             <option>2</option>
+             <option>3</option>
+             <option>4</option>
+             <option>5</option>
+             <option>6</option>
+           </select>
+           <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
+        </div>
+        </div>
+
+        <!-- form ends -->
+      </div>
+
+
+
+      <div class="container container__fill">
+        <div class="map">
+            <h2>So... where are you headed?</h2>
+            <div id='map' style='width: 800px; height: 600px;'></div>
+        </div>
+      </div>
+
+      </div>
+</div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/sebknight/cji55y08z35s32smpd4vrpajn'
+    });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="js/parsley.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/script.js"></script>
+    <!-- <script src="datepicker.min.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Song+Myung');
+// @import "node_modules/bootstrap/scss/bootstrap";
+
+$primary-color: #CA6D30;
+$secondary-color: #95A692;
+$tertiary-color: #F1F1C2;
+$background-color: #332F2A;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: $background-color;
+  color: $tertiary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.map{
+  display: none;
+}
+
+.container {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex: auto;
+  padding: 2em;
+  background-color: rgba(50, 46, 41, 0.7);
+}
+
+.container__start {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.container__fill {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  background-image: url("../images/forest-bike.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.btn {
+  color: $tertiary-color;
+  background-color: $primary-color;
+  border: 1px solid $tertiary-color;
+  margin: 1em 0em 1em 0em;
+}
+
+.btn:hover{
+    background-color: $secondary-color !important;
+    outline: $primary-color !important;
+
+}
+
+.form__passengers{
+  display: none;
+}
+
+.form__days {
+  display: none;
+}
+
+h1 {
+  font-family: 'Song Myung', serif;
+  color: #CA6D30;
+}
+h2 {
+  color: #95A692;
+}
+p {
+  font-weight: lighter;
+}
+
+
+
+
+
+
+/* $background-color: #332F2A;
+$heading-color: #CA6D30;
+$subheading-color: #95A692;
+$body-text-color: #F1F1C2; */
