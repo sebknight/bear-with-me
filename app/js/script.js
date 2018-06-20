@@ -71,12 +71,14 @@ $( ".form__continue--step-three" ).click(function(){
 
 $(".form__continue--step-four").click(function(){
   $(".form__destination").hide();
+  $(".map").hide();
   $(".form__vehicles").show();
+  $(".vehicle-options").addClass('is-visible');
 })
 
 $(".form__continue--step-five").click(function(){
   $(".form__vehicles").hide();
   $(".form__confirm").show();
-})
+});
 
 }()); //iife ENDS

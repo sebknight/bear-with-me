@@ -94,6 +94,16 @@ p {
 //   margin: 1rem 1rem 0rem 1rem;
 // }
 
+.datepicker-dropdown {
+  background-color: $secondary-color;
+  color: $tertiary-color;
+}
+
+:starting-date, :ending-date {
+  margin: 0.5rem;
+}
+
+
 
 .form {
   display: none;
@@ -125,6 +135,32 @@ p {
 
 }
 
+.vehicle-options {
+  display: none;
+  margin: 1rem;
+    &.is-visible{
+      display: inline-block;
+      // flex-direction: row;
+      // flex: wrap;
+      // justify-content: space-around;
+    }
+}
+
 .details-list {
   list-style: none;
+}
+
+.map {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+
+.modal-content {
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  background: $background-color;
 }

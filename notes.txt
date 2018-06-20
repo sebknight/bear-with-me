@@ -27,3 +27,38 @@ ATM:
 
 
 CSS and basic JQ transitions for demo to show Jared - once installed slick, will use that to transition (no need for BS breadcrumbs?)
+
+
+TODAY
+
+- style date picker
+- fix map position
+- different background images/fix sizing
+
+- mapbox directions/inputs
+- mapbox styling
+
+- vehicle images
+- vehicle containers
+- vehicle data
+
+- copy
+
+
+THEN
+
+- gulp
+- parsley form validation
+- slick carousel (column transitions, images)
+- js/jq logic
+      - take input data - dates, passengers, distance (cost), vehicle availability
+      - calculate
+      - output
+- how to show progress? slick? dynamic text nodes based on data input?
+
+dreams
+    - recommended destinations
+    - cool animations
+    - sick logo
+    - good copy
+    - animated progress
