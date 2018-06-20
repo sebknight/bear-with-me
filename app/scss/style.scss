@@ -5,9 +5,11 @@ $secondary-color: #95A692;
 $tertiary-color: #F1F1C2;
 $background-color: #402316;
 $bg-transparent: rgba(64,35,22,0.7);
+$primary-focus: rgba(202, 109, 48, 1);
+$secondary-focus: rgba(149, 166, 146, 1);
 
 //Mixins and imports
-@import url('https://fonts.googleapis.com/css?family=Shrikhand|Lato');
+@import url('https://fonts.googleapis.com/css?family=Shrikhand|Questrial');
 
 @mixin h1 {
   font-family: 'Shrikhand', cursive;
@@ -19,26 +21,25 @@ $bg-transparent: rgba(64,35,22,0.7);
 @mixin h2 {
   color: $tertiary-color;
   font-weight: bold;
+  margin: 2rem 0rem 1rem 0rem;
   // font-size: 2.5rem;
 }
 
 @mixin h3 {
   color: $secondary-color;
   font-size: 1.25rem;
+  margin: 1rem 0rem 1rem 0rem;
 }
 
 @mixin body-text {
   color: $secondary-color;
 }
 
-body {
-  font-family: 'Lato', sans-serif;
+.page {
+  height: 100%;
+  font-family: 'Questrial', sans-serif;
   background: $background-color;
   color: $tertiary-color;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 h1 {
@@ -54,47 +55,25 @@ p {
   @include body-text;
 }
 
+.row {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+}
+
+.col-4 {
+  padding: 5%;
+}
+
+.col-right {
+  background-image: url("../images/group-bike.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
 
 .map{
   display: none;
-}
-
-.container {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  flex: auto;
-  padding: 2em;
-
-}
-
-.page{
-  margin: 0 auto;
-  padding: 0;
-  // background: $background-color;
-  color: $tertiary-color;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-}
-
-.container__left {
-  background-color: $bg-transparent;
-  width: 40%;
-  min-height: 100vh;
-  text-align: left;
-}
-
-.container__right {
-  width: 60%;
-  min-height: 100vh;
-  display: flex;
-  background-image: url("../images/forest-bike.jpg");
-  background-position: center;
-  background-size: cover;
-
 }
 
 .btn {
@@ -106,8 +85,15 @@ p {
 
 .btn:hover{
     background-color: $secondary-color !important;
-    outline: $primary-color !important;
+    border-color: $primary-color !important;
+    box-shadow: 0 0 3px $primary-focus !important;
+    color: $primary-color;
 }
+
+// .input-group-addon{
+//   margin: 1rem 1rem 0rem 1rem;
+// }
+
 
 .form {
   display: none;
@@ -115,6 +101,28 @@ p {
 
 .form-control {
   margin: 1rem 0rem 1rem 0rem;
+  background-color: $secondary-color;
+  color: $tertiary-color;
+}
+
+.form-control:focus {
+    border-color: $primary-color !important;
+    box-shadow: 0 0 3px $primary-focus !important;
+    background-color: $secondary-color;
+    color: $primary-color;
+}
+
+.form-control::placeholder {
+    color: $tertiary-color;
+    opacity: 0.5;
+}
+
+.form-check-input {
+
+}
+
+.form-check-input:focus {
+
 }
 
 .details-list {

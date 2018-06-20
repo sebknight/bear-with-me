@@ -6,58 +6,62 @@
     <link <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet'>
-    <link rel="stylesheet" href="datepicker.css">
+    <!-- <link rel="stylesheet" href="datepicker.css"> -->
     <link rel="stylesheet" href="scss/style.min.css">
   </head>
-  <body>
-    <div class="page">
-      <div class="container container__left">
+  <body class="page">
+      <!-- <div class="container"> -->
+        <div class="row">
+          <div class="col-4">
         <!-- <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item active" aria-current="page">Home</li>
         </ol>
       </nav> -->
-        <div class="intro">
-          <h2>Looking for a wild ride?</h2>
-          <h1>Bear with me.</h1>
-          <h3>Check out these rugged rentals.</h3>
-          <p>We offer a range of rental vehicles and
-            recommended destinations for the truly adventurous.</p>
-        <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Let's get started</button>
-        </div>
+          <div class="intro">
+            <h2>Looking for a wild ride?</h2>
+            <h1>Bear with me.</h1>
+            <h3>Check out these rugged rentals.</h3>
+            <p>We offer a range of rental vehicles and
+              recommended destinations for the truly adventurous.</p>
+            <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Let's get started</button>
+          </div>
 
-        <div class="details">
-
+          <div class="details">
             <div class="form form__dates">
+              <h2>When are you travelling?</h2>
               <div class="input-daterange input-group" id="datepicker">
-                <h2>When are you travelling?</h2>
-                <label for="dates"></label>
-                <input data-provide="datepicker" type="text" class="input-sm form-control" name="start"/>
-                <span class="input-group-addon"> to </span>
-                <input data-provide="datepicker" type="text" class="input-sm form-control" name="end" />
+                <div class="starting-date">
+                  <label for="starting-date"><h3>Starting date</h3></label>
+                </div>
+                <div class="ending-date">
+                    <input data-provide="datepicker" type="text" class="input-sm form-control" name="start"/>
+                    <label for="ending-date"><h3>Ending date</h3></label>
+                    <input data-provide="datepicker" type="text" class="input-sm form-control" name="end"/>
+                </div>    
               </div>
               <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
             </div>
               <!-- form__dates ENDS -->
-              <br>
 
               <div class="form form__passengers form-group">
-              <h2>How big's your pack?</h2>
-               <label for="passengers"></label>
-               <select class="form-control form__passengers">
-                 <option>1</option>
-                 <option>2</option>
-                 <option>3</option>
-                 <option>4</option>
-                 <option>5</option>
-                 <option>6</option>
-               </select>
-               <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
+                <h2>How big's your pack?</h2>
+                 <label for="passengers"></label>
+                 <select class="form-control form__passengers">
+                   <option>1</option>
+                   <option>2</option>
+                   <option>3</option>
+                   <option>4</option>
+                   <option>5</option>
+                   <option>6</option>
+                 </select>
+                 <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
             </div>
             <!-- form__passengers ENDS -->
+          </div>
+          <!-- details ENDS -->
 
-        </div>
-        <!-- details ENDS -->
+
 
         <div class="form form__destination">
           <h2>So... where are you headed?</h2>
@@ -97,24 +101,27 @@
 
 
         </div>
-
-
-
-
-
-        </div>
+      </div>
+      <!-- col ENDS -->
         <!-- container__left ENDS -->
 
-      <div class="container container__right">
+      <div class="col col-right">
         <div class="map">
-            <div id='map' style='width: 800px; height: 600px;'></div>
+            <div id='map' style='width: 600px; height: 400px;'></div>
         </div>
         <div class="vehicle-options">
 
         </div>
       </div>
 
-      </div>
+    </div>
+    <!-- row ENDS -->
+
+  </div>
+  <!-- container ENDS -->
+
+
+
 
     <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
