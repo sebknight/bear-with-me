@@ -1,12 +1,20 @@
 //variables
 
-$primary-color: #CA6D30;
-$secondary-color: #95A692;
-$tertiary-color: #F1F1C2;
-$background-color: #402316;
-$bg-transparent: rgba(64,35,22,0.7);
+$primary-color: #F1F1C2; //cream
+$secondary-color: #402316; //brown
+$tertiary-color: #f09108; //gold
+$background-color: rgba(#549138, 1); //green
+$bg-transparent: rgba(#549138,0.7);
 $primary-focus: rgba(202, 109, 48, 1);
 $secondary-focus: rgba(149, 166, 146, 1);
+
+// $primary-color: #CA6D30;
+// $secondary-color: rgba(#6d9928, 0.76);
+// $tertiary-color: #F1F1C2;
+// $background-color: #402316;
+// $bg-transparent: rgba(64,35,22,0.7);
+// $primary-focus: rgba(202, 109, 48, 1);
+// $secondary-focus: rgba(149, 166, 146, 1);
 
 //Mixins and imports
 @import url('https://fonts.googleapis.com/css?family=Shrikhand|Questrial');
@@ -16,12 +24,22 @@ $secondary-focus: rgba(149, 166, 146, 1);
   color: $primary-color;
   font-size: 3rem;
   letter-spacing: 4px;
+  text-shadow: $tertiary-color 1px 5px;
+}
+
+@mixin title-small {
+  // display: none;
+  font-family: 'Shrikhand', cursive;
+  color: $primary-color;
+  font-size: 1.5rem;
+  opacity: 0.6;
+  letter-spacing: 2px;
 }
 
 @mixin h2 {
   color: $tertiary-color;
   font-weight: bold;
-  margin: 2rem 0rem 1rem 0rem;
+  margin: 1rem 0rem 1rem 0rem;
   // font-size: 2.5rem;
 }
 
@@ -51,6 +69,9 @@ h2 {
 h3{
   @include h3;
 }
+h4 {
+  @include title-small;
+}
 p {
   @include body-text;
 }
@@ -66,7 +87,7 @@ p {
 }
 
 .col-right {
-  background-image: url("../images/group-bike.jpg");
+  background-image: url("../images/desert-bike.jpg");
   background-position: center;
   background-size: cover;
   overflow: hidden;
@@ -83,10 +104,10 @@ p {
   margin: 1em 0em 1em 0em;
 }
 
-.btn:hover, .btn:active, .btn:focus {
-    background-color: $secondary-color !important;
-    border-color: $primary-color !important;
-    box-shadow: 0 0 3px $primary-focus !important;
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active {
+    background-color: $secondary-color;
+    border-color: $primary-color;
+    box-shadow: 0 0 3px $primary-focus;
     color: $primary-color;
 }
 
@@ -111,20 +132,20 @@ p {
   display: none;
 }
 
-.form-control {
-  margin: 1rem 0rem 1rem 0rem;
+.form-control-lg {
+  margin: 1rem 1rem 1rem 0rem;
   background-color: $secondary-color;
   color: $tertiary-color;
 }
 
-.form-control:focus {
+.form-control-lg:focus {
     border-color: $primary-color !important;
     box-shadow: 0 0 3px $primary-focus !important;
     background-color: $secondary-color;
     color: $primary-color;
 }
 
-.form-control::placeholder {
+.form-control-lg::placeholder {
     color: $tertiary-color;
     opacity: 0.5;
 }
@@ -137,6 +158,13 @@ p {
   color: $secondary-color !important;
 
 }
+
+.form__passengers {
+  margin-right: 2rem;
+}
+// .form__continue--step-three {
+//   margin: 1.5rem;
+// }
 
 // .vehicle-options {
 //   display: none;
@@ -185,11 +213,16 @@ height: 700px !important;
       flex-wrap: wrap;
       justify-content: space-around;
       align-content: center;
-    }
+  }
 }
 
-// .vehicle {
-//   &.is-disabled {
-//     opacity: 0.5;
-//   }
-// }
+.vehicle {
+  // display: flex;
+  // &.is-disabled {
+  //   opacity: 0.5;
+  // }
+  >ul {
+    list-style: none;
+    padding-right: 1rem;
+  }
+}

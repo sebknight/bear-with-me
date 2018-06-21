@@ -14,15 +14,16 @@
         <div class="row">
           <div class="col-4">
             <div class="intro">
-              <h2>Looking for a wild ride?</h2>
-              <h1>Bear with me.</h1>
+              <h2>Looking for a <br> wild ride?</h2>
+              <h1>Bear <br>with me.</h1>
               <h3>Check out these rugged rentals.</h3>
               <p>We offer a range of rental vehicles and
-                recommended destinations for the truly adventurous.</p>
+                recommended destinations for the <br>truly adventurous.</p>
               <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Let's get started</button>
             </div>
 
             <div class="details">
+              <h4>Bear with me.</h4>
               <!-- <form id="form" class="demo-form" data-parsley-validate="">
                 <div class="form-section">
                   <label for="numbers">How big's your pack?</label>
@@ -53,11 +54,11 @@
                 <div class="input-daterange input-group" id="datepicker">
                   <div class="starting-date">
                     <label for="starting-date"><h3>Starting date</h3></label>
-                      <input data-provide="datepicker" type="text" class="input-sm form-control" name="start"/>
+                      <input data-provide="datepicker" type="text" class="input form-control-lg" name="start"/>
                   </div>
                   <div class="ending-date">
                     <label for="ending-date"><h3>Ending date</h3></label>
-                      <input data-provide="datepicker" type="text" class="input-sm form-control" name="end"/>
+                      <input data-provide="datepicker" type="text" class="input form-control-lg" name="end"/>
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
@@ -67,7 +68,7 @@
                 <div class="form form__passengers form-group">
                   <h2>How big's your pack?</h2>
                    <label for="passengers"></label>
-                   <select class="form-control form__passengers">
+                   <select class="form-control-lg form__passengers">
                      <option>1</option>
                      <option>2</option>
                      <option>3</option>
@@ -84,22 +85,24 @@
 
 
           <div class="form form__destination">
+            <!-- <h4>Bear with me.</h4> -->
             <h2>So... where are you headed?</h2>
             <h3>You come here often?</h3>
             <label>I'm starting from </label>
-            <input class="form-control" type="text" placeholder="My cave">
+            <input class="form-control-lg" type="text" placeholder="My cave">
             <label>I'm heading to</label>
-            <input class="form-control" type="text" placeholder="Your cave">
+            <input class="form-control-lg" type="text" placeholder="Your cave">
               <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-four"  data-toggle="modal" data-target="#vehicle-options-modal">Continue</button>
           </div>
 
           <div class="form form__vehicles">
+            <!-- <h4>Bear with me.</h4> -->
             <h2>Take your pick</h2>
-            <h3>Based on your choices, these are the vehicles we have for you</h3>
+            <h3>Based on your choices, these are the packages we have for you</h3>
                 <div class="custom-control custom-radio">
                   <input class="custom-control-input" type="radio" name="vehicle-list" id="exampleRadios1" value="option1" checked>
                 <label class="custom-control-label" for="exampleRadios1">
-                Small car
+                Riding solo (motorbike)
                 </label>
               </div>
             <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-five">Continue</button>
@@ -124,6 +127,8 @@
         <!-- container__left ENDS -->
       <div id='map' style='width: 850px; height: 700px;'></div>
       <div class="col col-right">
+        <div class="col-right__intro">
+        </div>
 
           <!-- <div class="modal fade" id="vehicle-options-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
@@ -163,7 +168,7 @@
         <div class="vehicle-options">
           <div class="vehicle motorbike">
             <h2>Riding solo</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 passenger</li>
               <li>1 to 5 days</li>
@@ -171,9 +176,9 @@
               <li>3.7l fuel/100km</li>
             </ul>
           </div>
-          <div class="vehicle small-car">
+          <!-- <div class="vehicle small-car">
             <h2>Nice package</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 to 2 passengers</li>
               <li>1 to 10 days</li>
@@ -183,7 +188,7 @@
           </div>
           <div class="vehicle big-car">
             <h2>Magnum</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 to 5 passengers</li>
               <li>3 to 10 days</li>
@@ -193,14 +198,14 @@
           </div>
           <div class="vehicle camper">
             <h2>Group fun</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
-            <ul>
-              <li>2 to 5 passengers</li>
-              <li>2 to 15 days</li>
-              <li>$200/day</li>
-              <li>17l fuel/100km</li>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
+            <ul class="vehicle-details-list">
+              <li class="vehicle-details-list">2 to 5 passengers</li>
+              <li class="vehicle-details-list">2 to 15 days</li>
+              <li class="vehicle-details-list">$200/day</li>
+              <li class="vehicle-details-list">17l fuel/100km</li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- col-right ENDS -->
@@ -231,7 +236,7 @@
     <script src="node_modules/parsleyjs/dist/parsley.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <scripts src="js/data.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/custom.js"></script>
     <!-- <script src="datepicker.min.js"></script> -->
   </body>
 </html>
