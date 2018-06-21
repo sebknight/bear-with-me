@@ -1,63 +1,72 @@
 $(document).ready(function () {
-  // $('#form').parsley();
-  // const picker = datepicker('.date');
-//     const picker = datepicker(document.querySelector('#date'), {
-//     position: 'tr', // Top right.
-//     startDate: new Date(), // This month.
-//     startDay: 1, // Calendar week starts on a Monday.
-//     dateSelected: new Date(), // Today is selected.
-//     disabledDates: [new Date('1/1/2050'), new Date('1/3/2050')], // Disabled dates.
-//     minDate: new Date(2016, 5, 1), // June 1st, 2016.
-//     maxDate: new Date(2099, 0, 1), // Jan 1st, 2099.
-//     noWeekends: true, // Weekends will be unselectable.
-//     formatter: function(el, date) {
-//       // This will display the date as `1/1/2017`.
-//       el.value = date.toDateString();
-//     },
-//     onSelect: function(instance) {
-//       // Show which date was selected.
-//       console.log(instance.dateSelected);
-//     },
-//     onShow: function(instance) {
-//       console.log('Calendar showing.');
-//     },
-//     onHide: function(instance) {
-//       console.log('Calendar hidden.');
-//     },
-//     onMonthChange: function(instance) {
-//       // Show the month of the selected date.
-//       console.log(instance.currentMonthName);
-//     },
-//     customMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//     customDays: ['S', 'M', 'T', 'W', 'Th', 'F', 'S'],
-//     overlayPlaceholder: 'Enter a 4-digit year',
-//     overlayButton: 'Go!',
-//     disableMobile: true // Conditionally disabled on mobile devices.
-// });
+  $('#form').parsley();
+  $(function () {
+  var $sections = $('.form-section');
 
-// $('.container').slick({
-//   setting-name: setting-value;
-// });
+  function navigateTo(index) {
+    // Mark the current section with the class 'current'
+    $sections
+      .removeClass('current')
+      .eq(index)
+        .addClass('current');
+    // Show only the navigation buttons that make sense for the current section:
+    $('.form-navigation .previous').toggle(index > 0);
+    var atTheEnd = index >= $sections.length - 1;
+    $('.form-navigation .next').toggle(!atTheEnd);
+    $('.form-navigation [type=submit]').toggle(atTheEnd);
+  }
 
-$('#datepicker').datepicker({
-    format: "dd/mm/yyyy",
-    startDate: "-Infinity",
-    maxViewMode: 2,
-    // multidate: false,
-    // keyboardNavigation: false,
-    // todayHighlight: true,
-    // toggleActive: true
+  function curIndex() {
+    // Return the current index by looking at which section has the class 'current'
+    return $sections.index($sections.filter('.current'));
+  }
+
+  // Previous button is easy, just go back
+  $('.form-navigation .previous').click(function() {
+    navigateTo(curIndex() - 1);
+  });
+
+  // Next button goes forward iff current block validates
+  $('.form-navigation .next').click(function() {
+    $('.demo-form').parsley().whenValidate({
+      group: 'block-' + curIndex()
+    }).done(function() {
+      navigateTo(curIndex() + 1);
+    });
+  });
+
+  // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
+  $sections.each(function(index, section) {
+    $(section).find(':input').attr('data-parsley-group', 'block-' + index);
+  });
+  navigateTo(0); // Start at the beginning
 });
 
+
+
+
+//
+//
+// $('#datepicker').datepicker({
+//     format: "dd/mm/yyyy",
+//     startDate: "-Infinity",
+//     maxViewMode: 2,
+//     // multidate: false,
+//     // keyboardNavigation: false,
+//     todayHighlight: true,
+//     // toggleActive: true
+// });
+//
 
 
 $( ".form__continue--step-one" ).click(function(){
   $(".intro").hide();
   $(".form__dates").show();
+  $('.details').show();
 });
 
 $( ".form__continue--step-two" ).click(function(){
-  // $(".intro").hide();
+  $(".intro").hide();
   $(".form__passengers").show();
   $(".form__continue--step-two").hide();
 });
@@ -66,14 +75,15 @@ $( ".form__continue--step-three" ).click(function(){
   $(".form__dates").hide();
   $(".form__passengers").hide();
   $(".form__destination").show();
-  $(".map").show();
+  $("#map").show();
 });
 
 $(".form__continue--step-four").click(function(){
   $(".form__destination").hide();
-  $(".map").hide();
+  $("#map").hide();
   $(".form__vehicles").show();
   $(".vehicle-options").addClass('is-visible');
+  $(".vehicle").addClass('is-disabled');
 })
 
 $(".form__continue--step-five").click(function(){

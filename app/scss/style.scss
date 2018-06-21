@@ -83,7 +83,7 @@ p {
   margin: 1em 0em 1em 0em;
 }
 
-.btn:hover{
+.btn:hover, .btn:active, .btn:focus {
     background-color: $secondary-color !important;
     border-color: $primary-color !important;
     box-shadow: 0 0 3px $primary-focus !important;
@@ -103,7 +103,9 @@ p {
   margin: 0.5rem;
 }
 
-
+.details {
+  display: none;
+}
 
 .form {
   display: none;
@@ -127,37 +129,67 @@ p {
     opacity: 0.5;
 }
 
-.form-check-input {
+ .custom-radio:checked {
+  color: $primary-color !important;
+
+}
+.custom-radio:focus, .custom-radio:active, .custom-radio:hover {
+  color: $secondary-color !important;
 
 }
 
-.form-check-input:focus {
-
-}
-
-.vehicle-options {
-  display: none;
-  margin: 1rem;
-    &.is-visible{
-      display: inline-block;
-      // flex-direction: row;
-      // flex: wrap;
-      // justify-content: space-around;
-    }
-}
+// .vehicle-options {
+//   display: none;
+//   margin: 1rem;
+//     &.is-visible{
+//       display: inline-block;
+//       // flex-direction: row;
+//       // flex: wrap;
+//       // justify-content: space-around;
+//     }
+// }
 
 .details-list {
   list-style: none;
 }
 
-.map {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-}
-
-
 .modal-content {
   background: $background-color;
 }
+
+// #vehicle-options-modal {
+//   width: 100%;
+// }
+
+#map {
+  display: none;
+  overflow: hidden;
+}
+
+.mapboxgl-canvas {
+width: 850px !important;
+height: 700px !important;
+}
+
+
+.vehicle-options {
+  margin: 1rem;
+  padding: 1rem;
+  background: $bg-transparent;
+  border: 3px solid $tertiary-color;
+  border-radius: 5px;
+  display: none;
+    &.is-visible {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: center;
+    }
+}
+
+// .vehicle {
+//   &.is-disabled {
+//     opacity: 0.5;
+//   }
+// }

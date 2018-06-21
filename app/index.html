@@ -23,6 +23,31 @@
             </div>
 
             <div class="details">
+              <!-- <form id="form" class="demo-form" data-parsley-validate="">
+                <div class="form-section">
+                  <label for="numbers">How big's your pack?</label>
+                  <input class="form-control" name="passenger-numbers" required="" type="number">
+                </div>
+
+                <div class="form-section">
+                  <label for="dates">When are you heading out?</label>
+                  <input class="form-control" name="dates" required="" type="date">
+                </div>
+
+                <div class="form-section">
+                  <label for="dates">When are you wrapping up?</label>
+                  <input class="form-control" name="dates" required="" type="date">
+                </div>
+
+                <div class="form-navigation">
+                  <button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>
+                  <button type="button" class="next btn btn-info pull-right">Next &gt;</button>
+                  <input class="btn btn-default pull-right" type="submit">
+                  <span class="clearfix"></span>
+                </div>
+
+              </form> -->
+
               <div class="form form__dates">
                 <h2>When are you travelling?</h2>
                 <div class="input-daterange input-group" id="datepicker">
@@ -69,14 +94,14 @@
           </div>
 
           <div class="form form__vehicles">
-            <!-- <h2>Take your pick</h2>
+            <h2>Take your pick</h2>
             <h3>Based on your choices, these are the vehicles we have for you</h3>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
+                <div class="custom-control custom-radio">
+                  <input class="custom-control-input" type="radio" name="vehicle-list" id="exampleRadios1" value="option1" checked>
+                <label class="custom-control-label" for="exampleRadios1">
                 Small car
                 </label>
-              </div> -->
+              </div>
             <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-five">Continue</button>
           </div>
 
@@ -97,15 +122,11 @@
       </div>
       <!-- col ENDS -->
         <!-- container__left ENDS -->
-
+      <div id='map' style='width: 850px; height: 700px;'></div>
       <div class="col col-right">
-        <div class="map">
-            <div id='map' style='width: 1000px; height: 1000px;'></div>
-        </div>
 
-
-          <div class="modal fade" id="vehicle-options-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+          <!-- <div class="modal fade" id="vehicle-options-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h2 class="modal-title" id="vehicle-options-modal-label">Take your pick</h2>
@@ -130,16 +151,57 @@
                     </div>
                   </div>
                   <!-- vehicle-options ENDS -->
-                  </div>
+                  <!-- </div>
                 </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary form__continue form__continue--step-five" data-dismiss="modal">Confirm</button>
                 <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-              </div>
+              <!-- </div>
             </div>
           </div>
+        </div> -->
+        <div class="vehicle-options">
+          <div class="vehicle motorbike">
+            <h2>Riding solo</h2>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <ul>
+              <li>1 passenger</li>
+              <li>1 to 5 days</li>
+              <li>$109/day</li>
+              <li>3.7l fuel/100km</li>
+            </ul>
+          </div>
+          <div class="vehicle small-car">
+            <h2>Nice package</h2>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <ul>
+              <li>1 to 2 passengers</li>
+              <li>1 to 10 days</li>
+              <li>$129/day</li>
+              <li>8.5l fuel/100km</li>
+            </ul>
+          </div>
+          <div class="vehicle big-car">
+            <h2>Magnum</h2>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <ul>
+              <li>1 to 5 passengers</li>
+              <li>3 to 10 days</li>
+              <li>$144/day</li>
+              <li>9.7l fuel/100km</li>
+            </ul>
+          </div>
+          <div class="vehicle camper">
+            <h2>Group fun</h2>
+            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+            <ul>
+              <li>2 to 5 passengers</li>
+              <li>2 to 15 days</li>
+              <li>$200/day</li>
+              <li>17l fuel/100km</li>
+            </ul>
+          </div>
         </div>
-
       </div>
       <!-- col-right ENDS -->
 
@@ -157,7 +219,7 @@
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
     var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/sebknight/cji55y08z35s32smpd4vrpajn'
+    style: 'mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7'
     });
     map.addControl(new MapboxDirections({
     accessToken: mapboxgl.accessToken
@@ -166,7 +228,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="js/parsley.js"></script>
+    <script src="node_modules/parsleyjs/dist/parsley.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <scripts src="js/data.js"></script>
     <script src="js/script.js"></script>

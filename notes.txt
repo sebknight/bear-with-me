@@ -48,7 +48,7 @@ TODAY
 THEN
 
 - gulp
-- parsley form validation
+- parsley form validation - disabled buttons
 - slick carousel (column transitions, images)
 - js/jq logic
       - take input data - dates, passengers, distance (cost), vehicle availability
@@ -62,3 +62,12 @@ dreams
     - sick logo
     - good copy
     - animated progress
+
+
+
+
+start button - show form step one (dates, passengers)
+    take data from those forms and store it
+next button - take to mapbox
+    take data from the map - distance calculation and store it
+  present options based on days and passengers - with validation - 'these are options available, there are no options available - re-enter'
