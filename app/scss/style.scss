@@ -1,44 +1,57 @@
 //variables
 
-$primary-color: #F1F1C2; //cream
-$secondary-color: #402316; //brown
-$tertiary-color: #f09108; //gold
-$background-color: rgba(#549138, 1); //green
-$bg-transparent: rgba(#549138,0.7);
-$primary-focus: rgba(202, 109, 48, 1);
-$secondary-focus: rgba(149, 166, 146, 1);
+// $primary-color: #F1F1C2; //cream
+// $secondary-color: #402316; //brown
+// $tertiary-color: #f09108; //gold
+// $background-color: rgba(#549138, 1); //green
+// $bg-transparent: rgba(#549138,0.7);
+// $primary-focus: rgba(202, 109, 48, 1);
+// $secondary-focus: rgba(149, 166, 146, 1);
 
-// $primary-color: #CA6D30;
-// $secondary-color: rgba(#6d9928, 0.76);
-// $tertiary-color: #F1F1C2;
-// $background-color: #402316;
+// $primary-color: #ce492e; //orange
+// $secondary-color: #512e25; //brown
+// $tertiary-color: #6e824b; //green
+// $background-color: #e99415; //gold
 // $bg-transparent: rgba(64,35,22,0.7);
 // $primary-focus: rgba(202, 109, 48, 1);
 // $secondary-focus: rgba(149, 166, 146, 1);
 
+$primary-color: #8b0126; //red
+// $secondary-color: #9cac65; //green
+$secondary-color: #512e25; //brown
+$tertiary-color: #f76244; //green
+$background-color: #eebd74; //gold
+$bg-transparent: rgba(#ce492e, 0.7);
+$primary-focus: rgba(#6e824b, 1);
+$secondary-focus: rgba(#512e25, 1);
+
+
+//incorporate a cream? more saturated backgrounds
+
+
+
 //Mixins and imports
-@import url('https://fonts.googleapis.com/css?family=Shrikhand|Questrial');
+@import url('https://fonts.googleapis.com/css?family=Shrikhand|Source+Serif+Pro:400,600,700|Questrial');
 
 @mixin h1 {
   font-family: 'Shrikhand', cursive;
   color: $primary-color;
   font-size: 3rem;
-  letter-spacing: 4px;
-  text-shadow: $tertiary-color 1px 5px;
+  // letter-spacing: 4px;
+  // text-shadow: $tertiary-color 1px 4px;
+  font-kerning: auto;
 }
 
 @mixin title-small {
-  // display: none;
-  font-family: 'Shrikhand', cursive;
-  color: $primary-color;
+  @include h1;
   font-size: 1.5rem;
-  opacity: 0.6;
-  letter-spacing: 2px;
+  text-shadow: $primary-color 1px 2px;
 }
 
 @mixin h2 {
-  color: $tertiary-color;
-  font-weight: bold;
+  color: $primary-color;
+  font-family: 'Source Serif Pro', serif;
+  font-weight: 600;
   margin: 1rem 0rem 1rem 0rem;
   // font-size: 2.5rem;
 }
@@ -86,29 +99,49 @@ p {
   padding: 5%;
 }
 
-.col-right {
+
+
+.col-right__intro  {
   background-image: url("../images/desert-bike.jpg");
+  height: 100%;
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
 
+.col-right__dates {
+  background-image: url("../images/plan.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.col-right__passengers {
+  background-image: url("../images/group-bike.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
 .map{
   display: none;
 }
 
 .btn {
-  color: $tertiary-color;
   background-color: $primary-color;
-  border: 1px solid $tertiary-color;
+  border-color: $background-color;
+  border: 1px solid $secondary-color;
+  color: $background-color;
   margin: 1em 0em 1em 0em;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active {
-    background-color: $secondary-color;
-    border-color: $primary-color;
-    box-shadow: 0 0 3px $primary-focus;
-    color: $primary-color;
+  color: $secondary-color;
+  background-color: $tertiary-color;
+  border: 1px solid $secondary-color;
+    // background-color: $primary-color;
+    // border-color: $background-color;
+    // box-shadow: 0 0 3px $secondary-focus;
+    // color: $background-color;
 }
 
 // .input-group-addon{
@@ -116,8 +149,8 @@ p {
 // }
 
 .datepicker-dropdown {
-  background-color: $secondary-color;
-  color: $tertiary-color;
+  background-color: $tertiary-color;
+  color: $secondary-color;
 }
 
 :starting-date, :ending-date {
@@ -134,15 +167,15 @@ p {
 
 .form-control-lg {
   margin: 1rem 1rem 1rem 0rem;
-  background-color: $secondary-color;
-  color: $tertiary-color;
+  background-color: $tertiary-color;
+  color: $secondary-color;
 }
 
 .form-control-lg:focus {
     border-color: $primary-color !important;
     box-shadow: 0 0 3px $primary-focus !important;
-    background-color: $secondary-color;
-    color: $primary-color;
+    background-color: $primary-color;
+    color: $background-color;
 }
 
 .form-control-lg::placeholder {
@@ -225,4 +258,16 @@ height: 700px !important;
     list-style: none;
     padding-right: 1rem;
   }
+}
+
+.directions-icon {
+  background-color: $tertiary-color;
+}
+
+.directions-icon-arrive {
+  background-color: $primary-color;
+}
+
+.directions-control, .mapboxgl-ctrl-geocoder {
+  font-family: 'Questrial', sans-serif !important;
 }
