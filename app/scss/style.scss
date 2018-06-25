@@ -218,19 +218,39 @@ p {
   background: $background-color;
 }
 
-// #vehicle-options-modal {
-//   width: 100%;
-// }
+//Mapbox styling
 
 #map {
   display: none;
   overflow: hidden;
+  // margin: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .mapboxgl-canvas {
-width: 850px !important;
-height: 700px !important;
+overflow: hidden;
+width: 100% !important;
+height: 100% !important;
 }
+
+.mapbox-directions-clearfix {
+  display: none;
+}
+
+.directions-icon {
+  background-color: $tertiary-color;
+}
+
+.directions-icon-arrive {
+  background-color: $primary-color;
+}
+
+.directions-control, .mapboxgl-ctrl-geocoder {
+  font-family: 'Questrial', sans-serif;
+}
+
+//Mapbox styling ENDS
 
 
 .vehicle-options {
@@ -250,24 +270,8 @@ height: 700px !important;
 }
 
 .vehicle {
-  // display: flex;
-  // &.is-disabled {
-  //   opacity: 0.5;
-  // }
   >ul {
     list-style: none;
     padding-right: 1rem;
   }
-}
-
-.directions-icon {
-  background-color: $tertiary-color;
-}
-
-.directions-icon-arrive {
-  background-color: $primary-color;
-}
-
-.directions-control, .mapboxgl-ctrl-geocoder {
-  font-family: 'Questrial', sans-serif !important;
 }

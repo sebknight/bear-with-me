@@ -1,65 +1,28 @@
 $(document).ready(function () {
-  console.log(vehicles);
 
-  // $('#form').parsley();
-  // $(function () {
+//Daterange picker
+$(function() {
 
-//   var $sections = $('.form-section');
-//
-//   function navigateTo(index) {
-//     // Mark the current section with the class 'current'
-//     $sections
-//       .removeClass('current')
-//       .eq(index)
-//         .addClass('current');
-//     // Show only the navigation buttons that make sense for the current section:
-//     $('.form-navigation .previous').toggle(index > 0);
-//     var atTheEnd = index >= $sections.length - 1;
-//     $('.form-navigation .next').toggle(!atTheEnd);
-//     $('.form-navigation [type=submit]').toggle(atTheEnd);
-//   }
-//
-//   function curIndex() {
-//     // Return the current index by looking at which section has the class 'current'
-//     return $sections.index($sections.filter('.current'));
-//   }
-//
-//   // Previous button is easy, just go back
-//   $('.form-navigation .previous').click(function() {
-//     navigateTo(curIndex() - 1);
-//   });
-//
-//   // Next button goes forward iff current block validates
-//   $('.form-navigation .next').click(function() {
-//     $('.demo-form').parsley().whenValidate({
-//       group: 'block-' + curIndex()
-//     }).done(function() {
-//       navigateTo(curIndex() + 1);
-//     });
-//   });
-//
-//   // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
-//   $sections.each(function(index, section) {
-//     $(section).find(':input').attr('data-parsley-group', 'block-' + index);
-//   });
-//   navigateTo(0); // Start at the beginning
-// });
+  $('input[name="daterange"]').daterangepicker({
+      autoUpdateInput: false,
+      locale: {
+          'format': 'DD/MM/YYYY',
+          cancelLabel: 'Clear'
+      },
+      "minDate": moment(),
+      "dateLimit":{'days':15}
+  });
 
+  $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+  });
 
+  $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+  });
 
+});
 
-//
-//
-// $('#datepicker').datepicker({
-//     format: "dd/mm/yyyy",
-//     startDate: "-Infinity",
-//     maxViewMode: 2,
-//     // multidate: false,
-//     // keyboardNavigation: false,
-//     todayHighlight: true,
-//     // toggleActive: true
-// });
-//
 
 //UI transitions
 
@@ -71,8 +34,9 @@ $( ".form__continue--step-one").click(function(){
   $(".col-right").addClass("col-right__dates");
 });
 
+
 $( ".form__continue--step-two").click(function(){
-  $(".form__dates").hide();
+  $("#date-range").hide();
   $(".form__passengers").show();
   $(".form__continue--step-two").hide();
   $(".col-right__dates").removeClass("col-right__dates");
@@ -99,18 +63,29 @@ $(".form__continue--step-five").click(function(){
 });
 
 
-
 // Aaaah section
 console.log(vehicles);
+
+//DOM queries
+// var datesForm = document.getElementById('form-dates');
+// var passengers = document.querySelector(".input__passengers").value;
+// var distance = document.querySelector(".mapbox");
 
 var app = {
   data: {},
   arrStorage: [],
   init: function (){
+    // var dates = datesForm.
 
+    // var dates = document.querySelector(".input__starting-date").value;
+    // var passengers = document.querySelector(".input__passengers").value;
+    // var distance = document.querySelector(".mapbox");
+    // parseInt(dates);
   }
 };
 
 app.init();
+
+// var dates = document.getElementById('form-dates').value;
 
 }()); //iife ENDS

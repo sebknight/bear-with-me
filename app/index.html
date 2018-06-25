@@ -24,6 +24,12 @@
 
             <div class="details">
               <h4>Bear with me.</h4>
+              <form id='date-range' action="index.html" method="post">
+                <h2>When are you travelling?</h2>
+                <input type="text" name="daterange" value="">
+                <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
+              </form>
+
               <!-- <form id="form" class="demo-form" data-parsley-validate="">
                 <div class="form-section">
                   <label for="numbers">How big's your pack?</label>
@@ -49,26 +55,37 @@
 
               </form> -->
 
+
+            <!-- <form id="form-dates" class="form form__dates" action="index.html" method="post">
               <div class="form form__dates">
-                <h2>When are you travelling?</h2>
-                <div class="input-daterange input-group" id="datepicker">
-                  <div class="starting-date">
-                    <label for="starting-date"><h3>Starting date</h3></label>
-                      <input data-provide="datepicker" type="text" class="input form-control-lg" name="start"/>
-                  </div>
-                  <div class="ending-date">
-                    <label for="ending-date"><h3>Ending date</h3></label>
-                      <input data-provide="datepicker" type="text" class="input form-control-lg" name="end"/>
-                  </div>
-                </div>
+                <h2>How long are you travelling?</h2>
+                <label for="dates"></label>
+                <select class="form-control-lg form__dates input__dates">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                </select> --
                 <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
               </div>
+            </form> -->
                 <!-- form__dates ENDS -->
 
                 <div class="form form__passengers form-group">
                   <h2>How big's your pack?</h2>
                    <label for="passengers"></label>
-                   <select class="form-control-lg form__passengers">
+                   <select class="form-control-lg form__passengers input__passengers">
                      <option>1</option>
                      <option>2</option>
                      <option>3</option>
@@ -86,12 +103,12 @@
 
           <div class="form form__destination">
             <!-- <h4>Bear with me.</h4> -->
-            <h2>So... where are you headed?</h2>
+            <h2>Where are you headed?</h2>
             <h3>You come here often?</h3>
-            <label>I'm starting from </label>
+            <!-- <label>I'm starting from </label>
             <input class="form-control-lg" type="text" placeholder="My cave">
             <label>I'm heading to</label>
-            <input class="form-control-lg" type="text" placeholder="Your cave">
+            <input class="form-control-lg" type="text" placeholder="Your cave"> -->
               <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-four"  data-toggle="modal" data-target="#vehicle-options-modal">Continue</button>
           </div>
 
@@ -125,8 +142,8 @@
       </div>
       <!-- col ENDS -->
         <!-- container__left ENDS -->
-      <div id='map' style='width: 850px; height: 700px;'></div>
       <div class="col col-right">
+        <div id='map' style='width: 900px; height: 700px;'></div>
         <div class="col-right col-right__intro">
         </div>
 
@@ -229,14 +246,20 @@
     map.addControl(new MapboxDirections({
     accessToken: mapboxgl.accessToken
   }), 'top-left');
+
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <!-- <script src="node_modules/parsleyjs/dist/parsley.js"></script> -->
-    <!-- <script src="js/bootstrap-datepicker.js"></script> -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- <script src="datepicker.min.js"></script> -->
     <script src="js/data.js"></script>
     <script src="js/custom.js"></script>
-    <!-- <script src="datepicker.min.js"></script> -->
   </body>
 </html>
