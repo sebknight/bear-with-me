@@ -1,44 +1,76 @@
 //variables
 
-$primary-color: #CA6D30;
-$secondary-color: #95A692;
-$tertiary-color: #F1F1C2;
-$background-color: #402316;
-$bg-transparent: rgba(64,35,22,0.7);
+// $primary-color: #F1F1C2; //cream
+// $secondary-color: #402316; //brown
+// $tertiary-color: #f09108; //gold
+// $background-color: rgba(#549138, 1); //green
+// $bg-transparent: rgba(#549138,0.7);
+// $primary-focus: rgba(202, 109, 48, 1);
+// $secondary-focus: rgba(149, 166, 146, 1);
+
+// $primary-color: #ce492e; //orange
+// $secondary-color: #512e25; //brown
+// $tertiary-color: #6e824b; //green
+// $background-color: #e99415; //gold
+// $bg-transparent: rgba(64,35,22,0.7);
+// $primary-focus: rgba(202, 109, 48, 1);
+// $secondary-focus: rgba(149, 166, 146, 1);
+
+$primary-color: #8b0126; //red
+// $secondary-color: #9cac65; //green
+$secondary-color: #512e25; //brown
+$tertiary-color: #f76244; //orange
+$background-color: #eebd74; //gold
+$bg-transparent: rgba(#ce492e, 0.7);
+$primary-focus: rgba(#6e824b, 1);
+$secondary-focus: rgba(#512e25, 1);
+
+
+//incorporate a cream? more saturated backgrounds
+
+
 
 //Mixins and imports
-@import url('https://fonts.googleapis.com/css?family=Shrikhand|Lato');
+@import url('https://fonts.googleapis.com/css?family=Shrikhand|Source+Serif+Pro:400,600,700|Questrial');
 
 @mixin h1 {
   font-family: 'Shrikhand', cursive;
   color: $primary-color;
   font-size: 3rem;
-  letter-spacing: 4px;
+  // letter-spacing: 4px;
+  // text-shadow: $tertiary-color 1px 4px;
+  font-kerning: auto;
+}
+
+@mixin title-small {
+  @include h1;
+  font-size: 1.5rem;
+  // text-shadow: $primary-color 1px 2px;
 }
 
 @mixin h2 {
   color: $tertiary-color;
-  font-weight: bold;
+  font-family: 'Source Serif Pro', serif;
+  font-weight: 600;
+  margin: 1rem 0rem 1rem 0rem;
   // font-size: 2.5rem;
 }
 
 @mixin h3 {
   color: $secondary-color;
   font-size: 1.25rem;
+  margin: 1rem 0rem 1rem 0rem;
 }
 
 @mixin body-text {
   color: $secondary-color;
 }
 
-body {
-  font-family: 'Lato', sans-serif;
+.page {
+  height: 100%;
+  font-family: 'Questrial', sans-serif;
   background: $background-color;
   color: $tertiary-color;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 h1 {
@@ -50,73 +82,193 @@ h2 {
 h3{
   @include h3;
 }
+h4 {
+  @include title-small;
+}
 p {
   @include body-text;
 }
 
+.row {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+}
 
+.col-4 {
+  padding: 5%;
+}
+
+
+
+.col-right__intro  {
+  background-image: url("../images/desert-bike.jpg");
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.col-right__dates {
+  background-image: url("../images/plan.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.col-right__passengers {
+  background-image: url("../images/group-bike.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
 .map{
   display: none;
 }
 
-.container {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  flex: auto;
-  padding: 2em;
-
-}
-
-.page{
-  margin: 0 auto;
-  padding: 0;
-  // background: $background-color;
-  color: $tertiary-color;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-}
-
-.container__left {
-  background-color: $bg-transparent;
-  width: 40%;
-  min-height: 100vh;
-  text-align: left;
-}
-
-.container__right {
-  width: 60%;
-  min-height: 100vh;
-  display: flex;
-  background-image: url("../images/forest-bike.jpg");
-  background-position: center;
-  background-size: cover;
-
-}
-
 .btn {
-  color: $tertiary-color;
   background-color: $primary-color;
-  border: 1px solid $tertiary-color;
+  border-color: $background-color;
+  border: 1px solid $secondary-color;
+  color: $background-color;
   margin: 1em 0em 1em 0em;
 }
 
-.btn:hover{
-    background-color: $secondary-color !important;
-    outline: $primary-color !important;
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active {
+  color: $secondary-color;
+  background-color: $tertiary-color;
+  border: 1px solid $secondary-color;
+    // background-color: $primary-color;
+    // border-color: $background-color;
+    // box-shadow: 0 0 3px $secondary-focus;
+    // color: $background-color;
+}
+
+// .input-group-addon{
+//   margin: 1rem 1rem 0rem 1rem;
+// }
+
+.datepicker-dropdown {
+  background-color: $tertiary-color;
+  color: $secondary-color;
+}
+
+:starting-date, :ending-date {
+  margin: 0.5rem;
+}
+
+.details {
+  display: none;
 }
 
 .form {
   display: none;
 }
 
-.form-control {
-  margin: 1rem 0rem 1rem 0rem;
+.form-control-lg {
+  margin: 1rem 1rem 1rem 0rem;
+  background-color: $tertiary-color;
+  color: $secondary-color;
 }
+
+.form-control-lg:focus {
+    border-color: $primary-color !important;
+    box-shadow: 0 0 3px $primary-focus !important;
+    background-color: $primary-color;
+    color: $background-color;
+}
+
+.form-control-lg::placeholder {
+    color: $tertiary-color;
+    opacity: 0.5;
+}
+
+ .custom-radio:checked {
+  color: $primary-color !important;
+}
+.custom-radio:focus, .custom-radio:active, .custom-radio:hover {
+  color: $secondary-color !important;
+}
+
+.form__passengers {
+  margin-right: 2rem;
+}
+// .form__continue--step-three {
+//   margin: 1.5rem;
+// }
+
+// .vehicle-options {
+//   display: none;
+//   margin: 1rem;
+//     &.is-visible{
+//       display: inline-block;
+//       // flex-direction: row;
+//       // flex: wrap;
+//       // justify-content: space-around;
+//     }
+// }
 
 .details-list {
   list-style: none;
+}
+
+.modal-content {
+  background: $background-color;
+}
+
+//Mapbox styling
+
+#map {
+  display: none;
+  overflow: hidden;
+  // margin: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mapboxgl-canvas {
+overflow: hidden;
+width: 100% !important;
+height: 100% !important;
+}
+
+.mapbox-directions-clearfix {
+  display: none;
+}
+
+.directions-icon {
+  background-color: $tertiary-color;
+}
+
+.directions-icon-arrive {
+  background-color: $primary-color;
+}
+
+.directions-control, .mapboxgl-ctrl-geocoder {
+  font-family: 'Questrial', sans-serif;
+}
+
+//Mapbox styling ENDS
+
+.vehicle-options {
+  margin: 1rem;
+  padding: 1rem;
+  background: $bg-transparent;
+  border: 3px solid $tertiary-color;
+  border-radius: 5px;
+  display: none;
+    &.is-visible {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: center;
+  }
+}
+
+.vehicle {
+  >ul {
+    list-style: none;
+    padding-right: 1rem;
+  }
 }
