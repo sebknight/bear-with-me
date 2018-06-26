@@ -24,11 +24,13 @@
 
             <div class="details">
               <h4>Bear with me.</h4>
-              <form id='date-range' action="index.html" method="post">
+
+              <!-- Datepicker form -->
+              <!-- <form id='date-range' action="index.html" method="post">
                 <h2>When are you travelling?</h2>
-                <input type="text" name="daterange" value="">
+                <input id="date-input" type="text" name="daterange" value="">
                 <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
-              </form>
+              </form> -->
 
               <!-- <form id="form" class="demo-form" data-parsley-validate="">
                 <div class="form-section">
@@ -56,11 +58,11 @@
               </form> -->
 
 
-            <!-- <form id="form-dates" class="form form__dates" action="index.html" method="post">
+            <form id="details-form" class="form form__dates" action="index.html" method="post">
               <div class="form form__dates">
-                <h2>How long are you travelling?</h2>
+                <h2>How many days are you travelling?</h2>
                 <label for="dates"></label>
-                <select class="form-control-lg form__dates input__dates">
+                <select id="dates" class="form-control-lg form__dates input__dates">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -76,16 +78,11 @@
                   <option>13</option>
                   <option>14</option>
                   <option>15</option>
-                </select> --
-                <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
-              </div>
-            </form> -->
-                <!-- form__dates ENDS -->
-
-                <div class="form form__passengers form-group">
+                </select>
+                <div id="passenger-form" class="form form__passengers form-group">
                   <h2>How big's your pack?</h2>
                    <label for="passengers"></label>
-                   <select class="form-control-lg form__passengers input__passengers">
+                   <select id="passengers" class="form-control-lg form__passengers input__passengers">
                      <option>1</option>
                      <option>2</option>
                      <option>3</option>
@@ -93,8 +90,28 @@
                      <option>5</option>
                      <option>6</option>
                    </select>
-                   <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
+                   <button id="details-form" type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
               </div>
+
+                <!-- <button type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button> -->
+              </div>
+            </form>
+                <!-- form__dates ENDS -->
+              <!-- <form id="passenger-form" class="form form__passengers" action="index.html" method="post">
+                <div id="passenger-form" class="form form__passengers form-group">
+                  <h2>How big's your pack?</h2>
+                   <label for="passengers"></label>
+                   <select id="passengers" class="form-control-lg form__passengers input__passengers">
+                     <option>1</option>
+                     <option>2</option>
+                     <option>3</option>
+                     <option>4</option>
+                     <option>5</option>
+                     <option>6</option>
+                   </select>
+                   <button type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
+              </div>
+            </form> -->
               <!-- form__passengers ENDS -->
             </div>
             <!-- details ENDS -->
@@ -130,7 +147,7 @@
             <div class="trip-details">
               <h3>Please check these before booking</h3>
               <ul class="details-list">
-                <li class="list--dates">2 days</li>
+                <li class="list--dates">2 </li>
                 <li class="list--passengers">3 passengers</li>
                 <li class="list--destination">A to B</li>
                 <li class="list--distance">60km</li>
@@ -188,7 +205,7 @@
             <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 passenger</li>
-              <li>1 to 5 days</li>
+              <li>1 to 5 </li>
               <li>$109/day</li>
               <li>3.7l fuel/100km</li>
             </ul>
@@ -198,7 +215,7 @@
             <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 to 2 passengers</li>
-              <li>1 to 10 days</li>
+              <li>1 to 10 </li>
               <li>$129/day</li>
               <li>8.5l fuel/100km</li>
             </ul>
@@ -208,7 +225,7 @@
             <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 to 5 passengers</li>
-              <li>3 to 10 days</li>
+              <li>3 to 10 </li>
               <li>$144/day</li>
               <li>9.7l fuel/100km</li>
             </ul>
@@ -218,7 +235,7 @@
             <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul class="vehicle-details-list">
               <li class="vehicle-details-list">2 to 5 passengers</li>
-              <li class="vehicle-details-list">2 to 15 days</li>
+              <li class="vehicle-details-list">2 to 15 </li>
               <li class="vehicle-details-list">$200/day</li>
               <li class="vehicle-details-list">17l fuel/100km</li>
             </ul>

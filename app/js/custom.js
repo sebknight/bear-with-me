@@ -1,53 +1,64 @@
-$(document).ready(function () {
+//DOM queries
+
+
+
+
+// var distance =
+
+
+
+// $(document).ready(function () {
+
 
 //Daterange picker
-$(function() {
-
-  $('input[name="daterange"]').daterangepicker({
-      autoUpdateInput: false,
-      locale: {
-          'format': 'DD/MM/YYYY',
-          cancelLabel: 'Clear'
-      },
-      "minDate": moment(),
-      "dateLimit":{'days':15}
-  });
-
-  $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-  });
-
-  $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-  });
-
-});
-
+// $(function() {
+//
+//   $('#date-input').daterangepicker({
+//       autoUpdateInput: false,
+//       locale: {
+//           'format': 'DD/MM/YYYY',
+//           cancelLabel: 'Clear'
+//       },
+//       "minDate": moment(),
+//       "dateLimit":{'days':15}
+//   });
+//
+//   $('#date-input').on('apply.daterangepicker', function(ev, picker) {
+//       $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+//   });
+//
+//   $('#date-input').on('cancel.daterangepicker', function(ev, picker) {
+//       $(this).val('');
+//   });
+// });
 
 //UI transitions
 
 $( ".form__continue--step-one").click(function(){
   $(".intro").hide();
   $(".form__dates").show();
+  $(".form__passengers").show();
   $(".details").show();
   $(".col-right__intro").removeClass("col-right__intro");
   $(".col-right").addClass("col-right__dates");
 });
 
 
-$( ".form__continue--step-two").click(function(){
-  $("#date-range").hide();
-  $(".form__passengers").show();
-  $(".form__continue--step-two").hide();
-  $(".col-right__dates").removeClass("col-right__dates");
-  $(".col-right").addClass("col-right__passengers");
-});
+// $( ".form__continue--step-two").click(function(event){
+//   event.preventDefault();
+//   $(".form__passengers").show();
+//   $(".form__continue--step-two").hide();
+//   $(".col-right__dates").removeClass("col-right__dates");
+//   $(".col-right").addClass("col-right__passengers");
+// });
 
-$( ".form__continue--step-three").click(function(){
-  $(".form__passengers").hide();
-  $(".form__destination").show();
-  $("#map").show();
-});
+// $( ".form__continue--step-three").click(function(event){
+//   event.preventDefault();
+//   $(".form__dates").hide();
+//   $(".form__passengers").hide();
+//   $(".form__destination").show();
+//   $("#map").show();
+// });
 
 $(".form__continue--step-four").click(function(){
   $(".form__destination").hide();
@@ -64,28 +75,40 @@ $(".form__continue--step-five").click(function(){
 
 
 // Aaaah section
+// check data.js is called
 console.log(vehicles);
 
-//DOM queries
-// var datesForm = document.getElementById('form-dates');
-// var passengers = document.querySelector(".input__passengers").value;
-// var distance = document.querySelector(".mapbox");
+// DOM query for passenger and date details
+var detailsForm = document.getElementById('details-form');
+//take passenger and date values and make them numbers
+function makeNumber(){
+  var datesString = document.getElementById('dates').value;
+  console.log(datesString);
+  var passengersString = document.getElementById('passengers').value;
+  console.log(passengersString);
+  var datesNumber = function number(datesString){};
+  var passengersNumber = function number(passengersString){};
+};
 
 var app = {
   data: {},
   arrStorage: [],
   init: function (){
-    // var dates = datesForm.
-
-    // var dates = document.querySelector(".input__starting-date").value;
-    // var passengers = document.querySelector(".input__passengers").value;
-    // var distance = document.querySelector(".mapbox");
-    // parseInt(dates);
-  }
+        detailsForm.addEventListener("submit", function(event){
+            event.preventDefault();
+            // hide detail form and show map
+              $(".form__dates").hide();
+              $(".form__passengers").hide();
+              $(".form__destination").show();
+              $("#map").show();
+            makeNumber();
+        });
+      }
 };
 
 app.init();
 
-// var dates = document.getElementById('form-dates').value;
 
-}()); //iife ENDS
+
+
+// }()); //iife ENDS
