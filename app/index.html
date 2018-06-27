@@ -126,7 +126,7 @@
             <input class="form-control-lg" type="text" placeholder="My cave">
             <label>I'm heading to</label>
             <input class="form-control-lg" type="text" placeholder="Your cave"> -->
-              <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-four"  data-toggle="modal" data-target="#vehicle-options-modal">Continue</button>
+              <button type="submit" id="distance-button" class="btn btn-primary btn-lg form__continue form__continue--step-four"  data-toggle="modal" data-target="#vehicle-options-modal">Continue</button>
           </div>
 
           <div class="form form__vehicles">
@@ -261,7 +261,8 @@
     style: 'mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7'
     });
     map.addControl(new MapboxDirections({
-    accessToken: mapboxgl.accessToken
+    accessToken: mapboxgl.accessToken,
+    unit: 'metric'
   }), 'top-left');
 
     </script>
