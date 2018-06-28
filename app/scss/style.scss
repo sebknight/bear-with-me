@@ -64,13 +64,14 @@ $secondary-focus: rgba(#512e25, 1);
 
 @mixin body-text {
   color: $secondary-color;
+  font-family: 'Questrial', sans-serif;
 }
 
 .page {
   height: 100%;
-  font-family: 'Questrial', sans-serif;
   background: $background-color;
   color: $tertiary-color;
+  font-family: 'Questrial', sans-serif;
 }
 
 h1 {
@@ -87,6 +88,12 @@ h4 {
 }
 p {
   @include body-text;
+}
+
+#ui-datepicker-div > *, #ui-datepicker-header > *{
+  @include body-text;
+  background-color: $tertiary-color;
+  color: $primary-color;
 }
 
 .row {
