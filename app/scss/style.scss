@@ -49,7 +49,7 @@ $secondary-focus: rgba(#512e25, 1);
 }
 
 @mixin h2 {
-  color: $tertiary-color;
+  color: $secondary-color;
   font-family: 'Source Serif Pro', serif;
   font-weight: 600;
   margin: 1rem 0rem 1rem 0rem;

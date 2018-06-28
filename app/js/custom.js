@@ -1,37 +1,9 @@
 //DOM queries
-
-
-
-
-// var distance =
-
-
-
-// $(document).ready(function () {
-
-
-//Daterange picker
-// $(function() {
-//
-//   $('#date-input').daterangepicker({
-//       autoUpdateInput: false,
-//       locale: {
-//           'format': 'DD/MM/YYYY',
-//           cancelLabel: 'Clear'
-//       },
-//       "minDate": moment(),
-//       "dateLimit":{'days':15}
-//   });
-//
-//   $('#date-input').on('apply.daterangepicker', function(ev, picker) {
-//       $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-//   });
-//
-//   $('#date-input').on('cancel.daterangepicker', function(ev, picker) {
-//       $(this).val('');
-//   });
-// });
-
+var detailsForm = document.getElementById('details-form');
+var distanceButton = document.getElementById('distance-button');
+var possibleVehicles = [];
+// var passengersNumber;
+// var datesNumber;
 //UI transitions
 
 $( ".form__continue--step-one").click(function(){
@@ -44,30 +16,6 @@ $( ".form__continue--step-one").click(function(){
 });
 
 
-// $( ".form__continue--step-two").click(function(event){
-//   event.preventDefault();
-//   $(".form__passengers").show();
-//   $(".form__continue--step-two").hide();
-//   $(".col-right__dates").removeClass("col-right__dates");
-//   $(".col-right").addClass("col-right__passengers");
-// });
-
-// $( ".form__continue--step-three").click(function(event){
-//   event.preventDefault();
-//   $(".form__dates").hide();
-//   $(".form__passengers").hide();
-//   $(".form__destination").show();
-//   $("#map").show();
-// });
-
-// $(".form__continue--step-four").click(function(){
-//   $(".form__destination").hide();
-//   $("#map").hide();
-//   $(".form__vehicles").show();
-//   $(".vehicle-options").addClass('is-visible');
-//   $(".vehicle").addClass('is-disabled');
-// })
-
 $(".form__continue--step-five").click(function(){
   $(".form__vehicles").hide();
   $(".form__confirm").show();
@@ -78,39 +26,47 @@ $(".form__continue--step-five").click(function(){
 // check data.js is called
 console.log(vehicles);
 
-// DOM queries
-var detailsForm = document.getElementById('details-form');
-var distanceButton = document.getElementById('distance-button');
-
-//take passenger and date values and make them numbers
-// function makeNumber(){
-//   var datesString = document.getElementById('dates').value;
-//   console.log(datesString);
-//   var passengersString = document.getElementById('passengers').value;
-//   console.log(passengersString);
-//   // var datesNumber = function parseInt(datesString,[10]){};
-//   // var passengersNumber = function parseInt(passengersString,[10]){};
-//   console.log(typeof datesString,);
-//   console.log(typeof passengersString);
-//
-// };
-
+// Take dates and passenger inputs and make them numbers
 function makeNumber(){
-  var datesString = document.getElementById('dates').value;
+  datesString = document.getElementById('dates').value;
   console.log(datesString);
-  var passengersString = document.getElementById('passengers').value;
+  passengersString = document.getElementById('passengers').value;
   console.log(passengersString);
-  var datesNumber = parseInt(datesString);
-  var passengersNumber = parseInt(passengersString);
+  datesNumber = parseInt(datesString);
+  passengersNumber = parseInt(passengersString);
   console.log(typeof datesNumber);
   console.log(typeof passengersNumber);
 };
 
+// pushing available vehicles to array based on passenger number and days
+function findPossibleVehicles() {
+  if (passengersNumber === 1 && datesNumber < 3) {
+    possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
+    console.log(possibleVehicles);
+  }
+  else if (passengersNumber < 3 && datesNumber < 11){
+    possibleVehicles.push(vehicles.smallCar,vehicles.bigCar);
+    console.log(possibleVehicles);
+  }
+  else if (passengersNumber < 6 && datesNumber > 2){
+    possibleVehicles.push(vehicles.bigCar, vehicles.camper);
+    console.log(possibleVehicles);
+  }
+  else if (passengersNumber > 1 && datesNumber > 1){
+    possibleVehicles.push(vehicles.camper);
+    console.log(possibleVehicles);
+  }
+  else {
+    console.log(possibleVehicles);
+    console.log('no vehicles available');
+  }
+}
 
 var app = {
   data: {},
   arrStorage: [],
   init: function (){
+
         detailsForm.addEventListener("submit", function(event){
             event.preventDefault();
             // hide detail form and show map
@@ -118,7 +74,12 @@ var app = {
               $(".form__passengers").hide();
               $(".form__destination").show();
               $("#map").show();
+            // convert passenger and date strings to numbers
             makeNumber();
+            // determine available vehicles based on passenger numbers and dates
+            findPossibleVehicles();
+
+        // details submit button function ENDS
         });
 
         distanceButton.addEventListener("submit", function(event){
@@ -128,17 +89,18 @@ var app = {
           $(".form__vehicles").show();
           $(".vehicle-options").addClass('is-visible');
           $(".vehicle").addClass('is-disabled');
-
           //hide map, show vehicle choices
-          function getDistance(){
-            var distanceString = document.querySelector('div.mapbox-directions-route-summary > h1').value;
-            console.log(distanceString);
-            var distanceString = parseInt(distanceNumber);
-            console.log(distanceNumber);
-          }
+          // function getDistance(){
+          //   var distanceString = document.querySelector('div.mapbox-directions-route-summary > h1').value;
+          //   console.log(distanceString);
+          //   var distanceString = parseInt(distanceNumber);
+          //   console.log(distanceNumber);
+          // }
 
-          getDistance();
-        })
+          // getDistance();
+        });
+
+
   // init ENDS
   }
   // var app ENDS
