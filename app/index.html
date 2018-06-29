@@ -5,7 +5,9 @@
     <title>Bear with me.</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet'/>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+      <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.css' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="scss/style.min.css">
     <script
@@ -177,10 +179,10 @@
         <!-- container__left ENDS -->
       <div class="col col-right">
         <!-- <div id='map' style='width: 900px; height: 700px;'></div> -->
-        <div id='map'></div>
-        <div id='inputs'></div>
-        <div id='errors'></div>
-        <div id='directions'>
+        <div id='map'>
+          <div id='inputs'></div>
+          <div id='errors'></div>
+          <div id='directions'></div>
           <div id='routes'></div>
           <div id='instructions'></div>
         </div>
@@ -289,37 +291,7 @@
   }), 'top-left');
 
     </script> -->
-    <script>
-L.mapbox.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
-var map = L.mapbox.map('map', 'mapbox.streets', {
-    zoomControl: false
-}).setView([40, -74.50], 9);
-
-// move the attribution control out of the way
-map.attributionControl.setPosition('bottomleft');
-
-// create the initial directions object, from which the layer
-// and inputs will pull data.
-var directions = L.mapbox.directions();
-
-var directionsLayer = L.mapbox.directions.layer(directions)
-    .addTo(map);
-
-var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
-    .addTo(map);
-
-var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-    .addTo(map);
-
-var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-    .addTo(map);
-
-var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-    .addTo(map);
-</script>
-
-
-
+    <script src="js/map.js"></script>
     <script src="js/data.js"></script>
     <script src="js/custom.js"></script>
   </body>
