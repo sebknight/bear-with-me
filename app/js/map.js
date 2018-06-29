@@ -1,7 +1,7 @@
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
 var map = L.mapbox.map('map', 'mapbox.streets', {
     zoomControl: false
-}).setView([40, -74.50], 9);
+}).setView([-41.13, 174.67], 6);
 
 var styleLayer = L.mapbox.styleLayer('mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7')
 .addTo(map);

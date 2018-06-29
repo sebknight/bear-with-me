@@ -56,6 +56,7 @@ function moveToMap(){
   $(".form__passengers").hide();
   $(".form__destination").show();
   $("#map").show();
+  map.invalidateSize();
 };
 
 
@@ -108,7 +109,6 @@ var app = {
         // adds listener to take form data about passenger numbers and dates
         detailsForm.addEventListener("submit", function(event){
             event.preventDefault();
-
             // calculate number of days between selected dates
             calcDatesNumber();
             // convert passenger string to number
