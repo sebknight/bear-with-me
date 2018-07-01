@@ -54,6 +54,7 @@ var dates = $("#from, #to").datepicker({
 // $(".small-car")
 // $(".big-car")
 // $(".camper")
+
 //   // Aaaah section
   // check data.js is called
   console.log(vehicles);
@@ -95,7 +96,7 @@ var dates = $("#from, #to").datepicker({
 
   // pushing available vehicles to array based on passenger number and days
   function findPossibleVehicles() {
-    if (passengersNumber === 1 && datesNumber < 3){
+    if (passengersNumber === 1 && datesNumber < 6){
       possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
       console.log(possibleVehicles);
       moveToVehicles();
@@ -125,12 +126,10 @@ var dates = $("#from, #to").datepicker({
     else {
       console.log(possibleVehicles);
       console.log("no vehicles available");
+      alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.")
     }
   }
 
-// function selectVehicle(){
-//   if ()
-// }
 var app = {
   data: {},
   arrStorage: [],
@@ -145,21 +144,21 @@ var app = {
             // determine available vehicles based on passenger numbers and dates
             findPossibleVehicles();
         // details submit button function ENDS
-            moveToVehicles();
+            // moveToVehicles();
         });
 
-        // vehicleButton.addEventListener("submit", function(event){
-        //   event.preventDefault();
-        //   console.log("working");
-        //   //show map
-        //   // moveToMap();
-        //   $(".form__vehicles").hide();
-        //   $(".vehicle-options").css("display","none");
-        //   $(".form__destination").show();
-        //   $("#map").show();
-        //
-        //
-        // });
+        vehicleButton.addEventListener("submit", function(event){
+          event.preventDefault();
+          console.log("working");
+          //show map
+          // moveToMap();
+          $(".form__vehicles").hide();
+          $(".vehicle-options").css("display","none");
+          $(".form__destination").show();
+          $("#map").show();
+
+
+        });
         // adds event listener to take map data
         distanceButton.addEventListener("submit", function(event){
           event.preventDefault();

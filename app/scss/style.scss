@@ -230,16 +230,21 @@ p {
 #map {
   display: none;
   overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  // width: 800px;
   // margin: 0;
-  width: 100% !important;
-  height: 100% !important;
+  // width: 100% !important;
+  // height: 100% !important;
 }
 
-// .mapbox-gl-js-canvas {
-// overflow: hidden;
-// width: 100% !important;
-// height: 100% !important;
-// }
+.mapbox-gl-js-canvas {
+overflow: hidden;
+width: 100% !important;
+height: 100% !important;
+}
 
 // .mapbox-directions-clearfix {
 //   display: none;
@@ -253,54 +258,55 @@ p {
 //   background-color: $primary-color;
 // }
 //
-.mapbox-directions-inputs, .mapboxgl-ctrl-geocoder {
-  font-family: 'Questrial', sans-serif;
-}
+// .mapbox-directions-inputs, .mapboxgl-ctrl-geocoder {
+//   font-family: 'Questrial', sans-serif;
+// }
+//
+// .mapbox-directions-origin > .mapbox-form-label {
+//   background-color: $secondary-color;
+// }
+// .mapbox-directions-destination > .mapbox-form-label {
+//   background-color: $primary-color;
+// }
 
-.mapbox-directions-origin > .mapbox-form-label {
-  background-color: $secondary-color;
-}
-.mapbox-directions-destination > .mapbox-form-label {
-  background-color: $primary-color;
-}
 
-#inputs,
-#errors,
-#directions {
-    position: absolute;
-    width: 33.3333%;
-    max-width: 300px;
-    min-width: 200px;
-}
+// #inputs,
+// #errors,
+// #directions {
+//     position: absolute;
+//     width: 33.3333%;
+//     max-width: 300px;
+//     min-width: 200px;
+// }
+//
+// #inputs {
+//     z-index: 10;
+//     top: 10px;
+//     left: 10px;
+// }
+//
+// #directions {
+//     z-index: 99;
+//     background: rgba(0,0,0,.8);
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     overflow: auto;
+// }
+//
+// #errors {
+//     z-index: 8;
+//     opacity: 0;
+//     padding: 10px;
+//     border-radius: 0 0 3px 3px;
+//     background: rgba(0,0,0,.25);
+//     top: 90px;
+//     left: 10px;
+// }
 
-#inputs {
-    z-index: 10;
-    top: 10px;
-    left: 10px;
-}
-
-#directions {
-    z-index: 99;
-    background: rgba(0,0,0,.8);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-}
-
-#errors {
-    z-index: 8;
-    opacity: 0;
-    padding: 10px;
-    border-radius: 0 0 3px 3px;
-    background: rgba(0,0,0,.25);
-    top: 90px;
-    left: 10px;
-}
-
-.mapbox-directions-profile {
-  display: none;
-}
+// .mapbox-directions-profile {
+//   display: none;
+// }
 
 //Mapbox styling ENDS
 
