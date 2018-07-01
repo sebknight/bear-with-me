@@ -307,27 +307,25 @@ p {
 .vehicle-options {
   margin: 1rem;
   padding: 1rem;
-  background: $bg-transparent;
-  border: 3px solid $tertiary-color;
+  // background: $background-color;
+  // border: 3px solid $tertiary-color;
   border-radius: 5px;
-  visibility: hidden;
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
-
-  //   &.is-visible {
-  //     display: flex;
-  //     flex-direction: row;
-  //     flex-wrap: wrap;
-  //     justify-content: space-around;
-  //     align-content: center;
-  // }
 }
 
 .motorbike, .small-car, .big-car, .camper {
-    display: hidden;
+  display: none;
+  background: $background-color;
+  border: 3px solid $tertiary-color;
+  > ul {
     list-style: none;
-    padding-right: 1rem;
+  }
+}
+
+.is-selected {
+  background-color: black;
 }

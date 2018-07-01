@@ -1,6 +1,7 @@
 //DOM queries
 var detailsForm = document.getElementById("details-form");
 var distanceButton = document.getElementById("distance-button");
+var vehicleButton = document.getElementById("selected-vehicle");
 var possibleVehicles = [];
 // var passengersNumber;
 // var datesNumber;
@@ -38,14 +39,22 @@ var dates = $("#from, #to").datepicker({
     $(".col-right").addClass("col-right__dates");
   });
 
-  $(".form__continue--step-five").click(function(){
+
+  $("#selected-vehicle").click(function(){
     $(".form__vehicles").hide();
-    $(".vehicle-options").hide();
+    $(".vehicle-options").css("display","none");
     $(".form__destination").show();
     $("#map").show();
   });
 
-  // Aaaah section
+
+// $(".motorbike").click(function(){
+//    $(this).toggleClass("is-selected");
+// });
+// $(".small-car")
+// $(".big-car")
+// $(".camper")
+//   // Aaaah section
   // check data.js is called
   console.log(vehicles);
 
@@ -53,14 +62,23 @@ var dates = $("#from, #to").datepicker({
   //   ($).css("x","y");
   // }
   //
-  // UI transition to show mapbox, called if user data validates
+  // UI transition to show vehicle selection
   function moveToVehicles(){
     $(".form__dates").hide();
     $(".form__passengers").hide();
     $(".form__vehicles").show();
-    $(".vehicle-options").css("visibility","visible");
+    $(".vehicle-options").css("display","flex");
     // map.invalidateSize();
   };
+
+  // UI transition to show map
+  // function moveToMap(){
+  //   $(".form__vehicles").hide();
+  //   $(".vehicle-options").css("display","none");
+  //   $(".form__destination").show();
+  //   $("#map").show();
+  // };
+
 
   // Take dates and passenger inputs and make them numbers
   function getPassengerNumber(){
@@ -80,20 +98,23 @@ var dates = $("#from, #to").datepicker({
     if (passengersNumber === 1 && datesNumber < 3){
       possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
       console.log(possibleVehicles);
-      $(".motorbike", ".small-car").show();
       moveToVehicles();
+      $(".motorbike").show();
+      $(".small-car").show();
     }
     else if (passengersNumber < 3 && datesNumber < 11){
       possibleVehicles.push(vehicles.smallCar,vehicles.bigCar);
       console.log(possibleVehicles);
       moveToVehicles();
-      $(".small-car",".big-car").show();
+      $(".small-car").show();
+      $(".big-car").show();
     }
     else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11){
       possibleVehicles.push(vehicles.bigCar, vehicles.camper);
       console.log(possibleVehicles);
       moveToVehicles();
-      $(".big-car",".camper").show();
+      $(".big-car").show();
+      $(".camper").show();
     }
     else if (passengersNumber > 1 && datesNumber > 10){
       possibleVehicles.push(vehicles.camper);
@@ -107,10 +128,9 @@ var dates = $("#from, #to").datepicker({
     }
   }
 
-// function showPossibleVehicles(){
-//   possibleVehicles.
+// function selectVehicle(){
+//   if ()
 // }
-
 var app = {
   data: {},
   arrStorage: [],
@@ -128,6 +148,18 @@ var app = {
             moveToVehicles();
         });
 
+        // vehicleButton.addEventListener("submit", function(event){
+        //   event.preventDefault();
+        //   console.log("working");
+        //   //show map
+        //   // moveToMap();
+        //   $(".form__vehicles").hide();
+        //   $(".vehicle-options").css("display","none");
+        //   $(".form__destination").show();
+        //   $("#map").show();
+        //
+        //
+        // });
         // adds event listener to take map data
         distanceButton.addEventListener("submit", function(event){
           event.preventDefault();
