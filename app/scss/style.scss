@@ -221,6 +221,10 @@ p {
   background: $background-color;
 }
 
+// .vehicle {
+//  display: none;
+// }
+
 //Mapbox styling
 
 #map {
@@ -297,6 +301,7 @@ p {
 .mapbox-directions-profile {
   display: none;
 }
+
 //Mapbox styling ENDS
 
 .vehicle-options {
@@ -305,19 +310,24 @@ p {
   background: $bg-transparent;
   border: 3px solid $tertiary-color;
   border-radius: 5px;
-  display: none;
-    &.is-visible {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-content: center;
-  }
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+
+  //   &.is-visible {
+  //     display: flex;
+  //     flex-direction: row;
+  //     flex-wrap: wrap;
+  //     justify-content: space-around;
+  //     align-content: center;
+  // }
 }
 
-.vehicle {
-  >ul {
+.motorbike, .small-car, .big-car, .camper {
+    display: hidden;
     list-style: none;
     padding-right: 1rem;
-  }
 }
