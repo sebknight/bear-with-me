@@ -198,6 +198,29 @@ function calculateCost(){
   totalCost = totalHire + totalFuel;
 };
 
+var biggerSmaller;
+map.on('load', function() {
+    var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
+    var mapDiv = document.getElementById('map');
+    var breakButton = document.getElementById('resizeDiv');
+    var fixButton = document.getElementById('resizeMap');
+    breakButton.onclick = function() {
+        if (biggerSmaller !== 'smaller') {
+            mapDiv.style.width = '50%';
+            mapCanvas.style.width = '100%';
+            biggerSmaller = 'smaller';
+        } else {
+            mapDiv.style.width = '150%';
+            mapCanvas.style.width = '100%';
+            biggerSmaller = 'bigger';
+        }
+    }
+    fixButton.onclick = function() {
+        map.resize();
+    }
+});
+
+
 var app = {
   data: {},
   arrStorage: [],
