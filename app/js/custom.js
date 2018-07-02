@@ -1,7 +1,7 @@
 //DOM queries
-var detailsForm = document.getElementById("details-form");
-var distanceButton = document.getElementById("distance-button");
-var vehicleButton = document.getElementById("selected-vehicle");
+var detailsConfirm = document.getElementById("selected-details");
+var destinationConfirm = document.getElementById("selected-destination");
+var vehicleConfirm = document.getElementById("selected-vehicle");
 var possibleVehicles = [];
 // var passengersNumber;
 // var datesNumber;
@@ -30,7 +30,7 @@ var dates = $("#from, #to").datepicker({
    }
  };
 
-  $( ".form__continue--step-one").click(function(){
+  $("#start-button").click(function(){
     $(".intro").hide();
     $(".form__dates").show();
     $(".form__passengers").show();
@@ -40,12 +40,12 @@ var dates = $("#from, #to").datepicker({
   });
 
 
-  $("#selected-vehicle").click(function(){
-    $(".form__vehicles").hide();
-    $(".vehicle-options").css("display","none");
-    $(".form__destination").show();
-    $("#map").show();
-  });
+  // $("#selected-vehicle").click(function(){
+  //   $(".form__vehicles").hide();
+  //   $(".vehicle-options").css("display","none");
+  //   $(".form__destination").show();
+  //   $("#map").show();
+  // });
 
 
 // $(".motorbike").click(function(){
@@ -64,21 +64,24 @@ var dates = $("#from, #to").datepicker({
   // }
   //
   // UI transition to show vehicle selection
-  function moveToVehicles(){
+  $("#selected-vehicles").click(function (){
     $(".form__dates").hide();
     $(".form__passengers").hide();
     $(".form__vehicles").show();
-    $(".vehicle-options").css("display","flex");
+    // $(".vehicle-options").css("display","flex");
+    $(".vehicle-options").show();
+
     // map.invalidateSize();
-  };
+  });
 
   // UI transition to show map
-  // function moveToMap(){
-  //   $(".form__vehicles").hide();
-  //   $(".vehicle-options").css("display","none");
-  //   $(".form__destination").show();
-  //   $("#map").show();
-  // };
+  function moveToMap(){
+    $(".form__vehicles").hide();
+    // $(".vehicle-options").css("display","none");
+    $(".vehicle-options").hide();
+    $(".form__destination").show();
+    $("#map").show();
+  };
 
 
   // Take dates and passenger inputs and make them numbers
@@ -135,7 +138,7 @@ var app = {
   arrStorage: [],
   init: function (){
         // adds listener to take form data about passenger numbers and dates
-        detailsForm.addEventListener("submit", function(event){
+        detailsConfirm.addEventListener("submit", function(event){
             event.preventDefault();
             // calculate number of days between selected dates
             calcDatesNumber();
@@ -144,23 +147,21 @@ var app = {
             // determine available vehicles based on passenger numbers and dates
             findPossibleVehicles();
         // details submit button function ENDS
-            // moveToVehicles();
+            moveToVehicles();
         });
 
-        vehicleButton.addEventListener("submit", function(event){
-          event.preventDefault();
-          console.log("working");
-          //show map
-          // moveToMap();
-          $(".form__vehicles").hide();
-          $(".vehicle-options").css("display","none");
-          $(".form__destination").show();
-          $("#map").show();
-
-
-        });
+        // vehicleConfirm.addEventListener("submit", function(event){
+        //   event.preventDefault();
+        //   console.log("working");
+        //   //show map
+        //   moveToMap();
+        //   // $(".form__vehicles").hide();
+        //   // $(".vehicle-options").css("display","none");
+        //   // $(".form__destination").show();
+        //   // $("#map").show();
+        // });
         // adds event listener to take map data
-        distanceButton.addEventListener("submit", function(event){
+        destinationConfirm.addEventListener("submit", function(event){
           event.preventDefault();
           $(".form__destination").hide();
           $("#map").hide();

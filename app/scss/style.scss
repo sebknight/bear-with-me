@@ -233,41 +233,41 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
-  // width: 800px;
-  // margin: 0;
+  // width: 100%;
+  width: 800px;
+  margin: 0;
   // width: 100% !important;
   // height: 100% !important;
 }
 
-.mapbox-gl-js-canvas {
-overflow: hidden;
-width: 100% !important;
-height: 100% !important;
+.mapboxgl-canvas {
+// overflow: hidden;
+width: 800px;
+height: 584px;
 }
-
+//
 // .mapbox-directions-clearfix {
 //   display: none;
 // }
 //
-// .directions-icon {
-//   background-color: $tertiary-color;
-// }
-//
-// .directions-icon-arrive {
-//   background-color: $primary-color;
-// }
-//
-// .mapbox-directions-inputs, .mapboxgl-ctrl-geocoder {
-//   font-family: 'Questrial', sans-serif;
-// }
-//
-// .mapbox-directions-origin > .mapbox-form-label {
-//   background-color: $secondary-color;
-// }
-// .mapbox-directions-destination > .mapbox-form-label {
-//   background-color: $primary-color;
-// }
+.directions-icon {
+  background-color: $tertiary-color;
+}
+
+.directions-icon-arrive {
+  background-color: $primary-color;
+}
+
+.mapbox-directions-inputs, .mapboxgl-ctrl-geocoder {
+  font-family: 'Questrial', sans-serif;
+}
+
+.mapbox-directions-origin > .mapbox-form-label {
+  background-color: $secondary-color;
+}
+.mapbox-directions-destination > .mapbox-form-label {
+  background-color: $primary-color;
+}
 
 
 // #inputs,
@@ -304,9 +304,9 @@ height: 100% !important;
 //     left: 10px;
 // }
 
-// .mapbox-directions-profile {
-//   display: none;
-// }
+.mapbox-directions-profile {
+  display: none;
+}
 
 //Mapbox styling ENDS
 
