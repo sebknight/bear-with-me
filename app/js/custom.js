@@ -30,15 +30,6 @@ var dates = $("#from, #to").datepicker({
    }
  };
 
-  $("#start-button").click(function(){
-    $(".intro").hide();
-    $(".form__dates").show();
-    $(".form__passengers").show();
-    $(".details").show();
-    $(".col-right__intro").removeClass("col-right__intro");
-    $(".col-right").addClass("col-right__dates");
-  });
-
 
   // $("#selected-vehicle").click(function(){
   //   $(".form__vehicles").hide();
@@ -46,7 +37,7 @@ var dates = $("#from, #to").datepicker({
   //   $(".form__destination").show();
   //   $("#map").show();
   // });
-
+  //
 
 // $(".motorbike").click(function(){
 //    $(this).toggleClass("is-selected");
@@ -64,18 +55,42 @@ var dates = $("#from, #to").datepicker({
   // }
   //
   // UI transition to show vehicle selection
-  $("#selected-vehicles").click(function (){
-    $(".form__dates").hide();
-    $(".form__passengers").hide();
-    $(".form__vehicles").show();
-    // $(".vehicle-options").css("display","flex");
-    $(".vehicle-options").show();
+  // $("#selected-details").click(function (){
+  //   $(".form__dates").hide();
+  //   $(".form__passengers").hide();
+  //   $(".form__vehicles").show();
+  //   // $(".vehicle-options").css("display","flex");
+  //   $(".vehicle-options").show();
+  //
+  //   // map.invalidateSize();
+  // });
 
-    // map.invalidateSize();
-  });
+//UI transition to show date and passenger selection
+function moveToDetails(){
+    $("#start-button").click(function(){
+      $(".intro").hide();
+      $(".form__dates").show();
+      $(".form__passengers").show();
+      $(".details").show();
+      $(".col-right__intro").removeClass("col-right__intro");
+      $(".col-right").addClass("col-right__dates");
+    });
+
+}
+
+//UI transition to show vehicle options
+  function moveToVehicles(){
+      $(".form__dates").hide();
+      $(".form__passengers").hide();
+      $(".vehicles").show();
+      $(".form__vehicles").show();
+      $(".vehicle-options").css("display","flex");
+  };
+
 
   // UI transition to show map
   function moveToMap(){
+    $(".vehicles").hide();
     $(".form__vehicles").hide();
     // $(".vehicle-options").css("display","none");
     $(".vehicle-options").hide();
@@ -133,12 +148,51 @@ var dates = $("#from, #to").datepicker({
     }
   }
 
+function selectVehicle() {
+  vehicleChoice = document.querySelector('input[type=radio]:checked');
+  selectedVehicle = vehicleChoice.name;
+}
+
+//gets distance output from mapbox directions API
+function calculateDistance(){
+  container = document.querySelector(".mapbox-directions-route-summary");
+  if (container == null) {
+    alert("Please enter an origin and destination");
+  };
+  distanceOutput = container.getElementsByTagName("h1");
+  distanceText = $(distanceOutput).text();
+  distance = parseInt(distanceText);
+}
+
+function calculateCost(){
+  if (selectedVehicle = "motorbike") {
+    hireCost = vehicles.motorbike.price;
+    fuelCost = vehicles.motorbike.fuel;
+  }
+    else if (selectedVehicle = "smallCar") {
+      hireCost = vehicles.smallCar.price;
+      fuelCost = vehicles.smallCar.fuel;
+    }
+    else if (selectedVehicle = "bigCar") {
+      hireCost = vehicles.bigCar.price;
+      fuelCost = vehicles.bigCar.fuel;
+    }
+    else {
+        hireCost = vehicles.camper.price;
+        fuelCost = vehicles.camper.fuel;
+    }
+  totalHire = hireCost * datesNumber;
+  totalFuel = fuelCost * (distance/100);
+  totalCost = hireCost + fuelCost;
+};
+
 var app = {
   data: {},
   arrStorage: [],
   init: function (){
+        moveToDetails();
         // adds listener to take form data about passenger numbers and dates
-        detailsConfirm.addEventListener("submit", function(event){
+        detailsConfirm.addEventListener("click", function(event){
             event.preventDefault();
             // calculate number of days between selected dates
             calcDatesNumber();
@@ -148,26 +202,29 @@ var app = {
             findPossibleVehicles();
         // details submit button function ENDS
             moveToVehicles();
+            console.log("working");
         });
 
-        // vehicleConfirm.addEventListener("submit", function(event){
-        //   event.preventDefault();
-        //   console.log("working");
-        //   //show map
-        //   moveToMap();
-        //   // $(".form__vehicles").hide();
-        //   // $(".vehicle-options").css("display","none");
-        //   // $(".form__destination").show();
-        //   // $("#map").show();
-        // });
-        // adds event listener to take map data
-        destinationConfirm.addEventListener("submit", function(event){
+        vehicleConfirm.addEventListener("click", function(event){
           event.preventDefault();
+          console.log("working");
+          selectVehicle();
+          //show map
+          moveToMap();
+          // $(".form__vehicles").hide();
+          // $(".vehicle-options").css("display","none");
+          // $(".form__destination").show();
+          // $("#map").show();
+        });
+        // adds event listener to take map data
+        destinationConfirm.addEventListener("click", function(event){
+          event.preventDefault();
+          console.log("working");
+          calculateDistance();
+          calculateCost();
           $(".form__destination").hide();
           $("#map").hide();
-          // $(".vehicle-options").addClass("is-visible");
-          // $(".vehicle").addClass("is-disabled");
-        // destination input function ENDS
+          console.log(totalCost);
         });
 
 
@@ -179,6 +236,12 @@ var app = {
 app.init();
 
 
+
+//Fuel cost based on selected vehicle
+// DOM - select vehicles - output form options based on availalbe
+// UI - images
+//Output costs/details into DOM
+//UI - back, plus empty arrays
 
 
 // }()); //iife ENDS

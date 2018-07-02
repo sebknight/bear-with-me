@@ -32,89 +32,50 @@
 
             <div class="details">
               <h4>Bear with me.</h4>
-
-              <!-- Datepicker form -->
-              <!-- <form id='date-range' action="index.html" method="post">
-                <h2>When are you travelling?</h2>
-                <input id="date-input" type="text" name="daterange" value="">
-                <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
-              </form> -->
-
-              <!-- <form id="form" class="demo-form" data-parsley-validate="">
-                <div class="form-section">
-                  <label for="numbers">How big's your pack?</label>
-                  <input class="form-control" name="passenger-numbers" required="" type="number">
+              <form id="dates-form" class="form form__dates" action="index.html" method="post">
+                <div class="form form__dates">
+                  <label for="from">From</label>
+                  <input type="text" id="from" name="from" required>
+                  <label for="to">to</label>
+                  <input type="text" id="to" name="to" required>
+                  <div id="passenger-form" class="form form__passengers form-group">
+                    <h2>How big's your pack?</h2>
+                     <label for="passengers"></label>
+                     <select id="passengers" class="form-control-lg form__passengers input__passengers">
+                       <option>1</option>
+                       <option>2</option>
+                       <option>3</option>
+                       <option>4</option>
+                       <option>5</option>
+                       <option>6</option>
+                     </select>
+                     <!-- <button id="selected-details" type="submit" class="btn btn-primary btn-lg">Continue</button> -->
+                     <button type="submit" name="details" id="selected-details" class="btn btn-primary btn-lg">Continue</button>
+                  </div>
                 </div>
-
-                <div class="form-section">
-                  <label for="dates">When are you heading out?</label>
-                  <input class="form-control" name="dates" required="" type="date">
-                </div>
-
-                <div class="form-section">
-                  <label for="dates">When are you wrapping up?</label>
-                  <input class="form-control" name="dates" required="" type="date">
-                </div>
-
-                <div class="form-navigation">
-                  <button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>
-                  <button type="button" class="next btn btn-info pull-right">Next &gt;</button>
-                  <input class="btn btn-default pull-right" type="submit">
-                  <span class="clearfix"></span>
-                </div>
-
-              </form> -->
-
-
-            <form id="dates-form" class="form form__dates" action="index.html" method="post">
-              <div class="form form__dates">
-                <label for="from">From</label>
-                <input type="text" id="from" name="from" required>
-                <label for="to">to</label>
-                <input type="text" id="to" name="to" required>
-
-                <div id="passenger-form" class="form form__passengers form-group">
-                  <h2>How big's your pack?</h2>
-                   <label for="passengers"></label>
-                   <select id="passengers" class="form-control-lg form__passengers input__passengers">
-                     <option>1</option>
-                     <option>2</option>
-                     <option>3</option>
-                     <option>4</option>
-                     <option>5</option>
-                     <option>6</option>
-                   </select>
-                   <button id="selected-details" type="button" class="btn btn-primary btn-lg">Continue</button>
-              </div>
-
-                <!-- <button type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button> -->
-              </div>
             </form>
-                <!-- form__dates ENDS -->
-              <!-- <form id="passenger-form" class="form form__passengers" action="index.html" method="post">
-                <div id="passenger-form" class="form form__passengers form-group">
-                  <h2>How big's your pack?</h2>
-                   <label for="passengers"></label>
-                   <select id="passengers" class="form-control-lg form__passengers input__passengers">
-                     <option>1</option>
-                     <option>2</option>
-                     <option>3</option>
-                     <option>4</option>
-                     <option>5</option>
-                     <option>6</option>
-                   </select>
-                   <button type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
-              </div>
-            </form> -->
-              <!-- form__passengers ENDS -->
-            </div>
+          </div>
             <!-- details ENDS -->
-            <div class="form form__vehicles">
+            <div class="vehicles">
               <!-- <h4>Bear with me.</h4> -->
               <h2>Take your pick</h2>
               <h3>Based on your choices, these are the packages we have for you</h3>
+              <form id="vehicle-select-form" class="form__vehicles" action="index.html" method="post">
+                <div class="motorbike radio">
+                 <label><input type="radio" name="motorbike">Riding solo (motorbike)</label>
+                </div>
+                <div class="small-car radio">
+                 <label><input type="radio" name="smallCar">Couples (small car)</label>
+                </div>
+                <div class="big-car radio">
+                 <label><input type="radio" name="bigCar">Magnum (big car)</label>
+                </div>
+                <div class="camper radio">
+                 <label><input type="radio" name="camper">Group fun (camper)</label>
+                </div>
+                <button id="selected-vehicle" type="submit" class="btn btn-primary btn-lg">Continue</button>
+              </form>
 
-              <button id="selected-vehicle" type="submit" class="btn btn-primary btn-lg">Continue</button>
             </div>
 
 

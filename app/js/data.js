@@ -1,4 +1,4 @@
-let vehicles = {
+var vehicles = {
   motorbike: {
     capacity: 1,
     days: [1, 2, 3, 4, 5],
