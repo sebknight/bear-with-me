@@ -112,6 +112,8 @@ function moveToDetails(){
   };
 
 
+
+
   // pushing available vehicles to array based on passenger number and days
   function findPossibleVehicles() {
     if (passengersNumber === 1 && datesNumber < 6){
@@ -135,7 +137,7 @@ function moveToDetails(){
       $(".big-car").show();
       $(".camper").show();
     }
-    else if (passengersNumber > 1 && datesNumber > 10){
+    else if (passengersNumber > 1 && datesNumber > 1){
       possibleVehicles.push(vehicles.camper);
       console.log(possibleVehicles);
       moveToVehicles();
@@ -148,9 +150,16 @@ function moveToDetails(){
     }
   }
 
+
+  $(".vehicle-options").children().click(function(){
+    $(this).toggleClass("is-selected");
+    $(this).siblings().removeClass("is-selected");
+  });
+
+
 function selectVehicle() {
-  vehicleChoice = document.querySelector('input[type=radio]:checked');
-  selectedVehicle = vehicleChoice.name;
+  vehicleChoice = document.querySelector('.is-selected');
+  selectedVehicle = (vehicleChoice.className).replace(" is-selected","");
 }
 
 //gets distance output from mapbox directions API
@@ -164,16 +173,16 @@ function calculateDistance(){
   distance = parseInt(distanceText);
 }
 
-function calculateCost(){
-  if (selectedVehicle = "motorbike") {
+function selectVehicleData(){
+  if (selectedVehicle === "motorbike") {
     hireCost = vehicles.motorbike.price;
     fuelCost = vehicles.motorbike.fuel;
   }
-    else if (selectedVehicle = "smallCar") {
+    else if (selectedVehicle === "small-car") {
       hireCost = vehicles.smallCar.price;
       fuelCost = vehicles.smallCar.fuel;
     }
-    else if (selectedVehicle = "bigCar") {
+    else if (selectedVehicle === "big-car") {
       hireCost = vehicles.bigCar.price;
       fuelCost = vehicles.bigCar.fuel;
     }
@@ -181,9 +190,12 @@ function calculateCost(){
         hireCost = vehicles.camper.price;
         fuelCost = vehicles.camper.fuel;
     }
+};
+
+function calculateCost(){
   totalHire = hireCost * datesNumber;
   totalFuel = fuelCost * (distance/100);
-  totalCost = hireCost + fuelCost;
+  totalCost = totalHire + totalFuel;
 };
 
 var app = {
@@ -201,7 +213,6 @@ var app = {
             // determine available vehicles based on passenger numbers and dates
             findPossibleVehicles();
         // details submit button function ENDS
-            moveToVehicles();
             console.log("working");
         });
 
@@ -209,6 +220,7 @@ var app = {
           event.preventDefault();
           console.log("working");
           selectVehicle();
+
           //show map
           moveToMap();
           // $(".form__vehicles").hide();
@@ -220,10 +232,11 @@ var app = {
         destinationConfirm.addEventListener("click", function(event){
           event.preventDefault();
           console.log("working");
-          calculateDistance();
-          calculateCost();
           $(".form__destination").hide();
           $("#map").hide();
+          calculateDistance();
+          selectVehicleData();
+          calculateCost();
           console.log(totalCost);
         });
 
