@@ -1,0 +1,12 @@
+- fix datepicker OR revert to select days
+- test logic - each vehicle select must be correct
+- output results correctly
+- back - click title to reload page
+- resize map
+- check for errors - esp map errors
+lint!
+
+if time:
+- use message instead of alerts
+- fix flex - three options
+- more images

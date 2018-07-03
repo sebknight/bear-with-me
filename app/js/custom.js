@@ -2,7 +2,14 @@
 var detailsConfirm = document.getElementById("selected-details");
 var destinationConfirm = document.getElementById("selected-destination");
 var vehicleConfirm = document.getElementById("selected-vehicle");
-var possibleVehicles = [];
+var rightColumn = document.getElementById("right-column");
+// var button = document.querySelectorAll(".btn-primary");
+
+//Turn off Bootstrap outline on click
+$(".btn-primary").click(function (){
+  $(".btn-primary").blur();
+});
+// var possibleVehicles = [];
 // var passengersNumber;
 // var datesNumber;
 //UI transitions
@@ -39,6 +46,7 @@ $( function() {
       .datepicker({
         defaultDate: 1,
         minDate: 0,
+        // maxDate: "+15D",
         changeMonth: true,
         numberOfMonths: 2
       })
@@ -50,7 +58,7 @@ $( function() {
       changeMonth: true,
       numberOfMonths: 2,
       minDate: +1,
-      maxDate: "+15"
+      maxDate: "+15D"
     })
     .on( "change", function() {
       from.datepicker( "option", "maxDate", getDate( this ) );
@@ -125,7 +133,7 @@ function moveToDetails(){
     // $(".vehicle-options").css("display","none");
     $(".vehicle-options").hide();
     $(".form__destination").show();
-    $("#map").show();
+    // $("#map").show();
   };
 
 
@@ -228,7 +236,7 @@ function selectVehicle() {
   // packageHeading = document.querySelector(".is-selected")")
   selectedVehicle = (vehicleChoice.className).replace(" is-selected","");
   packageTitle = vehicleChoice.getElementsByTagName("h2");
-  // packageSubtitle = vehicleChoice.getElementsByTagName("h3");
+  packageSubtitle = vehicleChoice.getElementsByTagName("h3");
   packageTitleText = $(packageTitle).text;
   // packageSubtitleText = $(packageSubtitle).text;
   // packageTitle = selectedVehicle.getElementsByTagName("h2");
@@ -237,6 +245,26 @@ function selectVehicle() {
   // packageSubtitleText = $(packageSubtitle).text;
 }
 
+function createMap(){
+  mapContainer = document.createElement("div");
+  mapContainer.style.width = "800px";
+  mapContainer.style.height = "600px";
+  mapContainer.setAttribute("id","map") ;
+  rightColumn.appendChild(mapContainer);
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
+  var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7',
+      center: [174.02, -41.09],
+      zoom: 5
+  });
+
+  map.addControl(new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit:'metric'
+  }), 'top-left');
+  // map.resize();
+}
 //gets distance output from mapbox directions API
 function calculateDistance(){
   container = document.querySelector(".mapbox-directions-route-summary");
@@ -337,6 +365,7 @@ var app = {
           selectVehicle();
           //show map
           moveToMap();
+          createMap();
           // $(".form__vehicles").hide();
           // $(".vehicle-options").css("display","none");
           // $(".form__destination").show();
