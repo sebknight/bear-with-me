@@ -8,19 +8,64 @@ var possibleVehicles = [];
 //UI transitions
 
 // Datepicker
-var dateToday = new Date();
-var dates = $("#from, #to").datepicker({
-    // defaultDate: 1,
-    changeMonth: true,
-    numberOfMonths: 2,
-    minDate: dateToday,
-    maxDate: +15 })
-   onSelect: function selectedDate() {
-        var option = this.id == "from" ? "minDate" : "maxDate",
-            instance = $(this).data("datepicker"),
-            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
-        dates.not(this).datepicker("option", option, date);
-    };
+// var dateFormat = "dd/mm/yy";
+// var dateToday = new Date();
+// var dates = $("#from, #to").datepicker({
+//     // defaultDate: 1,
+//
+//     changeMonth: true,
+//     numberOfMonths: 2,
+//     minDate: dateToday,
+//     maxDate: +15 })
+//    onSelect: function selectedDate() {
+//         var option = this.id == "from" ? "minDate" : "maxDate",
+//             instance = $(this).data("datepicker"),
+//             date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+//         dates.not(this).datepicker("option", option, date);
+//     };
+//   function calcDatesNumber() {
+//    var date1 = $("#from").datepicker("getDate");
+//    var date2 = $("#to").datepicker("getDate");
+//     datesNumber = 0;
+//    if (date1 && date2) {
+//      datesNumber = Math.floor((date2.getTime() - date1.getTime()) / 86400000);
+//    }
+//  };
+
+$( function() {
+  var dateFormat = "mm/dd/yy",
+  // var dateToday = new Date();
+    from = $( "#from" )
+      .datepicker({
+        defaultDate: 1,
+        minDate: 0,
+        changeMonth: true,
+        numberOfMonths: 2
+      })
+      .on( "change", function() {
+        to.datepicker( "option", "minDate", getDate( this ) );
+      }),
+    to = $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      maxDate: "+15"
+    })
+    .on( "change", function() {
+      from.datepicker( "option", "maxDate", getDate( this ) );
+    });
+
+  function getDate( element ) {
+    var date;
+    try {
+      date = $.datepicker.parseDate( dateFormat, element.value );
+    } catch( error ) {
+      date = null;
+    }
+    return date;
+  }
+} );
+
   function calcDatesNumber() {
    var date1 = $("#from").datepicker("getDate");
    var date2 = $("#to").datepicker("getDate");
@@ -29,22 +74,6 @@ var dates = $("#from, #to").datepicker({
      datesNumber = Math.floor((date2.getTime() - date1.getTime()) / 86400000);
    }
  };
-
-
-  // $("#selected-vehicle").click(function(){
-  //   $(".form__vehicles").hide();
-  //   $(".vehicle-options").css("display","none");
-  //   $(".form__destination").show();
-  //   $("#map").show();
-  // });
-  //
-
-// $(".motorbike").click(function(){
-//    $(this).toggleClass("is-selected");
-// });
-// $(".small-car")
-// $(".big-car")
-// $(".camper")
 
 //   // Aaaah section
   // check data.js is called
