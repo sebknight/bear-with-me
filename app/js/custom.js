@@ -49,6 +49,7 @@ $( function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 2,
+      minDate: +1,
       maxDate: "+15"
     })
     .on( "change", function() {
@@ -143,54 +144,76 @@ function moveToDetails(){
 
   // pushing available vehicles to array based on passenger number and days
   function findPossibleVehicles() {
-    if (passengersNumber < 3 && datesNumber < 6){
-      possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
-      console.log(possibleVehicles);
-      moveToVehicles();
-      $(".motorbike").show();
-      $(".small-car").show();
+    if (datesNumber < 1){
+      alert("Your trip must be more than one day");
     }
-    else if (passengersNumber < 3 && datesNumber < 6){
-      possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
-      console.log(possibleVehicles);
+    else if (passengersNumber === 1 && datesNumber < 3){
       moveToVehicles();
-      $(".motorbike").show();
       $(".small-car").show();
+      $(".motorbike").show();
     }
-    else if (passengersNumber < 3 && datesNumber > 2 && datesNumber < 11){
-      possibleVehicles.push(vehicles.smallCar, vehicles.bigCar);
-      console.log(possibleVehicles);
+    else if (passengersNumber === 1 && datesNumber < 6){
       moveToVehicles();
+      $(".small-car").show();
+      $(".motorbike").show();
+      $(".big-car").show();
+    }
+    else if (passengersNumber === 1 && datesNumber < 11) {
       $(".small-car").show();
       $(".big-car").show();
     }
-    else if (passengersNumber > 1 && datesNumber > 2 && datesNumber < 11){
-      possibleVehicles.push(vehicles.smallCar, vehicles.bigCar, vehicles.camper);
-      console.log(possibleVehicles);
+    else if (passengersNumber === 2 && datesNumber === 1) {
+      moveToVehicles();
+      $(".small-car").show();
+    }
+    else if (passengersNumber === 2 && datesNumber === 2){
+      moveToVehicles();
+      $(".small-car").show();
+      $(".camper").show();
+    }
+    else if (passengersNumber === 2 && datesNumber > 2 && datesNumber < 11){
       moveToVehicles();
       $(".small-car").show();
       $(".big-car").show();
       $(".camper").show();
     }
-    else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11){
-      possibleVehicles.push(vehicles.bigCar, vehicles.camper);
-      console.log(possibleVehicles);
+    else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11) {
       moveToVehicles();
       $(".big-car").show();
       $(".camper").show();
     }
-    else if (passengersNumber > 1 && datesNumber > 1){
-      possibleVehicles.push(vehicles.camper);
-      console.log(possibleVehicles);
+    else if (passengersNumber > 5 && datesNumber > 10){
       moveToVehicles();
       $(".camper").show();
     }
     else {
-      console.log(possibleVehicles);
+      // console.log(possibleVehicles);
       console.log("no vehicles available");
       alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.")
     }
   }
+
+
+
+    //
+    //
+    // else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11){
+    //   possibleVehicles.push(vehicles.bigCar, vehicles.camper);
+    //   console.log(possibleVehicles);
+    //   moveToVehicles();
+    //   $(".big-car").show();
+    //   $(".camper").show();
+    // }
+    // else if (passengersNumber > 1 && datesNumber > 1){
+    //   possibleVehicles.push(vehicles.camper);
+    //   console.log(possibleVehicles);
+    //   moveToVehicles();
+    //   $(".camper").show();
+    // }
+
+  // for (var i = 0; i < array.length; i++) {
+  //   array[i]
+  // }
 
   $(".vehicle-options").children().click(function(){
     $(this).toggleClass("is-selected");
@@ -198,8 +221,20 @@ function moveToDetails(){
   });
 
 function selectVehicle() {
-  vehicleChoice = document.querySelector('.is-selected');
+  vehicleChoice = document.querySelector(".is-selected");
+  if (vehicleChoice == null){
+    alert("Please select a vehicle");
+  }
+  // packageHeading = document.querySelector(".is-selected")")
   selectedVehicle = (vehicleChoice.className).replace(" is-selected","");
+  packageTitle = vehicleChoice.getElementsByTagName("h2");
+  // packageSubtitle = vehicleChoice.getElementsByTagName("h3");
+  packageTitleText = $(packageTitle).text;
+  // packageSubtitleText = $(packageSubtitle).text;
+  // packageTitle = selectedVehicle.getElementsByTagName("h2");
+  // packageSubtitle = selectedVehicle.getElementsByTagName("h3");
+  // packageTitleText = $(packageTitle).text;
+  // packageSubtitleText = $(packageSubtitle).text;
 }
 
 //gets distance output from mapbox directions API
@@ -238,6 +273,23 @@ function calculateCost(){
   totalCost = totalHire + totalFuel;
 };
 
+function outputDetails(){
+  $("#list-package").text("You've selected the "+packageTitleText+" ("+packageSubtitleText+") package");
+  if (datesNumber === 1) {
+    $("#list-dates").text("Hired for 1 day");
+  }
+  else {$("#list-dates").text("Hired for "+datesNumber+" days");
+}
+  if (passengersNumber === 1) {
+    $("#list-passengers").text("1 passenger");
+  }
+  else {$("#list-passengers").text(passengersNumber+" passengers");
+}
+  $("#list-distance").text("Travel distance: "+distanceText);
+  $("#list-hire-cost").text("Hireage cost: $"+hireCost);
+  $("#list-fuel-cost").text("Estimated fuel cost: $"+fuelCost);
+  $("#list-total-cost").text("Estimated total cost: $"+totalCost);
+}
 // var biggerSmaller;
 // map.on('load', function() {
 //     var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
@@ -245,7 +297,7 @@ function calculateCost(){
 //     var breakButton = document.getElementById('resizeDiv');
 //     var fixButton = document.getElementById('resizeMap');
 //     breakButton.onclick = function() {
-//         if (biggerSmaller !== 'smaller') {
+//         ifp (biggerSmaller !== 'smaller') {
 //             mapDiv.style.width = '50%';
 //             mapCanvas.style.width = '100%';
 //             biggerSmaller = 'smaller';
@@ -283,7 +335,6 @@ var app = {
           event.preventDefault();
           console.log("working");
           selectVehicle();
-
           //show map
           moveToMap();
           // $(".form__vehicles").hide();
@@ -300,6 +351,8 @@ var app = {
           calculateCost();
           $(".form__destination").hide();
           $("#map").hide();
+          $(".form__confirm").show();
+          outputDetails();
           console.log(totalCost);
         });
 
