@@ -34,8 +34,9 @@
               <h4>Bear with me.</h4>
               <form id="dates-form" class="form form__dates" action="index.html" method="post">
                 <div class="form form__dates">
+                  <h2>When are you travelling?</h2>
                   <label for="from">From</label>
-                  <input type="text" id="from" name="from" required>
+                  <input type="text" id="from" name="from" required> <br>
                   <label for="to">to</label>
                   <input type="text" id="to" name="to" required>
                   <div id="passenger-form" class="form form__passengers form-group">
@@ -78,8 +79,6 @@
 
             </div>
 
-
-
           <div class="form form__destination">
             <!-- <h4>Bear with me.</h4> -->
             <h2>Where are you headed?</h2>
@@ -115,8 +114,8 @@
 
         <div class="vehicle-options">
           <div class="motorbike">
+            <img src="images/motorbike.png" alt="Solo package - image of a motorbike">
             <h2>Riding solo</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
             <ul>
               <li>1 passenger</li>
               <li>1 to 5 days</li>
@@ -126,6 +125,7 @@
             <!-- <button type="button" class="btn btn-primary btn-vehicle-select">Select</button> -->
           </div>
           <div class="small-car">
+            <img src="images/small-car.png" alt="Couples package - image of a small car">
             <h2>Couples</h2>
             <ul>
               <li>1 to 2 passengers</li>
@@ -136,6 +136,7 @@
             <!-- <button type="button" class="btn btn-primary btn-vehicle-select">Select</button> -->
           </div>
           <div class="big-car">
+            <img src="images/big-car.png" alt="Magnum package - image of a big car">
             <h2>Magnum</h2>
               <ul>
                 <li>1 to 5 passengers</li>
@@ -146,6 +147,7 @@
               <!-- <button type="button" class="btn btn-primary btn-vehicle-select">Select</button> -->
           </div>
           <div class="camper">
+            <img src="images/van.png" alt="Group package - image of a camper van">
             <h2>Group fun</h2>
             <ul>
               <li>2 to 6 passengers</li>
@@ -195,8 +197,8 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css'/>
 <div id='map'>
-  <div id='resizeDiv' class='button'>Resize container</div>
-  <div id='resizeMap' class='button'>Fix map</div>
+  <!-- <div id='resizeDiv' class='button'>Resize container</div> -->
+  <!-- <div id='resizeMap' class='button'>Fix map</div> -->
 </div>
 
 <script>

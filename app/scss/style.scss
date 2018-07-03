@@ -17,9 +17,9 @@
 // $secondary-focus: rgba(149, 166, 146, 1);
 
 $primary-color: #8b0126; //red
-// $secondary-color: #9cac65; //green
 $secondary-color: #512e25; //brown
 $tertiary-color: #f76244; //orange
+$field-color: #F1F1C2; //cream
 $background-color: #eebd74; //gold
 $bg-transparent: rgba(#ce492e, 0.7);
 $primary-focus: rgba(#6e824b, 1);
@@ -65,6 +65,16 @@ $secondary-focus: rgba(#512e25, 1);
   font-family: 'Questrial', sans-serif;
 }
 
+@mixin focus-shadow {
+  border: 3px solid $tertiary-color; /* some kind of blue border */
+   -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+           border-radius: 3px;
+   -webkit-box-shadow: 0px 0px 10px $tertiary-color;
+      -moz-box-shadow: 0px 0px 10px $tertiary-color;
+           box-shadow: 0px 0px 10px $tertiary-color;
+}
+
 .page {
   height: 100%;
   background: $background-color;
@@ -88,11 +98,36 @@ p {
   @include body-text;
 }
 
-#ui-datepicker-div > *, #ui-datepicker-header > *{
-  @include body-text;
-  background-color: $tertiary-color;
-  color: $primary-color;
+input {
+  background-color: $field-color;
+  border: 1px solid $tertiary-color;
+
+  :focus, :active {
+    @include focus-shadow;
+  }
 }
+
+// Datepicker styling
+// #ui-datepicker, #ui-datepicker-div > *, #ui-datepicker-header > *, #ui-widget-header > *, #ui-datepicker-title, #ui-helper-clearfix, #ui-datepicker-group {
+.ui-datepicker, .ui-widget, .ui-widget-content, .ui-helper-clearfix, .ui-corner-all, .ui-datepicker-multi-2, .ui-datepicker-multi, .ui-state-default, .ui-datepicker-calendar, tbody {
+  @include body-text;
+  background-color: $field-color;
+  color: $primary-color;
+  .ui-state-active {
+    background-color: $tertiary-color;
+    border-color: $tertiary-color;
+  }
+}
+
+
+.hasDatepicker {
+  background-color: $field-color;
+  :focus, :active {
+    @include focus-shadow;
+  }
+}
+
+// Datepicker styling ENDS
 
 .row {
   height: 100vh;
@@ -103,8 +138,6 @@ p {
 .col-4 {
   padding: 5%;
 }
-
-
 
 .col-right__intro  {
   background-image: url("../images/desert-bike.jpg");
@@ -154,7 +187,7 @@ p {
 // }
 
 .datepicker-dropdown {
-  background-color: $tertiary-color;
+  background-color: $field-color;
   color: $secondary-color;
 }
 
@@ -176,15 +209,15 @@ p {
 
 .form-control-lg {
   margin: 1rem 1rem 1rem 0rem;
-  background-color: $tertiary-color;
+  background-color: $field-color;
   color: $secondary-color;
 }
 
 .form-control-lg:focus {
     border-color: $primary-color !important;
     box-shadow: 0 0 3px $primary-focus !important;
-    background-color: $primary-color;
-    color: $background-color;
+    background-color: $tertiary-color;
+    color: $secondary-color;
 }
 
 .form-control-lg::placeholder {
@@ -244,18 +277,12 @@ p {
   // height: 100% !important;
 }
 
-// position:absolute; top:0; bottom:0; width:100%; transition: all 0.3s; }
-
 .mapboxgl-canvas {
 // overflow: hidden;
-width: 800px;
-height: 584px;
+width: 100%;
+// height: ;
 }
-//
-// .mapbox-directions-clearfix {
-//   display: none;
-// }
-//
+
 .directions-icon {
   background-color: $tertiary-color;
 }
@@ -274,42 +301,6 @@ height: 584px;
 .mapbox-directions-destination > .mapbox-form-label {
   background-color: $primary-color;
 }
-
-
-// #inputs,
-// #errors,
-// #directions {
-//     position: absolute;
-//     width: 33.3333%;
-//     max-width: 300px;
-//     min-width: 200px;
-// }
-//
-// #inputs {
-//     z-index: 10;
-//     top: 10px;
-//     left: 10px;
-// }
-//
-// #directions {
-//     z-index: 99;
-//     background: rgba(0,0,0,.8);
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     overflow: auto;
-// }
-//
-// #errors {
-//     z-index: 8;
-//     opacity: 0;
-//     padding: 10px;
-//     border-radius: 0 0 3px 3px;
-//     background: rgba(0,0,0,.25);
-//     top: 90px;
-//     left: 10px;
-// }
-
 .mapbox-directions-profile {
   display: none;
 }
@@ -331,15 +322,33 @@ height: 584px;
 
 .motorbike, .small-car, .big-car, .camper {
   display: none;
+  opacity: 0.8;
   background: $background-color;
-  border: 3px solid $tertiary-color;
+  border: 3px solid $background-color;
+  border-radius: 10px;
   > ul {
     list-style: none;
   }
 }
 
 .is-selected {
-  border: solid 5px white;
+  opacity: 1;
+
+  border: 3px solid $tertiary-color; /* some kind of blue border */
+
+   /* other CSS styles */
+
+   /* round the corners */
+   -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+           border-radius: 3px;
+
+
+   /* make it glow! */
+   -webkit-box-shadow: 0px 0px 10px $tertiary-color;
+      -moz-box-shadow: 0px 0px 10px $tertiary-color;
+           box-shadow: 0px 0px 10px $tertiary-color; /* some variation of blue for the shadow */
+
 }
 
 .radio {

@@ -112,18 +112,16 @@ function moveToDetails(){
   };
 
 
-
-
   // pushing available vehicles to array based on passenger number and days
   function findPossibleVehicles() {
-    if (passengersNumber === 1 && datesNumber < 6){
+    if (passengersNumber < 2 && datesNumber < 6){
       possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
       console.log(possibleVehicles);
       moveToVehicles();
       $(".motorbike").show();
       $(".small-car").show();
     }
-    else if (passengersNumber < 3 && datesNumber < 11){
+    else if (passengersNumber < 3 && datesNumber > 2 && datesNumber < 11){
       possibleVehicles.push(vehicles.smallCar,vehicles.bigCar);
       console.log(possibleVehicles);
       moveToVehicles();
@@ -198,27 +196,27 @@ function calculateCost(){
   totalCost = totalHire + totalFuel;
 };
 
-var biggerSmaller;
-map.on('load', function() {
-    var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
-    var mapDiv = document.getElementById('map');
-    var breakButton = document.getElementById('resizeDiv');
-    var fixButton = document.getElementById('resizeMap');
-    breakButton.onclick = function() {
-        if (biggerSmaller !== 'smaller') {
-            mapDiv.style.width = '50%';
-            mapCanvas.style.width = '100%';
-            biggerSmaller = 'smaller';
-        } else {
-            mapDiv.style.width = '150%';
-            mapCanvas.style.width = '100%';
-            biggerSmaller = 'bigger';
-        }
-    }
-    fixButton.onclick = function() {
-        map.resize();
-    }
-});
+// var biggerSmaller;
+// map.on('load', function() {
+//     var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
+//     var mapDiv = document.getElementById('map');
+//     var breakButton = document.getElementById('resizeDiv');
+//     var fixButton = document.getElementById('resizeMap');
+//     breakButton.onclick = function() {
+//         if (biggerSmaller !== 'smaller') {
+//             mapDiv.style.width = '50%';
+//             mapCanvas.style.width = '100%';
+//             biggerSmaller = 'smaller';
+//         } else {
+//             mapDiv.style.width = '150%';
+//             mapCanvas.style.width = '100%';
+//             biggerSmaller = 'bigger';
+//         }
+//     }
+//     fixButton.onclick = function() {
+//         map.resize();
+//     }
+// });
 
 
 var app = {
@@ -255,11 +253,11 @@ var app = {
         destinationConfirm.addEventListener("click", function(event){
           event.preventDefault();
           console.log("working");
-          $(".form__destination").hide();
-          $("#map").hide();
           calculateDistance();
           selectVehicleData();
           calculateCost();
+          $(".form__destination").hide();
+          $("#map").hide();
           console.log(totalCost);
         });
 
