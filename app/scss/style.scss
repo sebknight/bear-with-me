@@ -203,6 +203,11 @@ input {
   display: none;
 }
 
+.vehicle {
+  padding: 2rem;
+  margin: 1rem;
+}
+
 .form {
   display: none;
 }
@@ -308,8 +313,8 @@ width: 100%;
 //Mapbox styling ENDS
 
 .vehicle-options {
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  // padding: 1rem;
   // background: $background-color;
   // border: 3px solid $tertiary-color;
   border-radius: 5px;

@@ -143,7 +143,14 @@ function moveToDetails(){
 
   // pushing available vehicles to array based on passenger number and days
   function findPossibleVehicles() {
-    if (passengersNumber < 2 && datesNumber < 6){
+    if (passengersNumber < 3 && datesNumber < 6){
+      possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
+      console.log(possibleVehicles);
+      moveToVehicles();
+      $(".motorbike").show();
+      $(".small-car").show();
+    }
+    else if (passengersNumber < 3 && datesNumber < 6){
       possibleVehicles.push(vehicles.motorbike, vehicles.smallCar);
       console.log(possibleVehicles);
       moveToVehicles();
@@ -151,11 +158,19 @@ function moveToDetails(){
       $(".small-car").show();
     }
     else if (passengersNumber < 3 && datesNumber > 2 && datesNumber < 11){
-      possibleVehicles.push(vehicles.smallCar,vehicles.bigCar);
+      possibleVehicles.push(vehicles.smallCar, vehicles.bigCar);
       console.log(possibleVehicles);
       moveToVehicles();
       $(".small-car").show();
       $(".big-car").show();
+    }
+    else if (passengersNumber > 1 && datesNumber > 2 && datesNumber < 11){
+      possibleVehicles.push(vehicles.smallCar, vehicles.bigCar, vehicles.camper);
+      console.log(possibleVehicles);
+      moveToVehicles();
+      $(".small-car").show();
+      $(".big-car").show();
+      $(".camper").show();
     }
     else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11){
       possibleVehicles.push(vehicles.bigCar, vehicles.camper);
@@ -177,12 +192,10 @@ function moveToDetails(){
     }
   }
 
-
   $(".vehicle-options").children().click(function(){
     $(this).toggleClass("is-selected");
     $(this).siblings().removeClass("is-selected");
   });
-
 
 function selectVehicle() {
   vehicleChoice = document.querySelector('.is-selected');
@@ -205,18 +218,18 @@ function selectVehicleData(){
     hireCost = vehicles.motorbike.price;
     fuelCost = vehicles.motorbike.fuel;
   }
-    else if (selectedVehicle === "small-car") {
-      hireCost = vehicles.smallCar.price;
-      fuelCost = vehicles.smallCar.fuel;
-    }
-    else if (selectedVehicle === "big-car") {
-      hireCost = vehicles.bigCar.price;
-      fuelCost = vehicles.bigCar.fuel;
-    }
-    else {
-        hireCost = vehicles.camper.price;
-        fuelCost = vehicles.camper.fuel;
-    }
+  else if (selectedVehicle === "small-car") {
+    hireCost = vehicles.smallCar.price;
+    fuelCost = vehicles.smallCar.fuel;
+  }
+  else if (selectedVehicle === "big-car") {
+    hireCost = vehicles.bigCar.price;
+    fuelCost = vehicles.bigCar.fuel;
+  }
+  else {
+    hireCost = vehicles.camper.price;
+    fuelCost = vehicles.camper.fuel;
+  }
 };
 
 function calculateCost(){
