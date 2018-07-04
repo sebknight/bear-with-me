@@ -5,7 +5,6 @@ var destinationConfirm = document.getElementById("selected-destination");
 var vehicleConfirm = document.getElementById("selected-vehicle");
 // Right column of DOM
 var rightColumn = document.getElementById("col-right__child");
-
 //UI
 
 //Turn off Bootstrap button outline on click
@@ -255,29 +254,12 @@ var app = {
 
         vehicleConfirm.addEventListener("click", function(event){
           event.preventDefault();
-          // console.log("working");
           selectVehicle();
-          //show map
-          // moveToMap();
-          // createMap();
-          // $(".form__vehicles").hide();
-          // $(".vehicle-options").css("display","none");
-          // $(".form__destination").show();
-          // $("#map").show();
         });
         // adds event listener to take map data
         destinationConfirm.addEventListener("click", function(event){
           event.preventDefault();
-          console.log("working");
           calculateDistance();
-          // selectVehicleData();
-          // calculateCost();
-          // $(".form__destination").hide();
-          // $("#map").hide();
-          // $(".form__confirm").show();
-          // outputDetails();
-          // outputDetails(datesNumber,"#list-dates","day");
-          // console.log(totalCost);
         });
 
 
