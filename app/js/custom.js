@@ -39,50 +39,50 @@ $(".btn-primary").click(function (){
 //    }
 //  };
 
-$( function() {
-  var dateFormat = "mm/dd/yy",
-  // var dateToday = new Date();
-    from = $( "#from" )
-      .datepicker({
-        defaultDate: 1,
-        minDate: 0,
-        // maxDate: "+15D",
-        changeMonth: true,
-        numberOfMonths: 2
-      })
-      .on( "change", function() {
-        to.datepicker( "option", "minDate", getDate( this ) );
-      }),
-    to = $( "#to" ).datepicker({
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 2,
-      minDate: +1,
-      maxDate: "+15D"
-    })
-    .on( "change", function() {
-      from.datepicker( "option", "maxDate", getDate( this ) );
-    });
+// $( function() {
+//   var dateFormat = "mm/dd/yy",
+//   // var dateToday = new Date();
+//     from = $( "#from" )
+//       .datepicker({
+//         defaultDate: 1,
+//         minDate: 0,
+//         // maxDate: "+15D",
+//         changeMonth: true,
+//         numberOfMonths: 2
+//       })
+//       .on( "change", function() {
+//         to.datepicker( "option", "minDate", getDate( this ) );
+//       }),
+//     to = $( "#to" ).datepicker({
+//       defaultDate: "+1w",
+//       changeMonth: true,
+//       numberOfMonths: 2,
+//       minDate: +1,
+//       maxDate: "+15D"
+//     })
+//     .on( "change", function() {
+//       from.datepicker( "option", "maxDate", getDate( this ) );
+//     });
+//
+//   function getDate( element ) {
+//     var date;
+//     try {
+//       date = $.datepicker.parseDate( dateFormat, element.value );
+//     } catch( error ) {
+//       date = null;
+//     }
+//     return date;
+//   }
+// } );
 
-  function getDate( element ) {
-    var date;
-    try {
-      date = $.datepicker.parseDate( dateFormat, element.value );
-    } catch( error ) {
-      date = null;
-    }
-    return date;
-  }
-} );
-
-  function calcDatesNumber() {
-   var date1 = $("#from").datepicker("getDate");
-   var date2 = $("#to").datepicker("getDate");
-    datesNumber = 0;
-   if (date1 && date2) {
-     datesNumber = Math.floor((date2.getTime() - date1.getTime()) / 86400000);
-   }
- };
+ //  function calcDatesNumber() {
+ //   var date1 = $("#from").datepicker("getDate");
+ //   var date2 = $("#to").datepicker("getDate");
+ //    datesNumber = 0;
+ //   if (date1 && date2) {
+ //     datesNumber = Math.floor((date2.getTime() - date1.getTime()) / 86400000);
+ //   }
+ // };
 
 //   // Aaaah section
   // check data.js is called
@@ -123,7 +123,7 @@ function moveToDetails(){
       $(".vehicles").show();
       $(".form__vehicles").show();
       $(".vehicle-options").css("display","flex");
-  };
+  }
 
 
   // UI transition to show map
@@ -134,20 +134,20 @@ function moveToDetails(){
     $(".vehicle-options").hide();
     $(".form__destination").show();
     // $("#map").show();
-  };
+  }
 
 
   // Take dates and passenger inputs and make them numbers
-  function getPassengerNumber(){
-    // datesString = document.getElementById("#calculated").value;
-    // console.log(datesString);
+  function getDetails(){
+    datesString = document.getElementById("dates").value;
+    console.log(datesString);
     passengersString = document.getElementById("passengers").value;
     console.log(passengersString);
-    // datesNumber = parseInt(datesString);
+    datesNumber = parseInt(datesString);
     passengersNumber = parseInt(passengersString);
-    // console.log(typeof datesNumber);
+    console.log(typeof datesNumber);
     console.log(typeof passengersNumber);
-  };
+  }
 
 
   // pushing available vehicles to array based on passenger number and days
@@ -190,38 +190,16 @@ function moveToDetails(){
       $(".big-car").show();
       $(".camper").show();
     }
-    else if (passengersNumber > 5 && datesNumber > 10){
+    else if (passengersNumber > 1 && datesNumber > 1){
       moveToVehicles();
       $(".camper").show();
     }
     else {
       // console.log(possibleVehicles);
       console.log("no vehicles available");
-      alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.")
+      alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.");
     }
   }
-
-
-
-    //
-    //
-    // else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11){
-    //   possibleVehicles.push(vehicles.bigCar, vehicles.camper);
-    //   console.log(possibleVehicles);
-    //   moveToVehicles();
-    //   $(".big-car").show();
-    //   $(".camper").show();
-    // }
-    // else if (passengersNumber > 1 && datesNumber > 1){
-    //   possibleVehicles.push(vehicles.camper);
-    //   console.log(possibleVehicles);
-    //   moveToVehicles();
-    //   $(".camper").show();
-    // }
-
-  // for (var i = 0; i < array.length; i++) {
-  //   array[i]
-  // }
 
   $(".vehicle-options").children().click(function(){
     $(this).toggleClass("is-selected");
@@ -230,19 +208,17 @@ function moveToDetails(){
 
 function selectVehicle() {
   vehicleChoice = document.querySelector(".is-selected");
-  if (vehicleChoice == null){
+  if (vehicleChoice === null){
     alert("Please select a vehicle");
   }
-  // packageHeading = document.querySelector(".is-selected")")
-  selectedVehicle = (vehicleChoice.className).replace(" is-selected","");
-  packageTitle = vehicleChoice.getElementsByTagName("h2");
-  packageSubtitle = vehicleChoice.getElementsByTagName("h3");
-  packageTitleText = $(packageTitle).text;
-  // packageSubtitleText = $(packageSubtitle).text;
-  // packageTitle = selectedVehicle.getElementsByTagName("h2");
-  // packageSubtitle = selectedVehicle.getElementsByTagName("h3");
-  // packageTitleText = $(packageTitle).text;
-  // packageSubtitleText = $(packageSubtitle).text;
+  else {
+    selectedVehicle = (vehicleChoice.className).replace(" is-selected","");
+    // packageTitle = vehicleChoice.getElementsByTagName("h2");
+    // packageSubtitle = vehicleChoice.getElementsByTagName("h3");
+    // packageTitleText = $(packageTitle).text;
+    moveToMap();
+    createMap();
+  }
 }
 
 function createMap(){
@@ -251,58 +227,73 @@ function createMap(){
   mapContainer.style.height = "600px";
   mapContainer.setAttribute("id","map") ;
   rightColumn.appendChild(mapContainer);
-  mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
+  mapboxgl.accessToken = "pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA";
   var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7',
+      container: "map",
+      style: "mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7",
       center: [174.02, -41.09],
       zoom: 5
   });
 
   map.addControl(new MapboxDirections({
       accessToken: mapboxgl.accessToken,
-      unit:'metric'
-  }), 'top-left');
+      unit:"metric"
+  }), "top-left");
   // map.resize();
 }
 //gets distance output from mapbox directions API
 function calculateDistance(){
   container = document.querySelector(".mapbox-directions-route-summary");
-  if (container == null) {
+  if (container === null) {
     alert("Please enter an origin and destination");
-  };
-  distanceOutput = container.getElementsByTagName("h1");
-  distanceText = $(distanceOutput).text();
-  distance = parseInt(distanceText);
+  }
+    else { distanceOutput = container.getElementsByTagName("h1");
+      distanceText = $(distanceOutput).text();
+      distance = parseInt(distanceText);
+      selectVehicleData();
+      calculateCost();
+      $(".form__destination").hide();
+      $("#map").hide();
+      $(".form__confirm").show();
+      outputDetails();
+    }
 }
 
 function selectVehicleData(){
-  if (selectedVehicle === "motorbike") {
+  if (selectedVehicle === "vehicle motorbike") {
+    packageName = "Riding solo (motorbike)";
     hireCost = vehicles.motorbike.price;
     fuelCost = vehicles.motorbike.fuel;
   }
-  else if (selectedVehicle === "small-car") {
+  else if (selectedVehicle === "vehicle small-car") {
+    packageName = "Couples (small car)";
     hireCost = vehicles.smallCar.price;
     fuelCost = vehicles.smallCar.fuel;
   }
-  else if (selectedVehicle === "big-car") {
+  else if (selectedVehicle === "vehicle big-car") {
+    packageName = "Magnum (4WD)";
     hireCost = vehicles.bigCar.price;
     fuelCost = vehicles.bigCar.fuel;
   }
   else {
+    packageName = "Group fun (camper van)";
     hireCost = vehicles.camper.price;
     fuelCost = vehicles.camper.fuel;
   }
-};
+}
 
 function calculateCost(){
   totalHire = hireCost * datesNumber;
+  totalHireTruncated = totalHire.toFixed(2);
   totalFuel = fuelCost * (distance/100);
+  totalFuelTruncated = totalFuel.toFixed(2);
   totalCost = totalHire + totalFuel;
-};
+  totalCostTruncated = totalCost.toFixed(2);
+}
 
 function outputDetails(){
-  $("#list-package").text("You've selected the "+packageTitleText+" ("+packageSubtitleText+") package");
+  $("#list-package").text
+  (packageName+" package");
   if (datesNumber === 1) {
     $("#list-dates").text("Hired for 1 day");
   }
@@ -311,35 +302,13 @@ function outputDetails(){
   if (passengersNumber === 1) {
     $("#list-passengers").text("1 passenger");
   }
-  else {$("#list-passengers").text(passengersNumber+" passengers");
+    else {$("#list-dates").text(passengersNumber+" passengers");
 }
   $("#list-distance").text("Travel distance: "+distanceText);
-  $("#list-hire-cost").text("Hireage cost: $"+hireCost);
-  $("#list-fuel-cost").text("Estimated fuel cost: $"+fuelCost);
-  $("#list-total-cost").text("Estimated total cost: $"+totalCost);
+  $("#list-hire-cost").text("Hireage cost: $"+totalHireTruncated);
+  $("#list-fuel-cost").text("Estimated fuel cost: $"+totalFuelTruncated);
+  $("#list-total-cost").text("Estimated total cost: $"+totalCostTruncated);
 }
-// var biggerSmaller;
-// map.on('load', function() {
-//     var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
-//     var mapDiv = document.getElementById('map');
-//     var breakButton = document.getElementById('resizeDiv');
-//     var fixButton = document.getElementById('resizeMap');
-//     breakButton.onclick = function() {
-//         ifp (biggerSmaller !== 'smaller') {
-//             mapDiv.style.width = '50%';
-//             mapCanvas.style.width = '100%';
-//             biggerSmaller = 'smaller';
-//         } else {
-//             mapDiv.style.width = '150%';
-//             mapCanvas.style.width = '100%';
-//             biggerSmaller = 'bigger';
-//         }
-//     }
-//     fixButton.onclick = function() {
-//         map.resize();
-//     }
-// });
-
 
 var app = {
   data: {},
@@ -350,9 +319,9 @@ var app = {
         detailsConfirm.addEventListener("click", function(event){
             event.preventDefault();
             // calculate number of days between selected dates
-            calcDatesNumber();
-            // convert passenger string to number
-            getPassengerNumber();
+            // calcDatesNumber();
+            // convert passenger and date strings to number
+            getDetails();
             // determine available vehicles based on passenger numbers and dates
             findPossibleVehicles();
         // details submit button function ENDS
@@ -364,8 +333,8 @@ var app = {
           console.log("working");
           selectVehicle();
           //show map
-          moveToMap();
-          createMap();
+          // moveToMap();
+          // createMap();
           // $(".form__vehicles").hide();
           // $(".vehicle-options").css("display","none");
           // $(".form__destination").show();
@@ -376,13 +345,14 @@ var app = {
           event.preventDefault();
           console.log("working");
           calculateDistance();
-          selectVehicleData();
-          calculateCost();
-          $(".form__destination").hide();
-          $("#map").hide();
-          $(".form__confirm").show();
-          outputDetails();
-          console.log(totalCost);
+          // selectVehicleData();
+          // calculateCost();
+          // $(".form__destination").hide();
+          // $("#map").hide();
+          // $(".form__confirm").show();
+          // outputDetails();
+          // outputDetails(datesNumber,"#list-dates","day");
+          // console.log(totalCost);
         });
 
 

@@ -77,7 +77,7 @@ $secondary-focus: rgba(#512e25, 1);
 .page {
   height: 100%;
   background: $background-color;
-  color: $tertiary-color;
+  color: $secondary-color;
   font-family: 'Questrial', sans-serif;
 }
 
@@ -211,7 +211,7 @@ input {
 }
 
 .vehicle {
-  padding: 2rem;
+  padding: 1rem;
   margin: 1rem;
 }
 
