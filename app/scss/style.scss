@@ -74,6 +74,12 @@ $secondary-focus: rgba(#512e25, 1);
            box-shadow: 0px 0px 10px $tertiary-color;
 }
 
+@mixin background-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
 .page {
   height: 100%;
   background: $background-color;
@@ -125,12 +131,12 @@ input {
 }
 
 
-.hasDatepicker {
-  background-color: $field-color;
-  :focus, :active {
-    @include focus-shadow;
-  }
-}
+// .hasDatepicker {
+//   background-color: $field-color;
+//   :focus, :active {
+//     @include focus-shadow;
+//   }
+// }
 
 // Datepicker styling ENDS
 
@@ -142,29 +148,48 @@ input {
 
 .col-4 {
   padding: 5%;
-}
-
-.col-right__intro  {
-  background-image: url("../images/desert-bike.jpg");
   height: 100%;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
 }
 
-.col-right__dates {
-  background-image: url("../images/plan.jpg");
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
+// .col-right {
+  // height: 100%;
+// }
+
+#col-right__child {
+  height: 100%;
+  width: 100%;
+}
+.col-right__intro  {
+  @include background-image;
+  background-image: url("../images/desert-bike.png");
+}
+
+.col-right__details {
+  @include background-image;
+  background-image: url("../images/plan-retro.png");
 }
 
 .col-right__passengers {
-  background-image: url("../images/group-bike.jpg");
+  @include background-image;
+  background-image: url("../images/shoulders.png");
+}
+
+.col-right__map {
+  @include background-image;
+  background-image: url("../images/explore.png");
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 }
+
+// .col-right__final {
+//   background-image: url("../images/expls.png");
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
 // .map{
 //   display: none;
 // }
@@ -174,7 +199,7 @@ input {
   border-color: $background-color;
   border: 1px solid $secondary-color;
   color: $background-color;
-  margin: 1em 0em 1em 0em;
+  margin: 0.5em 0em 0.5em 0em;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary:focus {
@@ -193,26 +218,8 @@ input {
 //   margin: 1rem 1rem 0rem 1rem;
 // }
 
-.datepicker-dropdown {
-  background-color: $field-color;
-  color: $secondary-color;
-}
-
-:starting-date, :ending-date {
-  margin: 0.5rem;
-}
-
 .details {
   display: none;
-}
-
-.vehicles {
-  display: none;
-}
-
-.vehicle {
-  padding: 1rem;
-  margin: 1rem;
 }
 
 .form {
@@ -232,18 +239,6 @@ input {
     color: $secondary-color;
 }
 
-.form-control-lg::placeholder {
-    color: $tertiary-color;
-    opacity: 0.5;
-}
-
- .custom-radio:checked {
-  color: $primary-color !important;
-}
-.custom-radio:focus, .custom-radio:active, .custom-radio:hover {
-  color: $secondary-color !important;
-}
-
 .form__passengers {
   margin-right: 2rem;
 }
@@ -251,49 +246,62 @@ input {
 //   margin: 1.5rem;
 // }
 
-// .vehicle-options {
-//   display: none;
-//   margin: 1rem;
-//     &.is-visible{
-//       display: inline-block;
-//       // flex-direction: row;
-//       // flex: wrap;
-//       // justify-content: space-around;
-//     }
-// }
-
 .details-list {
   list-style: none;
 }
 
-.modal-content {
-  background: $background-color;
+.vehicles {
+  display: none;
 }
 
-// .vehicle {
-//  display: none;
-// }
+.vehicle {
+  opacity: 0.8;
+  padding: 1rem;
+  margin: 1rem;
+  > img {
+    // @include background-image;
+    width: 300px;
+    height: 200px;
+  }
+}
+
+.is-selected {
+  opacity: 1;
+  border: solid 5px $secondary-color;
+  border-radius: 5px;
+   -webkit-box-shadow: 0px 0px 20px $tertiary-color;
+      -moz-box-shadow: 0px 0px 20px $tertiary-color;
+           box-shadow: 0px 0px 20px $tertiary-color;
+}
+
+.vehicle-options {
+  margin: 0.5rem;
+  // padding: 1rem;
+  // background: $background-color;
+  // border: 3px solid $tertiary-color;
+  border-radius: 5px;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.motorbike, .small-car, .big-car, .camper {
+  display: none;
+  background: $background-color;
+  border: 3px solid $background-color;
+  border-radius: 10px;
+  > ul {
+    list-style: none;
+  }
+}
 
 //Mapbox styling
-
-// #map {
-  // display: none;
-  // overflow: hidden;
-  // position: absolute;
-  // top: 0;
-  // bottom: 0;
-  // width: 100%;
-  // width: 800px;
-  // margin: 0;
-  // width: 100% !important;
-  // height: 100% !important;
-// }
-
-// .mapboxgl-canvas {
-// overflow: hidden;
-// width: 100%;
-// height: ;
-// }
+.mapboxgl-canvas {
+overflow: hidden;
+width: 100%;
+}
 
 .directions-icon {
   background-color: $tertiary-color;
@@ -318,51 +326,3 @@ input {
 }
 
 //Mapbox styling ENDS
-
-.vehicle-options {
-  margin: 0.5rem;
-  // padding: 1rem;
-  // background: $background-color;
-  // border: 3px solid $tertiary-color;
-  border-radius: 5px;
-  display: none;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: center;
-}
-
-.motorbike, .small-car, .big-car, .camper {
-  display: none;
-  opacity: 0.8;
-  background: $background-color;
-  border: 3px solid $background-color;
-  border-radius: 10px;
-  > ul {
-    list-style: none;
-  }
-}
-
-.is-selected {
-  opacity: 1;
-
-  border: 3px solid $tertiary-color; /* some kind of blue border */
-
-   /* other CSS styles */
-
-   /* round the corners */
-   -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-           border-radius: 3px;
-
-
-   /* make it glow! */
-   -webkit-box-shadow: 0px 0px 10px $tertiary-color;
-      -moz-box-shadow: 0px 0px 10px $tertiary-color;
-           box-shadow: 0px 0px 10px $tertiary-color; /* some variation of blue for the shadow */
-
-}
-
-.radio {
-  display: none;
-}
