@@ -27,6 +27,7 @@ var vehicles = {
     fuel: 17
   }
 }
+
 // var days = //form input value days
 // var rent = //access vehicle object price
 // var distance would be calculated by user destinations

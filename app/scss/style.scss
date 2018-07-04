@@ -1,33 +1,11 @@
-//variables
-
-// $primary-color: #F1F1C2; //cream
-// $secondary-color: #402316; //brown
-// $tertiary-color: #f09108; //gold
-// $background-color: rgba(#549138, 1); //green
-// $bg-transparent: rgba(#549138,0.7);
-// $primary-focus: rgba(202, 109, 48, 1);
-// $secondary-focus: rgba(149, 166, 146, 1);
-
-// $primary-color: #ce492e; //orange
-// $secondary-color: #512e25; //brown
-// $tertiary-color: #6e824b; //green
-// $background-color: #e99415; //gold
-// $bg-transparent: rgba(64,35,22,0.7);
-// $primary-focus: rgba(202, 109, 48, 1);
-// $secondary-focus: rgba(149, 166, 146, 1);
-
+//Variables
 $primary-color: #8b0126; //red
-// $secondary-color: #9cac65; //green
 $secondary-color: #512e25; //brown
 $tertiary-color: #f76244; //orange
+$field-color: #F1F1C2; //cream
 $background-color: #eebd74; //gold
-$bg-transparent: rgba(#ce492e, 0.7);
 $primary-focus: rgba(#6e824b, 1);
 $secondary-focus: rgba(#512e25, 1);
-
-
-//incorporate a cream? more saturated backgrounds
-
 
 
 //Mixins and imports
@@ -45,11 +23,10 @@ $secondary-focus: rgba(#512e25, 1);
 @mixin title-small {
   @include h1;
   font-size: 1.5rem;
-  // text-shadow: $primary-color 1px 2px;
 }
 
 @mixin h2 {
-  color: $tertiary-color;
+  color: $secondary-color;
   font-family: 'Source Serif Pro', serif;
   font-weight: 600;
   margin: 1rem 0rem 1rem 0rem;
@@ -64,13 +41,30 @@ $secondary-focus: rgba(#512e25, 1);
 
 @mixin body-text {
   color: $secondary-color;
+  font-family: 'Questrial', sans-serif;
 }
 
+@mixin focus-shadow {
+  border: 3px solid $tertiary-color; /* some kind of blue border */
+   -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+           border-radius: 3px;
+   -webkit-box-shadow: 0px 0px 10px $tertiary-color;
+      -moz-box-shadow: 0px 0px 10px $tertiary-color;
+           box-shadow: 0px 0px 10px $tertiary-color;
+}
+
+@mixin background-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
 .page {
   height: 100%;
-  font-family: 'Questrial', sans-serif;
   background: $background-color;
-  color: $tertiary-color;
+  color: $secondary-color;
+  font-family: 'Questrial', sans-serif;
 }
 
 h1 {
@@ -89,6 +83,21 @@ p {
   @include body-text;
 }
 
+a:hover, h4:hover {
+    color: $field-color;
+    text-decoration: none;
+    text-shadow: -1px 0 $secondary-color, 0 1px $secondary-color, 1px 0 $secondary-color, 0 -1px $secondary-color;
+  }
+
+input {
+  background-color: $field-color;
+  border: 1px solid $tertiary-color;
+
+  :focus, :active {
+    @include focus-shadow;
+  }
+}
+
 .row {
   height: 100vh;
   width: 100vw;
@@ -97,44 +106,60 @@ p {
 
 .col-4 {
   padding: 5%;
+  height: 100%;
 }
 
-
+#col-right__child {
+  height: 100%;
+  width: 100%;
+}
 
 .col-right__intro  {
-  background-image: url("../images/desert-bike.jpg");
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
+  @include background-image;
+  background-image: url("../images/desert-bike.png");
 }
 
-.col-right__dates {
-  background-image: url("../images/plan.jpg");
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
+.col-right__details {
+  @include background-image;
+  background-image: url("../images/plan-retro.png");
 }
 
 .col-right__passengers {
-  background-image: url("../images/group-bike.jpg");
+  @include background-image;
+  background-image: url("../images/shoulders.png");
+}
+
+.col-right__map {
+  @include background-image;
+  background-image: url("../images/explore.png");
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 }
-.map{
-  display: none;
-}
+
+// .col-right__final {
+//   background-image: url("../images/expls.png");
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
+// }
+// .map{
+//   display: none;
+// }
 
 .btn {
   background-color: $primary-color;
   border-color: $background-color;
   border: 1px solid $secondary-color;
   color: $background-color;
-  margin: 1em 0em 1em 0em;
+  margin: 0.5em 0em 0.5em 0em;
 }
 
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active {
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary:focus {
+
+  // btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus
   color: $secondary-color;
   background-color: $tertiary-color;
   border: 1px solid $secondary-color;
@@ -148,15 +173,6 @@ p {
 //   margin: 1rem 1rem 0rem 1rem;
 // }
 
-.datepicker-dropdown {
-  background-color: $tertiary-color;
-  color: $secondary-color;
-}
-
-:starting-date, :ending-date {
-  margin: 0.5rem;
-}
-
 .details {
   display: none;
 }
@@ -167,27 +183,15 @@ p {
 
 .form-control-lg {
   margin: 1rem 1rem 1rem 0rem;
-  background-color: $tertiary-color;
+  background-color: $field-color;
   color: $secondary-color;
 }
 
 .form-control-lg:focus {
     border-color: $primary-color !important;
     box-shadow: 0 0 3px $primary-focus !important;
-    background-color: $primary-color;
-    color: $background-color;
-}
-
-.form-control-lg::placeholder {
-    color: $tertiary-color;
-    opacity: 0.5;
-}
-
- .custom-radio:checked {
-  color: $primary-color !important;
-}
-.custom-radio:focus, .custom-radio:active, .custom-radio:hover {
-  color: $secondary-color !important;
+    background-color: $tertiary-color;
+    color: $secondary-color;
 }
 
 .form__passengers {
@@ -197,43 +201,61 @@ p {
 //   margin: 1.5rem;
 // }
 
-// .vehicle-options {
-//   display: none;
-//   margin: 1rem;
-//     &.is-visible{
-//       display: inline-block;
-//       // flex-direction: row;
-//       // flex: wrap;
-//       // justify-content: space-around;
-//     }
-// }
-
 .details-list {
   list-style: none;
 }
 
-.modal-content {
+.vehicles {
+  display: none;
+}
+
+.vehicle {
+  opacity: 0.8;
+  padding: 1rem;
+  margin: 1rem;
+  > img {
+    // @include background-image;
+    width: 300px;
+    height: 200px;
+  }
+}
+
+.is-selected {
+  opacity: 1;
+  border: solid 5px $secondary-color;
+  border-radius: 5px;
+   -webkit-box-shadow: 0px 0px 20px $tertiary-color;
+      -moz-box-shadow: 0px 0px 20px $tertiary-color;
+           box-shadow: 0px 0px 20px $tertiary-color;
+}
+
+.vehicle-options {
+  margin: 0.5rem;
+  // padding: 1rem;
+  // background: $background-color;
+  // border: 3px solid $tertiary-color;
+  border-radius: 5px;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.motorbike, .small-car, .big-car, .camper {
+  display: none;
   background: $background-color;
+  border: 3px solid $background-color;
+  border-radius: 10px;
+  > ul {
+    list-style: none;
+  }
 }
 
 //Mapbox styling
-
-#map {
-  display: none;
-  overflow: hidden;
-  // margin: 0;
-  width: 100% !important;
-  height: 100% !important;
-}
-
 .mapboxgl-canvas {
 overflow: hidden;
-width: 100% !important;
-height: 100% !important;
-}
-
-.mapbox-directions-clearfix {
-  display: none;
+width: 100%;
 }
 
 .directions-icon {
@@ -244,31 +266,18 @@ height: 100% !important;
   background-color: $primary-color;
 }
 
-.directions-control, .mapboxgl-ctrl-geocoder {
+.mapbox-directions-inputs, .mapboxgl-ctrl-geocoder {
   font-family: 'Questrial', sans-serif;
 }
 
-//Mapbox styling ENDS
-
-.vehicle-options {
-  margin: 1rem;
-  padding: 1rem;
-  background: $bg-transparent;
-  border: 3px solid $tertiary-color;
-  border-radius: 5px;
+.mapbox-directions-origin > .mapbox-form-label {
+  background-color: $secondary-color;
+}
+.mapbox-directions-destination > .mapbox-form-label {
+  background-color: $primary-color;
+}
+.mapbox-directions-profile {
   display: none;
-    &.is-visible {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-content: center;
-  }
 }
 
-.vehicle {
-  >ul {
-    list-style: none;
-    padding-right: 1rem;
-  }
-}
+//Mapbox styling ENDS

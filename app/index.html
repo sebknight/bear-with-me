@@ -3,279 +3,165 @@
   <head>
     <meta charset="utf-8">
     <title>Bear with me.</title>
-    <link <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet'>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' >
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="scss/style.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
   </head>
+
   <body class="page">
-      <!-- <div class="container"> -->
-        <div class="row">
-          <div class="col-4">
-            <div class="intro">
-              <h2>Looking for a <br> wild ride?</h2>
-              <h1>Bear <br>with me.</h1>
-              <h3>Check out these rugged rentals.</h3>
-              <p>We offer a range of rental vehicles and
-                recommended destinations for the <br>truly adventurous.</p>
-              <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-one">Let's get started</button>
-            </div>
-
-            <div class="details">
-              <h4>Bear with me.</h4>
-
-              <!-- Datepicker form -->
-              <!-- <form id='date-range' action="index.html" method="post">
-                <h2>When are you travelling?</h2>
-                <input id="date-input" type="text" name="daterange" value="">
-                <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button>
-              </form> -->
-
-              <!-- <form id="form" class="demo-form" data-parsley-validate="">
-                <div class="form-section">
-                  <label for="numbers">How big's your pack?</label>
-                  <input class="form-control" name="passenger-numbers" required="" type="number">
-                </div>
-
-                <div class="form-section">
-                  <label for="dates">When are you heading out?</label>
-                  <input class="form-control" name="dates" required="" type="date">
-                </div>
-
-                <div class="form-section">
-                  <label for="dates">When are you wrapping up?</label>
-                  <input class="form-control" name="dates" required="" type="date">
-                </div>
-
-                <div class="form-navigation">
-                  <button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>
-                  <button type="button" class="next btn btn-info pull-right">Next &gt;</button>
-                  <input class="btn btn-default pull-right" type="submit">
-                  <span class="clearfix"></span>
-                </div>
-
-              </form> -->
-
-
-            <form id="details-form" class="form form__dates" action="index.html" method="post">
-              <div class="form form__dates">
-                <h2>How many days are you travelling?</h2>
-                <label for="dates"></label>
-                <select id="dates" class="form-control-lg form__dates input__dates">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                  <option>13</option>
-                  <option>14</option>
-                  <option>15</option>
-                </select>
-                <div id="passenger-form" class="form form__passengers form-group">
-                  <h2>How big's your pack?</h2>
-                   <label for="passengers"></label>
-                   <select id="passengers" class="form-control-lg form__passengers input__passengers">
-                     <option>1</option>
-                     <option>2</option>
-                     <option>3</option>
-                     <option>4</option>
-                     <option>5</option>
-                     <option>6</option>
-                   </select>
-                   <button id="details-form" type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
-              </div>
-
-                <!-- <button type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-two">Continue</button> -->
-              </div>
-            </form>
-                <!-- form__dates ENDS -->
-              <!-- <form id="passenger-form" class="form form__passengers" action="index.html" method="post">
-                <div id="passenger-form" class="form form__passengers form-group">
-                  <h2>How big's your pack?</h2>
-                   <label for="passengers"></label>
-                   <select id="passengers" class="form-control-lg form__passengers input__passengers">
-                     <option>1</option>
-                     <option>2</option>
-                     <option>3</option>
-                     <option>4</option>
-                     <option>5</option>
-                     <option>6</option>
-                   </select>
-                   <button type="submit" class="btn btn-primary btn-lg form__continue form__continue--step-three">Continue</button>
-              </div>
-            </form> -->
-              <!-- form__passengers ENDS -->
-            </div>
-            <!-- details ENDS -->
-
-
-
-          <div class="form form__destination">
-            <!-- <h4>Bear with me.</h4> -->
-            <h2>Where are you headed?</h2>
-            <h3>You come here often?</h3>
-            <!-- <label>I'm starting from </label>
-            <input class="form-control-lg" type="text" placeholder="My cave">
-            <label>I'm heading to</label>
-            <input class="form-control-lg" type="text" placeholder="Your cave"> -->
-              <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-four"  data-toggle="modal" data-target="#vehicle-options-modal">Continue</button>
-          </div>
-
-          <div class="form form__vehicles">
-            <!-- <h4>Bear with me.</h4> -->
-            <h2>Take your pick</h2>
-            <h3>Based on your choices, these are the packages we have for you</h3>
-                <div class="custom-control custom-radio">
-                  <input class="custom-control-input" type="radio" name="vehicle-list" id="exampleRadios1" value="option1" checked>
-                <label class="custom-control-label" for="exampleRadios1">
-                Riding solo (motorbike)
-                </label>
-              </div>
-            <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-five">Continue</button>
-          </div>
-
-          <div class="form form__confirm">
-            <h2>Your trip details</h2>
-            <div class="trip-details">
-              <h3>Please check these before booking</h3>
-              <ul class="details-list">
-                <li class="list--dates">2 </li>
-                <li class="list--passengers">3 passengers</li>
-                <li class="list--destination">A to B</li>
-                <li class="list--distance">60km</li>
-                <li class="list--cost">$X</li>
-              </ul>
-            </div>
-            <button type="button" class="btn btn-primary btn-lg form__continue form__continue--step-five">Book now!</button>
-          </div>
-      </div>
-      <!-- col ENDS -->
-        <!-- container__left ENDS -->
-      <div class="col col-right">
-        <div id='map' style='width: 900px; height: 700px;'></div>
-        <div class="col-right col-right__intro">
+    <div class="row">
+      <div class="col-4">
+        <div class="intro">
+          <h2>Looking for a <br> wild ride?</h2>
+          <h1>Bear <br>with me.</h1>
+          <h3>Check out these rugged rentals.</h3>
+          <p>We offer a range of rental vehicles and
+            recommended destinations for the <br>truly adventurous.</p>
+          <button type="button" class="btn btn-primary btn-lg" id="start-button">Let's get started</button>
         </div>
 
-          <!-- <div class="modal fade" id="vehicle-options-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="vehicle-options-modal-label">Take your pick</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="details">
+          <!-- links to home -->
+          <a href="index.html"><h4>Bear with me.</h4></a>
+          <!-- Details Form to get days and passenger numbers BEGINS -->
+          <form class="form form__dates" action="index.html" method="post">
+            <div class="form form__dates">
+              <h2>How many days are you travelling?</h2>
+              <label for="dates"></label>
+              <select id="dates" class="form-control-lg form__dates input__dates">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+              </select>
+
+              <div id="passenger-form" class="form form__passengers form-group">
+                <h2>How big's your pack?</h2>
+                 <label for="passengers"></label>
+                 <select id="passengers" class="form-control-lg form__passengers input__passengers">
+                   <option>1</option>
+                   <option>2</option>
+                   <option>3</option>
+                   <option>4</option>
+                   <option>5</option>
+                   <option>6</option>
+                 </select>
               </div>
-              <div class="modal-body">
-                <div class="container-fluid">
-                  <div class="vehicle-options">
-                    <div class="motorbike">
-                      <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
-                    </div>
-                    <div class="small-car">
-                      <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
-                    </div>
-                    <div class="big-car">
-                      <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
-                    </div>
-                    <div class="camper">
-                      <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
-                    </div>
-                  </div>
-                  <!-- vehicle-options ENDS -->
-                  <!-- </div>
-                </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary form__continue form__continue--step-five" data-dismiss="modal">Confirm</button>
-                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-              <!-- </div>
+              <button type="submit" name="details" id="selected-details" class="btn btn-primary btn-lg">Continue</button>
             </div>
-          </div>
-        </div> -->
-        <div class="vehicle-options">
-          <div class="vehicle motorbike">
-            <h2>Riding solo</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
-            <ul>
-              <li>1 passenger</li>
-              <li>1 to 5 </li>
-              <li>$109/day</li>
-              <li>3.7l fuel/100km</li>
+        </form>
+        <!-- details form ENDS -->
+      </div>
+        <!-- details ENDS -->
+        <!-- vehicle selection BEGINS -->
+        <div class="vehicles">
+          <h2>Take your pick</h2>
+          <h3>Based on your choices, these are the packages we have for you</h3>
+          <form id="vehicle-select-form" class="form__vehicles" action="index.html" method="post">
+            <button id="selected-vehicle" type="submit" class="btn btn-primary btn-lg">Continue</button>
+          </form>
+        </div>
+      <!-- vehicle selection ENDS -->
+      <!-- Mapbox/destination choice form BEGINS -->
+        <div class="form form__destination">
+          <h2>Where are you headed?</h2>
+          <h3>You come here often?</h3>
+          <button id="selected-destination" type="submit"  class="btn btn-primary btn-lg">Continue</button>
+        </div>
+      <!-- Mapbox/destination choice form ENDS -->
+      <!-- Trip confirmation BEGINS -->
+        <div class="form form__confirm">
+          <h2>Your trip details</h2>
+          <div class="trip-details">
+            <h3>Please check these before booking</h3>
+            <ul class="details-list">
+              <li id="list-package"></li>
+              <li id="list-dates"></li>
+              <li id="list-passengers"></li>
+              <li id="list-distance"></li>
+              <li id="list-hire-cost">Rental cost: </li>
+              <li id="list-fuel-cost">Estimated fuel cost: </li>
+              <li id="list-total-cost">Total cost: </li>
             </ul>
           </div>
-          <!-- <div class="vehicle small-car">
-            <h2>Nice package</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
-            <ul>
-              <li>1 to 2 passengers</li>
-              <li>1 to 10 </li>
-              <li>$129/day</li>
-              <li>8.5l fuel/100km</li>
-            </ul>
-          </div>
-          <div class="vehicle big-car">
-            <h2>Magnum</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
+          <h3>Please call us on 04 296 5370 to book your trip</h3>
+        </div>
+        <!-- trip confirmation ENDS -->
+      </div>
+    <!-- col ENDS -->
+  <div class="col col-right">
+    <div id="col-right__child" class="col-right__intro">
+      <!-- vehicle options BEGINS -->
+      <div class="vehicle-options">
+        <div class="vehicle motorbike">
+          <img src="images/motorbike.png" alt="Solo package - image of a motorbike">
+          <h2>Riding solo</h2>
+          <h3>Motorbike</h3>
+          <ul>
+            <li>1 passenger</li>
+            <li>1 to 5 days</li>
+            <li>$109/day</li>
+            <li>3.7l fuel/100km</li>
+          </ul>
+        </div>
+        <div class="vehicle small-car">
+          <img src="images/small-car.png" alt="Couples package - image of a small car">
+          <h2>Couples</h2>
+          <h3>Two-seater car</h3>
+          <ul>
+            <li>1 to 2 passengers</li>
+            <li>1 to 10 days</li>
+            <li>$129/day</li>
+            <li>8.5l fuel/100km</li>
+          </ul>
+        </div>
+        <div class="vehicle big-car">
+          <img src="images/big-car.png" alt="Magnum package - image of a big car">
+          <h2>Magnum</h2>
+          <h3>4WD</h3>
             <ul>
               <li>1 to 5 passengers</li>
-              <li>3 to 10 </li>
+              <li>3 to 10 days</li>
               <li>$144/day</li>
               <li>9.7l fuel/100km</li>
             </ul>
-          </div>
-          <div class="vehicle camper">
-            <h2>Group fun</h2>
-            <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x250"></a>
-            <ul class="vehicle-details-list">
-              <li class="vehicle-details-list">2 to 5 passengers</li>
-              <li class="vehicle-details-list">2 to 15 </li>
-              <li class="vehicle-details-list">$200/day</li>
-              <li class="vehicle-details-list">17l fuel/100km</li>
-            </ul>
-          </div> -->
         </div>
+        <div class="vehicle camper">
+          <img src="images/van.png" alt="Group package - image of a camper van">
+          <h2>Group fun</h2>
+          <h3>Camper van</h3>
+          <ul>
+            <li>2 to 6 passengers</li>
+            <li>2 to 15 days</li>
+            <li>$200/day</li>
+            <li>17l fuel/100km</li>
+          </ul>
+        </div>
+        </div>
+        <!-- vehicle options ENDS -->
       </div>
       <!-- col-right ENDS -->
-
     </div>
     <!-- row ENDS -->
-
-  </div>
-  <!-- container ENDS -->
-
-
-
-
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet'/>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA';
-    var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7'
-    });
-    map.addControl(new MapboxDirections({
-    accessToken: mapboxgl.accessToken
-  }), 'top-left');
-
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <!-- <script src="node_modules/parsleyjs/dist/parsley.js"></script> -->
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-    <!-- <script src="datepicker.min.js"></script> -->
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css'/>
     <script src="js/data.js"></script>
     <script src="js/custom.js"></script>
   </body>

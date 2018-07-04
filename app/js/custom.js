@@ -1,114 +1,271 @@
 //DOM queries
+// Submission buttons for each step
+var detailsConfirm = document.getElementById("selected-details");
+var destinationConfirm = document.getElementById("selected-destination");
+var vehicleConfirm = document.getElementById("selected-vehicle");
+// Right column of DOM
+var rightColumn = document.getElementById("col-right__child");
 
-
-
-
-// var distance =
-
-
-
-// $(document).ready(function () {
-
-
-//Daterange picker
-// $(function() {
-//
-//   $('#date-input').daterangepicker({
-//       autoUpdateInput: false,
-//       locale: {
-//           'format': 'DD/MM/YYYY',
-//           cancelLabel: 'Clear'
-//       },
-//       "minDate": moment(),
-//       "dateLimit":{'days':15}
-//   });
-//
-//   $('#date-input').on('apply.daterangepicker', function(ev, picker) {
-//       $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-//   });
-//
-//   $('#date-input').on('cancel.daterangepicker', function(ev, picker) {
-//       $(this).val('');
-//   });
-// });
-
-//UI transitions
-
-$( ".form__continue--step-one").click(function(){
-  $(".intro").hide();
-  $(".form__dates").show();
-  $(".form__passengers").show();
-  $(".details").show();
-  $(".col-right__intro").removeClass("col-right__intro");
-  $(".col-right").addClass("col-right__dates");
+//UI
+//Turn off Bootstrap button outline on click
+$(".btn-primary").click(function (){
+  $(".btn-primary").blur();
 });
 
+//Transition to show date and passenger selection
+function moveToDetails(){
+    $("#start-button").click(function(){
+      $(".intro").hide();
+      $(".form__dates").show();
+      $(".form__passengers").show();
+      $(".details").show();
+      $("#col-right__child").removeClass("col-right__intro");
+      $("#col-right__child").addClass("col-right__details");
+    });
+}
 
-// $( ".form__continue--step-two").click(function(event){
-//   event.preventDefault();
-//   $(".form__passengers").show();
-//   $(".form__continue--step-two").hide();
-//   $(".col-right__dates").removeClass("col-right__dates");
-//   $(".col-right").addClass("col-right__passengers");
-// });
+//Transition to show vehicle options
+function moveToVehicles(){
+    $(".form__dates").hide();
+    $(".form__passengers").hide();
+    $(".vehicles").show();
+    $(".form__vehicles").show();
+    $(".vehicle-options").css("display","flex");
+    $("#col-right__child").removeClass("col-right__details");
+    $("#col-right__child").addClass("col-right__passengers");
+}
 
-// $( ".form__continue--step-three").click(function(event){
-//   event.preventDefault();
-//   $(".form__dates").hide();
-//   $(".form__passengers").hide();
-//   $(".form__destination").show();
-//   $("#map").show();
-// });
-
-$(".form__continue--step-four").click(function(){
-  $(".form__destination").hide();
-  $("#map").hide();
-  $(".form__vehicles").show();
-  $(".vehicle-options").addClass('is-visible');
-  $(".vehicle").addClass('is-disabled');
-})
-
-$(".form__continue--step-five").click(function(){
+//Transition to show map
+function moveToMap(){
+  $(".vehicles").hide();
   $(".form__vehicles").hide();
-  $(".form__confirm").show();
+  $(".vehicle-options").hide();
+  $(".form__destination").show();
+  $("#col-right__child").removeClass("col-right__passengers");
+  $("#col-right__child").addClass("col-right__map");
+}
+
+//Toggles visible selection of one vehicle option
+$(".vehicle-options").children().click(function(){
+  $(this).toggleClass("is-selected");
+  $(this).siblings().removeClass("is-selected");
 });
 
-
-// Aaaah section
-// check data.js is called
-console.log(vehicles);
-
-// DOM query for passenger and date details
-var detailsForm = document.getElementById('details-form');
-//take passenger and date values and make them numbers
-function makeNumber(){
-  var datesString = document.getElementById('dates').value;
+//Calculations
+// Take dates and passenger inputs and make them numbers
+function getDetails(){
+  datesString = document.getElementById("dates").value;
   console.log(datesString);
-  var passengersString = document.getElementById('passengers').value;
+  passengersString = document.getElementById("passengers").value;
   console.log(passengersString);
-  var datesNumber = function number(datesString){};
-  var passengersNumber = function number(passengersString){};
-};
+  datesNumber = parseInt(datesString);
+  passengersNumber = parseInt(passengersString);
+  console.log(typeof datesNumber);
+  console.log(typeof passengersNumber);
+}
+
+//Work out which vehicles are available based on user data
+function findPossibleVehicles() {
+  if (passengersNumber === 1 && datesNumber < 3){
+    //UI transition
+    moveToVehicles();
+    //Show options in DOM
+    $(".small-car").show();
+    $(".motorbike").show();
+  }
+  else if (passengersNumber === 1 && datesNumber < 6){
+    moveToVehicles();
+    $(".small-car").show();
+    $(".motorbike").show();
+    $(".big-car").show();
+  }
+  else if (passengersNumber === 1 && datesNumber < 11) {
+    moveToVehicles();
+    $(".small-car").show();
+    $(".big-car").show();
+  }
+  else if (passengersNumber === 2 && datesNumber === 1) {
+    moveToVehicles();
+    $(".small-car").show();
+  }
+  else if (passengersNumber === 2 && datesNumber === 2){
+    moveToVehicles();
+    $(".small-car").show();
+    $(".camper").show();
+  }
+  else if (passengersNumber === 2 && datesNumber > 2 && datesNumber < 11){
+    moveToVehicles();
+    $(".small-car").show();
+    $(".big-car").show();
+    $(".camper").show();
+  }
+  else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11) {
+    moveToVehicles();
+    $(".big-car").show();
+    $(".camper").show();
+  }
+  else if (passengersNumber > 1 && datesNumber > 1){
+    moveToVehicles();
+    $(".camper").show();
+  }
+  else {
+    //Validation - requires users to enter correct data before advancing
+    console.log("no vehicles available");
+    alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.");
+  }
+}
+
+//Determines which vehicle is selected
+function selectVehicle() {
+  vehicleChoice = document.querySelector(".is-selected");
+  //Validation - prevents advancing without vehicle selection
+  if (vehicleChoice === null){
+    alert("Please select a vehicle");
+  }
+  else {
+    //removes 'is selected' from class name, used to access vehicles object for calculations
+    selectedVehicle = (vehicleChoice.className).replace(" is-selected","");
+    //Creates and transitions to map
+    createMap();
+    moveToMap();
+  }
+}
+
+//Creates mapbox when called
+function createMap(){
+  mapContainer = document.createElement("div");
+  mapContainer.style.width = "800px";
+  mapContainer.style.height = "600px";
+  mapContainer.setAttribute("id","map") ;
+  rightColumn.appendChild(mapContainer);
+  mapboxgl.accessToken = "pk.eyJ1Ijoic2Via25pZ2h0IiwiYSI6ImNqaTNuNDFodTAwYjQzcHIxNXB5YWFxNDEifQ.wpTWbTXyg2OGtiM9G1UvrA";
+  var map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/sebknight/cjintebre1ihi2rnpwvmoa7y7",
+      center: [174.02, -41.09],
+      zoom: 5
+  });
+
+  map.addControl(new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit:"metric"
+  }), "top-left");
+}
+
+//gets distance output from mapbox directions API
+function calculateDistance(){
+  container = document.querySelector(".mapbox-directions-route-summary");
+  //Validation - prevernts advancing without a distance value
+  if (container === null) {
+    alert("Please enter an origin and destination, or wait for the distance to be calculated");
+  }
+  //Takes distance from mapbox DOM and turns into number
+    else { distanceOutput = container.getElementsByTagName("h1");
+      distanceText = $(distanceOutput).text();
+      distance = parseInt(distanceText);
+      // Gets data of selected vehicle from vehicles object
+      selectVehicleData();
+      // Takes input data to calculate cost
+      calculateCost();
+      // UI transitions to final page
+      $(".form__destination").hide();
+      $("#map").hide();
+      $(".form__confirm").show();
+      // Puts calculation results into DOM
+      outputDetails();
+    }
+}
+
+// Assigns hire and cost values based on selected vehicles, using vehicles object in data.js
+function selectVehicleData(){
+  if (selectedVehicle === "vehicle motorbike") {
+    packageName = "Riding solo (motorbike)";
+    hireCost = vehicles.motorbike.price;
+    fuelCost = vehicles.motorbike.fuel;
+  }
+  else if (selectedVehicle === "vehicle small-car") {
+    packageName = "Couples (small car)";
+    hireCost = vehicles.smallCar.price;
+    fuelCost = vehicles.smallCar.fuel;
+  }
+  else if (selectedVehicle === "vehicle big-car") {
+    packageName = "Magnum (4WD)";
+    hireCost = vehicles.bigCar.price;
+    fuelCost = vehicles.bigCar.fuel;
+  }
+  else {
+    packageName = "Group fun (camper van)";
+    hireCost = vehicles.camper.price;
+    fuelCost = vehicles.camper.fuel;
+  }
+}
+// Pricing algorithm
+function calculateCost(){
+  // calculates total hireage cost
+  totalHire = hireCost * datesNumber;
+  // restricts number to two decimal places
+  totalHireTruncated = totalHire.toFixed(2);
+  // calculates fuel cost
+  totalFuel = fuelCost * (distance/100);
+  totalFuelTruncated = totalFuel.toFixed(2);
+  // calculates total cost
+  totalCost = totalHire + totalFuel;
+  totalCostTruncated = totalCost.toFixed(2);
+}
+
+// Outputs calculated data to the DOM
+function outputDetails(){
+  //Package name
+  $("#list-package").text
+  (packageName+" package");
+  //Makes sure pluralisaton is correct
+  if (datesNumber === 1) {
+    $("#list-dates").text("Hired for 1 day");
+  }
+  else {$("#list-dates").text("Hired for "+datesNumber+" days");
+}
+  if (passengersNumber === 1) {
+    $("#list-passengers").text("1 passenger");
+  }
+    else {$("#list-dates").text(passengersNumber+" passengers");
+}
+  // Trip details
+  $("#list-distance").text("Travel distance: "+distanceText);
+  $("#list-hire-cost").text("Hireage cost: $"+totalHireTruncated);
+  $("#list-fuel-cost").text("Estimated fuel cost: $"+totalFuelTruncated);
+  $("#list-total-cost").text("Estimated total cost: $"+totalCostTruncated);
+}
 
 var app = {
-  data: {},
-  arrStorage: [],
   init: function (){
-        detailsForm.addEventListener("submit", function(event){
+      // UI transition
+        moveToDetails();
+        // adds listener to take form data about passenger numbers and dates
+        detailsConfirm.addEventListener("click", function(event){
             event.preventDefault();
-            // hide detail form and show map
-              $(".form__dates").hide();
-              $(".form__passengers").hide();
-              $(".form__destination").show();
-              $("#map").show();
-            makeNumber();
+            // calculate number of days between selected dates
+            // calcDatesNumber();
+            // convert passenger and date strings to number
+            getDetails();
+            // determine available vehicles based on passenger numbers and dates
+            findPossibleVehicles();
+        // details submit button function ENDS
+            // console.log("working");
         });
-      }
+
+        vehicleConfirm.addEventListener("click", function(event){
+          event.preventDefault();
+          selectVehicle();
+        });
+        // adds event listener to take map data
+        destinationConfirm.addEventListener("click", function(event){
+          event.preventDefault();
+          calculateDistance();
+        });
+  // init ENDS
+  }
+  // var app ENDS
 };
 
+//run app
 app.init();
-
-
-
-
-// }()); //iife ENDS
