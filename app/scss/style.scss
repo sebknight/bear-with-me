@@ -1,32 +1,12 @@
-//variables
-
-// $primary-color: #F1F1C2; //cream
-// $secondary-color: #402316; //brown
-// $tertiary-color: #f09108; //gold
-// $background-color: rgba(#549138, 1); //green
-// $bg-transparent: rgba(#549138,0.7);
-// $primary-focus: rgba(202, 109, 48, 1);
-// $secondary-focus: rgba(149, 166, 146, 1);
-
-// $primary-color: #ce492e; //orange
-// $secondary-color: #512e25; //brown
-// $tertiary-color: #6e824b; //green
-// $background-color: #e99415; //gold
-// $bg-transparent: rgba(64,35,22,0.7);
-// $primary-focus: rgba(202, 109, 48, 1);
-// $secondary-focus: rgba(149, 166, 146, 1);
-
+//Variables
 $primary-color: #8b0126; //red
 $secondary-color: #512e25; //brown
 $tertiary-color: #f76244; //orange
 $field-color: #F1F1C2; //cream
 $background-color: #eebd74; //gold
-$bg-transparent: rgba(#ce492e, 0.7);
 $primary-focus: rgba(#6e824b, 1);
 $secondary-focus: rgba(#512e25, 1);
 
-
-//incorporate a cream? more saturated backgrounds
 
 //Mixins and imports
 @import url('https://fonts.googleapis.com/css?family=Shrikhand|Source+Serif+Pro:400,600,700|Questrial');
@@ -118,28 +98,6 @@ input {
   }
 }
 
-// Datepicker styling
-// #ui-datepicker, #ui-datepicker-div > *, #ui-datepicker-header > *, #ui-widget-header > *, #ui-datepicker-title, #ui-helper-clearfix, #ui-datepicker-group {
-.ui-datepicker, .ui-widget, .ui-widget-content, .ui-helper-clearfix, .ui-corner-all, .ui-datepicker-multi-2, .ui-datepicker-multi, .ui-state-default, .ui-datepicker-calendar, tbody {
-  @include body-text;
-  background-color: $field-color;
-  color: $primary-color;
-  .ui-state-active {
-    background-color: $tertiary-color;
-    border-color: $tertiary-color;
-  }
-}
-
-
-// .hasDatepicker {
-//   background-color: $field-color;
-//   :focus, :active {
-//     @include focus-shadow;
-//   }
-// }
-
-// Datepicker styling ENDS
-
 .row {
   height: 100vh;
   width: 100vw;
@@ -155,6 +113,7 @@ input {
   height: 100%;
   width: 100%;
 }
+
 .col-right__intro  {
   @include background-image;
   background-image: url("../images/desert-bike.png");

@@ -5,8 +5,8 @@ var destinationConfirm = document.getElementById("selected-destination");
 var vehicleConfirm = document.getElementById("selected-vehicle");
 // Right column of DOM
 var rightColumn = document.getElementById("col-right__child");
-//UI
 
+//UI
 //Turn off Bootstrap button outline on click
 $(".btn-primary").click(function (){
   $(".btn-primary").blur();
@@ -25,95 +25,95 @@ function moveToDetails(){
 }
 
 //Transition to show vehicle options
-  function moveToVehicles(){
-      $(".form__dates").hide();
-      $(".form__passengers").hide();
-      $(".vehicles").show();
-      $(".form__vehicles").show();
-      $(".vehicle-options").css("display","flex");
-      $("#col-right__child").removeClass("col-right__details");
-      $("#col-right__child").addClass("col-right__passengers");
-  }
+function moveToVehicles(){
+    $(".form__dates").hide();
+    $(".form__passengers").hide();
+    $(".vehicles").show();
+    $(".form__vehicles").show();
+    $(".vehicle-options").css("display","flex");
+    $("#col-right__child").removeClass("col-right__details");
+    $("#col-right__child").addClass("col-right__passengers");
+}
 
-  //Transition to show map
-  function moveToMap(){
-    $(".vehicles").hide();
-    $(".form__vehicles").hide();
-    $(".vehicle-options").hide();
-    $(".form__destination").show();
-    $("#col-right__child").removeClass("col-right__passengers");
-    $("#col-right__child").addClass("col-right__map");
-  }
+//Transition to show map
+function moveToMap(){
+  $(".vehicles").hide();
+  $(".form__vehicles").hide();
+  $(".vehicle-options").hide();
+  $(".form__destination").show();
+  $("#col-right__child").removeClass("col-right__passengers");
+  $("#col-right__child").addClass("col-right__map");
+}
 
-  //Toggles visible selection of one vehicle option
-  $(".vehicle-options").children().click(function(){
-    $(this).toggleClass("is-selected");
-    $(this).siblings().removeClass("is-selected");
-  });
-
+//Toggles visible selection of one vehicle option
+$(".vehicle-options").children().click(function(){
+  $(this).toggleClass("is-selected");
+  $(this).siblings().removeClass("is-selected");
+});
 
 //Calculations
-  // Take dates and passenger inputs and make them numbers
-  function getDetails(){
-    datesString = document.getElementById("dates").value;
-    console.log(datesString);
-    passengersString = document.getElementById("passengers").value;
-    console.log(passengersString);
-    datesNumber = parseInt(datesString);
-    passengersNumber = parseInt(passengersString);
-    console.log(typeof datesNumber);
-    console.log(typeof passengersNumber);
+// Take dates and passenger inputs and make them numbers
+function getDetails(){
+  datesString = document.getElementById("dates").value;
+  console.log(datesString);
+  passengersString = document.getElementById("passengers").value;
+  console.log(passengersString);
+  datesNumber = parseInt(datesString);
+  passengersNumber = parseInt(passengersString);
+  console.log(typeof datesNumber);
+  console.log(typeof passengersNumber);
+}
+
+//Work out which vehicles are available based on user data
+function findPossibleVehicles() {
+  if (passengersNumber === 1 && datesNumber < 3){
+    //UI transition
+    moveToVehicles();
+    //Show options in DOM
+    $(".small-car").show();
+    $(".motorbike").show();
   }
-  //Work out which vehicles are available based on user data
-  function findPossibleVehicles() {
-    if (passengersNumber === 1 && datesNumber < 3){
-      //UI transition
-      moveToVehicles();
-      //Show options in DOM
-      $(".small-car").show();
-      $(".motorbike").show();
-    }
-    else if (passengersNumber === 1 && datesNumber < 6){
-      moveToVehicles();
-      $(".small-car").show();
-      $(".motorbike").show();
-      $(".big-car").show();
-    }
-    else if (passengersNumber === 1 && datesNumber < 11) {
-      moveToVehicles();
-      $(".small-car").show();
-      $(".big-car").show();
-    }
-    else if (passengersNumber === 2 && datesNumber === 1) {
-      moveToVehicles();
-      $(".small-car").show();
-    }
-    else if (passengersNumber === 2 && datesNumber === 2){
-      moveToVehicles();
-      $(".small-car").show();
-      $(".camper").show();
-    }
-    else if (passengersNumber === 2 && datesNumber > 2 && datesNumber < 11){
-      moveToVehicles();
-      $(".small-car").show();
-      $(".big-car").show();
-      $(".camper").show();
-    }
-    else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11) {
-      moveToVehicles();
-      $(".big-car").show();
-      $(".camper").show();
-    }
-    else if (passengersNumber > 1 && datesNumber > 1){
-      moveToVehicles();
-      $(".camper").show();
-    }
-    else {
-      //Validation - requires users to enter correct data before advancing
-      console.log("no vehicles available");
-      alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.");
-    }
+  else if (passengersNumber === 1 && datesNumber < 6){
+    moveToVehicles();
+    $(".small-car").show();
+    $(".motorbike").show();
+    $(".big-car").show();
   }
+  else if (passengersNumber === 1 && datesNumber < 11) {
+    moveToVehicles();
+    $(".small-car").show();
+    $(".big-car").show();
+  }
+  else if (passengersNumber === 2 && datesNumber === 1) {
+    moveToVehicles();
+    $(".small-car").show();
+  }
+  else if (passengersNumber === 2 && datesNumber === 2){
+    moveToVehicles();
+    $(".small-car").show();
+    $(".camper").show();
+  }
+  else if (passengersNumber === 2 && datesNumber > 2 && datesNumber < 11){
+    moveToVehicles();
+    $(".small-car").show();
+    $(".big-car").show();
+    $(".camper").show();
+  }
+  else if (passengersNumber < 6 && datesNumber > 2 && datesNumber < 11) {
+    moveToVehicles();
+    $(".big-car").show();
+    $(".camper").show();
+  }
+  else if (passengersNumber > 1 && datesNumber > 1){
+    moveToVehicles();
+    $(".camper").show();
+  }
+  else {
+    //Validation - requires users to enter correct data before advancing
+    console.log("no vehicles available");
+    alert("Oops! We don't have vehicles available based on these selections. Please try altering your dates/passenger numbers.");
+  }
+}
 
 //Determines which vehicle is selected
 function selectVehicle() {
@@ -176,6 +176,7 @@ function calculateDistance(){
     }
 }
 
+// Assigns hire and cost values based on selected vehicles, using vehicles object in data.js
 function selectVehicleData(){
   if (selectedVehicle === "vehicle motorbike") {
     packageName = "Riding solo (motorbike)";
@@ -261,8 +262,6 @@ var app = {
           event.preventDefault();
           calculateDistance();
         });
-
-
   // init ENDS
   }
   // var app ENDS
