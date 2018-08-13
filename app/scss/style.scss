@@ -15,8 +15,6 @@ $secondary-focus: rgba(#512e25, 1);
   font-family: 'Shrikhand', cursive;
   color: $primary-color;
   font-size: 3rem;
-  // letter-spacing: 4px;
-  // text-shadow: $tertiary-color 1px 4px;
   font-kerning: auto;
 }
 
@@ -35,7 +33,7 @@ $secondary-focus: rgba(#512e25, 1);
 
 @mixin h3 {
   color: $secondary-color;
-  font-size: 1.25rem;
+  font-size: 3rem;
   margin: 1rem 0rem 1rem 0rem;
 }
 
@@ -45,7 +43,7 @@ $secondary-focus: rgba(#512e25, 1);
 }
 
 @mixin focus-shadow {
-  border: 3px solid $tertiary-color; /* some kind of blue border */
+  border: 3px solid $tertiary-color;
    -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
            border-radius: 3px;
@@ -60,11 +58,10 @@ $secondary-focus: rgba(#512e25, 1);
   background-size: cover;
   overflow: hidden;
 }
-.page {
-  height: 100%;
-  background: $background-color;
-  color: $secondary-color;
-  font-family: 'Questrial', sans-serif;
+
+@mixin zero-margin{
+  margin: 0 auto;
+  padding: 0;
 }
 
 h1 {
@@ -98,15 +95,23 @@ input {
   }
 }
 
-.row {
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
+.container {
+  @include zero-margin;
+  // height: 100%;
+  // width: 100%;
+  background: $background-color;
+  color: $secondary-color;
+  font-family: 'Questrial', sans-serif;
+  // justify-content: center;
 }
 
 .col-4 {
+  @include zero-margin;
   padding: 5%;
   height: 100%;
+}
+.col-right {
+  @include zero-margin;
 }
 
 #col-right__child {
@@ -188,18 +193,15 @@ input {
 }
 
 .form-control-lg:focus {
-    border-color: $primary-color !important;
-    box-shadow: 0 0 3px $primary-focus !important;
-    background-color: $tertiary-color;
-    color: $secondary-color;
+    border-color: $primary-color;
+    box-shadow: 0 0 3px $primary-focus;
+    background-color: $primary-focus;
+//     color: $secondary-color;
 }
 
 .form__passengers {
   margin-right: 2rem;
 }
-// .form__continue--step-three {
-//   margin: 1.5rem;
-// }
 
 .details-list {
   list-style: none;
@@ -214,7 +216,6 @@ input {
   padding: 1rem;
   margin: 1rem;
   > img {
-    // @include background-image;
     width: 300px;
     height: 200px;
   }
@@ -231,9 +232,6 @@ input {
 
 .vehicle-options {
   margin: 0.5rem;
-  // padding: 1rem;
-  // background: $background-color;
-  // border: 3px solid $tertiary-color;
   border-radius: 5px;
   display: none;
   flex-direction: row;
