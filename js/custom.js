@@ -177,37 +177,37 @@ $(document).ready(function(){
   function selectVehicleData() {
     if (selectedVehicle === "vehicle motorbike") {
       packageName = "Riding solo (motorbike)";
-      hireCost = vehicles.motorbike.price;
-      fuelCost = vehicles.motorbike.fuel;
+      rentalCost = vehicles.motorbike.price;
+      fuelUsage = vehicles.motorbike.fuel;
     }
     else if (selectedVehicle === "vehicle small-car") {
       packageName = "Couples (small car)";
-      hireCost = vehicles.smallCar.price;
-      fuelCost = vehicles.smallCar.fuel;
+      rentalCost = vehicles.smallCar.price;
+      fuelUsage = vehicles.smallCar.fuel;
     }
     else if (selectedVehicle === "vehicle big-car") {
       packageName = "Magnum (4WD)";
-      hireCost = vehicles.bigCar.price;
-      fuelCost = vehicles.bigCar.fuel;
+      rentalCost = vehicles.bigCar.price;
+      fuelUsage = vehicles.bigCar.fuel;
     }
     else {
       packageName = "Group fun (camper van)";
-      hireCost = vehicles.camper.price;
-      fuelCost = vehicles.camper.fuel;
+      rentalCost = vehicles.camper.price;
+      fuelUsage = vehicles.camper.fuel;
     }
   }
   // Pricing algorithm
   function calculateCost() {
     // calculates total hireage cost
-    totalHire = hireCost * datesNumber;
+    totalRental = rentalCost * datesNumber;
     // restricts number to two decimal places
-    totalHireTruncated = totalHire.toFixed(2);
-    // calculates fuel cost
-    totalFuel = fuelCost * (distance / 100);
+    totalRentalTruncated = totalRental.toFixed(2);
+    // calculates fuel usage
+    totalFuel = fuelUsage * (distance / 100);
     totalFuelTruncated = totalFuel.toFixed(2);
     // calculates total cost
-    totalCost = totalHire + totalFuel;
-    totalCostTruncated = totalCost.toFixed(2);
+    // totalCost = totalRent + totalFuel;
+    // totalCostTruncated = totalCost.toFixed(2);
   }
 
   // Outputs calculated data to the DOM
@@ -230,9 +230,9 @@ $(document).ready(function(){
     }
     // Trip details
     $("#list-distance").text("Travel distance: " + distanceText);
-    $("#list-hire-cost").text("Hireage cost: $" + totalHireTruncated);
-    $("#list-fuel-cost").text("Estimated fuel usage: " + totalFuelTruncated + "L");
-    $("#list-total-cost").text("Estimated total cost: $" + totalCostTruncated);
+    $("#list-rent-cost").text("Rental cost: $" + totalRentalTruncated);
+    $("#list-fuel-usage").text("Estimated fuel usage: " + totalFuelTruncated + "L");
+    // $("#list-total-cost").text("Estimated total cost: $" + totalCostTruncated);
   }
 
   var app = {
