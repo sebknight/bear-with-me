@@ -16,7 +16,6 @@ h2 {
 
 h3 {
   color: #512e25;
-  font-size: 3rem;
   margin: 1rem 0rem 1rem 0rem;
 }
 
@@ -32,6 +31,13 @@ h4 {
 p {
   color: #512e25;
   font-family: 'Questrial', sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a:hover, h4:hover {
@@ -52,24 +58,33 @@ input :focus, input :active {
   box-shadow: 0px 0px 10px #f76244;
 }
 
-.container {
+.container-fluid {
   margin: 0 auto;
   padding: 0;
+  height: 100%;
+  width: 100%;
   background: #eebd74;
   color: #512e25;
   font-family: 'Questrial', sans-serif;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.col-4 {
-  margin: 0 auto;
-  padding: 0;
-  padding: 5%;
+.row {
   height: 100%;
 }
 
-.col-right {
+.col-sm {
+  height: 100%;
+}
+
+.left-contents {
+  height: 75%;
   margin: 0 auto;
   padding: 0;
+  margin-left: 3rem;
+  margin-top: 4rem;
 }
 
 #col-right__child {
@@ -78,6 +93,8 @@ input :focus, input :active {
 }
 
 .col-right__intro {
+  height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -86,6 +103,8 @@ input :focus, input :active {
 }
 
 .col-right__details {
+  height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -94,6 +113,8 @@ input :focus, input :active {
 }
 
 .col-right__passengers {
+  height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -102,6 +123,8 @@ input :focus, input :active {
 }
 
 .col-right__map {
+  height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -118,7 +141,7 @@ input :focus, input :active {
   border-color: #eebd74;
   border: 1px solid #512e25;
   color: #eebd74;
-  margin: 0.5em 0em 0.5em 0em;
+  margin-top: 5%;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary:focus {

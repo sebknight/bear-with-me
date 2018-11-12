@@ -4,6 +4,7 @@ $secondary-color: #512e25; //brown
 $tertiary-color: #f76244; //orange
 $field-color: #F1F1C2; //cream
 $background-color: #eebd74; //gold
+
 $primary-focus: rgba(#6e824b, 1);
 $secondary-focus: rgba(#512e25, 1);
 
@@ -33,7 +34,7 @@ $secondary-focus: rgba(#512e25, 1);
 
 @mixin h3 {
   color: $secondary-color;
-  font-size: 3rem;
+  // font-size: 3rem;
   margin: 1rem 0rem 1rem 0rem;
 }
 
@@ -53,6 +54,8 @@ $secondary-focus: rgba(#512e25, 1);
 }
 
 @mixin background-image {
+  height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -83,6 +86,12 @@ p {
 // Media queries
 
 
+body, html {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
 
 a:hover, h4:hover {
     color: $field-color;
@@ -99,24 +108,35 @@ input {
   }
 }
 
-.container {
+.container-fluid {
   @include zero-margin;
-  // height: 100%;
-  // width: 100%;
+  height: 100%;
+  width: 100%;
   background: $background-color;
   color: $secondary-color;
   font-family: 'Questrial', sans-serif;
-  // justify-content: center;
+  justify-content: center;
 }
 
-.col-4 {
-  @include zero-margin;
-  padding: 5%;
+.row {
   height: 100%;
 }
-.col-right {
-  @include zero-margin;
+
+.col-sm {
+  // @include zero-margin;
+  height: 100%;
+  // width: 100%;
 }
+
+.left-contents {
+  height: 75%;
+  @include zero-margin;
+  margin-left: 3rem;
+  margin-top: 4rem;
+  // width: 100%;
+}
+
+
 
 #col-right__child {
   height: 100%;
@@ -163,7 +183,7 @@ input {
   border-color: $background-color;
   border: 1px solid $secondary-color;
   color: $background-color;
-  margin: 0.5em 0em 0.5em 0em;
+  margin-top: 5%;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary:focus {
